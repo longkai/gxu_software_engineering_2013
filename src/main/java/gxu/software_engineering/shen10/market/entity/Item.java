@@ -62,7 +62,6 @@ public class Item {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id")
 	@NotNull(message = "类别不能为空！")
-	@JsonProperty("category_id")
 	private Category	category;
 
 	@NotBlank(message = "物品名称不能为空！")
@@ -88,7 +87,8 @@ public class Item {
 	private Long		clickTimes;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "seller_id")
+	@NotNull(message = "卖家不能为空！")
 	private User		seller;
 
 	/** 是否被用户自己关闭交易 */
