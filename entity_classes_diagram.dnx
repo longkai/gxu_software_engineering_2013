@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational 建模平台（com.ibm.xtools.rmp）" url="" version="7.0.0"/></signature>?>
+<umlnotation:UMLDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xmi:id="_J7E20NTpEeKBPq-LNvnRVw" type="Class" name="entity_class_diagram.dnx">
+  <eAnnotations xmi:id="_J7Fd4NTpEeKBPq-LNvnRVw" source="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+    <details xmi:id="_J7Fd4dTpEeKBPq-LNvnRVw" key="com.ibm.xtools.activities.javaVisualizerActivity" value="1"/>
+  </eAnnotations>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_jpG7QNTpEeKBPq-LNvnRVw" fontName="Microsoft YaHei UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_jpJ-kNTpEeKBPq-LNvnRVw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_jpJ-kdTpEeKBPq-LNvnRVw" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jpUWoNTpEeKBPq-LNvnRVw" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jpUWodTpEeKBPq-LNvnRVw" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jpU9sNTpEeKBPq-LNvnRVw" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_jpU9sdTpEeKBPq-LNvnRVw" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_jpVkwNTpEeKBPq-LNvnRVw" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_jpVkwdTpEeKBPq-LNvnRVw" type="ANNOTATED_OPERATION_COMPARTMENT">
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XVj8NTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=getId%5Esign=()QLong;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XVj8tTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=setId%5Esign=(QLong;)V%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XWLAdTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=getRealName%5Esign=()QString;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XWyENTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=setRealName%5Esign=(QString;)V%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XXZINTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=getNick%5Esign=()QString;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XXZItTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=setNick%5Esign=(QString;)V%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XYAMNTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=getAccount%5Esign=()QString;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XYAMtTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=setAccount%5Esign=(QString;)V%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XYnQdTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=getPassword%5Esign=()QString;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XZOUtTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=getRegisterTime%5Esign=()QDate;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XZ1YNTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=setRegisterTime%5Esign=(QDate;)V%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XZ1YtTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=getLastLoginTime%5Esign=()QDate;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XaccdTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=setLastLoginTime%5Esign=(QDate;)V%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XbqkNTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=getBlocked%5Esign=()QBoolean;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XbqktTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=setBlocked%5Esign=(QBoolean;)V%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XcRodTqEeKBPq-LNvnRVw" type="OPERATION_ITEM">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=hashCode%5Esign=()I%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3XjmYNTqEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=equals%5Esign=(QObject;)Z%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_2aB8QNTsEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=getLoginTimes%5Esign=()QInteger;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_2aCjUdTsEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=setLoginTimes%5Esign=(QInteger;)V%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_nbiKYNTxEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=setPassword%5Esign=(QString;)V%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_nbixcNTxEeKBPq-LNvnRVw" type="OPERATION_ITEM" collapsed="true">
+        <element xmi:type="uml:Operation" href="mmi:///#jmethod%5Ename=toString%5Esign=()QString;%5Bjsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Operation"/>
+      </children>
+    </children>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jpG7QdTpEeKBPq-LNvnRVw" x="3300" y="-1056" width="7987" height="7613"/>
+  </children>
+  <element xsi:nil="true"/>
+</umlnotation:UMLDiagram>
