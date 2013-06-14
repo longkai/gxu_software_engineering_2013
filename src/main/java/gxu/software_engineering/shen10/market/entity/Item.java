@@ -40,6 +40,10 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+import gxu.software_engineering.shen10.market.entity.Category;
+import gxu.software_engineering.shen10.market.entity.User;
+import java.lang.Boolean;
+import java.lang.String;
 
 /**
  * item实体类（指的是一个可以买卖，交易的物品）
@@ -87,13 +91,23 @@ public class Item {
 	@JoinColumn(name = "user_id")
 	private User		seller;
 
-	/** 是否被用户自己关闭 */
+	/** 是否被用户自己关闭交易 */
 	private Boolean		closed;
+	
+	@NotBlank(message = "描述信息不能为空！")
+	@Size(min = 10, max = 255, message = "描述信息必须在10-255个字段内！")
 	private String		description;
 
 	/** 由于不符合规定，由管理员将其锁住 */
 	@JsonIgnore
 	private Boolean		blocked;
+
+	/** 交易是否成功了 */
+	private Boolean deal;
+
+	/** 额外说明，optional */
+	@Size(min = 2, max = 255, message = "额外说明最大不能超过255个字符！")
+	private String extra;
 
 	public Long getId() {
 		return id;
@@ -181,6 +195,22 @@ public class Item {
 
 	public void setBlocked(Boolean blocked) {
 		this.blocked = blocked;
+	}
+	
+	public Boolean getDeal() {
+		return deal;
+	}
+
+	public void setDeal(Boolean deal) {
+		this.deal = deal;
+	}
+
+	public String getExtra() {
+		return extra;
+	}
+
+	public void setExtra(String extra) {
+		this.extra = extra;
 	}
 
 	@Override
