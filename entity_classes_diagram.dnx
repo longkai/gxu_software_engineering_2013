@@ -135,6 +135,19 @@
     <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Record%5Bjcu%5Ename=Record.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Class"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kYHjQdUeEeKsts-0QE-3Hw" x="2772" width="7060" height="6555"/>
   </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_NoBSwNUiEeKsts-0QE-3Hw" fontName="Microsoft YaHei UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_NoDH8NUiEeKsts-0QE-3Hw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_NoDH8dUiEeKsts-0QE-3Hw" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_NoDH8tUiEeKsts-0QE-3Hw" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_NoDH89UiEeKsts-0QE-3Hw" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_NoDvANUiEeKsts-0QE-3Hw" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_NoDvAdUiEeKsts-0QE-3Hw" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_NoEWENUiEeKsts-0QE-3Hw" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_NoEWEdUiEeKsts-0QE-3Hw" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Admin%5Bjcu%5Ename=Admin.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NoBSwdUiEeKsts-0QE-3Hw" x="15840" y="6600" width="6398" height="6160"/>
+  </children>
   <element xsi:nil="true"/>
   <edges xmi:type="umlnotation:UMLConnector" xmi:id="_aEyHsNUdEeKsts-0QE-3Hw" source="_TNNboNUMEeKsts-0QE-3Hw" target="_3xtFkNUHEeKsts-0QE-3Hw" fontName="Microsoft YaHei UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
     <children xmi:type="notation:DecorationNode" xmi:id="_aEz84NUdEeKsts-0QE-3Hw" type="FromMultiplicityLabel">
