@@ -82,5 +82,18 @@
     <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=User%5Bjcu%5Ename=User.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Class"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jpG7QdTpEeKBPq-LNvnRVw" x="3300" y="-1056" width="7987" height="7613"/>
   </children>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_3xtFkNUHEeKsts-0QE-3Hw" fontName="Microsoft YaHei UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_3yAnkNUHEeKsts-0QE-3Hw" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_3yAnkdUHEeKsts-0QE-3Hw" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_3yAnktUHEeKsts-0QE-3Hw" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_3yJxgNUHEeKsts-0QE-3Hw" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_3yRtUNUHEeKsts-0QE-3Hw" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_3ySUYNUHEeKsts-0QE-3Hw" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_3yTigNUHEeKsts-0QE-3Hw" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_3yUwoNUHEeKsts-0QE-3Hw" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=Category%5Bjcu%5Ename=Category.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.entity%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3xtFkdUHEeKsts-0QE-3Hw" x="11880" y="-1056" width="6662" height="7615"/>
+  </children>
   <element xsi:nil="true"/>
 </umlnotation:UMLDiagram>
