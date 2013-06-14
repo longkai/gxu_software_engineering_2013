@@ -33,7 +33,7 @@ import javax.validation.constraints.Size;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -53,23 +53,23 @@ public class User {
 
 	@Column(name = "real_name")
 //	@NotNull(message = "真实姓名不能为空！")
-	@NotEmpty(message = "真实姓名不能为空！")
+	@NotBlank(message = "真实姓名不能为空！")
 	@Size(min = 2, max = 4, message = "用户名必须在1-4个字符之间！")
 	@JsonIgnore
 	private String	realName;
 
 //	@NotNull(message = "昵称不能为空！")
-	@NotEmpty(message = "昵称不能为空！")
+	@NotBlank(message = "昵称不能为空！")
 	@Size(min = 2, max = 7, message = "昵称必须在2-7个字符之间！")
 	private String	nick;
 
 //	@NotNull(message = "账号不能为空！")
-	@NotEmpty(message = "账号不能为空！")
+	@NotBlank(message = "账号不能为空！")
 	@Size(min = 6, max = 18, message = "账号必须在6-18个字符之间！")
 	private String	account;
 
 //	@NotNull(message = "密码不能为空！")
-	@NotEmpty(message = "密码不能为空！")
+	@NotBlank(message = "密码不能为空！")
 	@Size(min = 6, max = 18, message = "密码必须在6-18个字符之间！")
 	@JsonIgnore
 	private String	password;

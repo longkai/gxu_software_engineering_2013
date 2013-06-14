@@ -26,44 +26,74 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 /**
- * Category实体类
+ * item实体类（指的是一个可以买卖，交易的物品）
  * 
  * @author longkai
  * @email  im.longkai@gmail.com
  */
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "items")
+public class Item {
 
 	@Id
 	@GeneratedValue
-	private Long	id;
+	private Long		id;
 
-	// @NotNull(message = "类别名称不能为空！")
-	// blank means not null and not empty!
-	@NotBlank(message = "类别名称不能为空！")
-	@Size(min = 2, max = 18, message = "类别名称必须在2-18个字符之间！")
-	private String	name;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id")
+	@NotNull(message = "类别不能为空！")
+	@JsonProperty("category_id")
+	private Category	category;
 
-	// @NotNull(message = "类别介绍不能为空！")
-	@NotBlank(message = "类别介绍必须在2-255个字符之间！")
-	@Size(min = 2, max = 255, message = "类别介绍必须在2-255个字符之间！")
-	private String	description;
+	@NotBlank(message = "物品名称不能为空！")
+	@Size(min = 1, max = 18, message = "物品名称必须在1-18个字符之间！")
+	private String		name;
+
+	@NotNull(message = "物品价格不能为空！")
+	// well, validation api has no support float types :(
+	private Float		price;
 
 	@Column(name = "added_time")
 	@JsonProperty("added_time")
-	private Date	addedTime;
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	private Date		addedTime;
 
-	private String	extra;
+	@Column(name = "last_modified_time")
+	@JsonProperty("last_modified_time")
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	private Date		lastModifiedTime;
+
+	@Column(name = "click_times")
+	@JsonProperty("click_times")
+	private Long		clickTimes;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private User		seller;
+
+	/** 是否被用户自己关闭 */
+	private Boolean		closed;
+	private String		description;
+
+	/** 由于不符合规定，由管理员将其锁住 */
+	@JsonIgnore
+	private Boolean		blocked;
 
 	public Long getId() {
 		return id;
@@ -71,6 +101,14 @@ public class Category {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public String getName() {
@@ -81,12 +119,12 @@ public class Category {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public Float getPrice() {
+		return price;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setPrice(Float price) {
+		this.price = price;
 	}
 
 	public Date getAddedTime() {
@@ -97,12 +135,52 @@ public class Category {
 		this.addedTime = addedTime;
 	}
 
-	public String getExtra() {
-		return extra;
+	public Date getLastModifiedTime() {
+		return lastModifiedTime;
 	}
 
-	public void setExtra(String extra) {
-		this.extra = extra;
+	public void setLastModifiedTime(Date lastModifiedTime) {
+		this.lastModifiedTime = lastModifiedTime;
+	}
+
+	public Long getClickTimes() {
+		return clickTimes;
+	}
+
+	public void setClickTimes(Long clickTimes) {
+		this.clickTimes = clickTimes;
+	}
+
+	public User getSeller() {
+		return seller;
+	}
+
+	public void setSeller(User seller) {
+		this.seller = seller;
+	}
+
+	public Boolean getClosed() {
+		return closed;
+	}
+
+	public void setClosed(Boolean closed) {
+		this.closed = closed;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Boolean getBlocked() {
+		return blocked;
+	}
+
+	public void setBlocked(Boolean blocked) {
+		this.blocked = blocked;
 	}
 
 	@Override
@@ -121,7 +199,7 @@ public class Category {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Item other = (Item) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
