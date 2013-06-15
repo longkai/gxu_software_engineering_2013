@@ -67,6 +67,14 @@ public interface CommonDao<T> {
 	long size();
 	
 	/**
+	 * 自定义查询实体对象。
+	 * @param query
+	 * @param params
+	 * @return
+	 */
+	T find(String query, Map<String, Object> params);
+	
+	/**
 	 * 获取实体类对象的列表。
 	 * @param query 查询hql
 	 * @param params 查询参数

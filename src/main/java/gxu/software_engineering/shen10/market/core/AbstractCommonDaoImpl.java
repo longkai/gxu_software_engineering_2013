@@ -23,6 +23,8 @@
 package gxu.software_engineering.shen10.market.core;
 
 
+import gxu.software_engineering.shen10.market.util.Assert;
+
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +34,6 @@ import javax.persistence.TypedQuery;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.Assert;
 
 
 /**
@@ -67,7 +68,7 @@ public abstract class AbstractCommonDaoImpl<T> implements CommonDao<T> {
 		Assert.notNull(entity, "实体类对象不能为空！");
 		em.merge(entity);
 	}
-
+	
 	/**
 	 * 通过实体类类型返回该实体类的总记录数。
 	 * @param clazz 实体类
@@ -82,14 +83,17 @@ public abstract class AbstractCommonDaoImpl<T> implements CommonDao<T> {
 	 * 查询，只返回一个对象，支持<b style="color: red;"> ? </b>格式来作为占位符。
 	 * @param hql hql
 	 * @param type 查询的实体类型
-	 * @param objects 参数, 为null表示无参数
+	 * @param keys 参数名， 为null表示无参数
+	 * @param objects 参数值, 为null表示无参数
 	 * @return 单个对象
 	 */
-	protected T executeQuery(String hql, Class<T> clazz, Object...objects) {
-		TypedQuery<T> query = em.createQuery(hql, clazz);
-		if (objects != null) {
-			for (int i = 0; i < objects.length; i++) {
-				query.setParameter(i + 1, objects[i]);
+	protected T executeQuery(String hql, Class<T> clazz, String[] keys, Object[] values) {
+		TypedQuery<T> query = em.createNamedQuery(hql, clazz);
+		if (keys != null && values != null) {
+			Assert.equals(keys.length, values.length,
+					String.format("查询参数的数目不一致！键->%d, 值->%d", keys.length, values.length));
+			for (int i = 0; i < keys.length; i++) {
+				query.setParameter(i + 1, values[i]);
 			}
 		}
 		return query.getSingleResult();
@@ -103,7 +107,7 @@ public abstract class AbstractCommonDaoImpl<T> implements CommonDao<T> {
 	 * @return 单个对象
 	 */
 	protected T executeQuery(String hql, Class<T> clazz, Map<String, Object> params) {
-		TypedQuery<T> query = em.createQuery(hql, clazz);
+		TypedQuery<T> query = em.createNamedQuery(hql, clazz);
 		if (params != null) {
 			for (String name : params.keySet()) {
 				query.setParameter(name, params.get(name));
@@ -118,15 +122,19 @@ public abstract class AbstractCommonDaoImpl<T> implements CommonDao<T> {
 	 * @param clazz 查询的实体类型
 	 * @param offset 偏移量，即，从第几条记录开始取
 	 * @param number 抓取数，即，抓取多少条记录
-	 * @param objects 参数数组，为null时表示无参数
+	 * @param keys 参数名， 为null表示无参数
+	 * @param objects 参数值, 为null表示无参数
 	 * @return 对象列表
 	 */
-	protected List<T> executeQuery(String hql, Class<T> clazz, int offset, int number, Object...objects) {
+	protected List<T> executeQuery(String hql, Class<T> clazz, int offset, int number, String[] keys, Object[] values) {
 		offset = rangeCheck(offset, clazz);
 		TypedQuery<T> query = em.createNamedQuery(hql, clazz);
-		if (objects != null) {
-			for (int i = 0; i < objects.length; i++) {
-				query.setParameter(i + 1, objects[i]);
+		if (keys != null && values != null) {
+			Assert.equals(keys.length, values.length,
+					String.format("查询参数的数目不一致！键->%d, 值->%d", keys.length, values.length));
+			
+			for (int i = 0; i < keys.length; i++) {
+				query.setParameter(i + 1, values[i]);
 			}
 		}
 		return query.setFirstResult(offset).setMaxResults(number).getResultList();
