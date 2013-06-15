@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational 建模平台（com.ibm.xtools.rmp）" url="" version="7.0.0"/></signature>?>
+<umlnotation:UMLDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xmi:id="_8fu0gNXDEeKvE5oJHq4WDA" type="Class" name="dao_classes_diagram.dnx">
+  <eAnnotations xmi:id="_8fu0gdXDEeKvE5oJHq4WDA" source="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+    <details xmi:id="_8fu0gtXDEeKvE5oJHq4WDA" key="com.ibm.xtools.activities.javaVisualizerActivity" value="1"/>
+  </eAnnotations>
+  <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_WNFjgNXEEeKvE5oJHq4WDA" fontName="Microsoft YaHei UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label" useClassifierShape="true">
+    <children xmi:type="notation:DecorationNode" xmi:id="_WNGxoNXEEeKvE5oJHq4WDA" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_WNGxodXEEeKvE5oJHq4WDA" width="530" height="530"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_WNGxotXEEeKvE5oJHq4WDA" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_WNHYsNXEEeKvE5oJHq4WDA" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_WNHYsdXEEeKvE5oJHq4WDA" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_WNHYstXEEeKvE5oJHq4WDA" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_WNHYs9XEEeKvE5oJHq4WDA" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_WNHYtNXEEeKvE5oJHq4WDA" type="OperationCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_WNHYtdXEEeKvE5oJHq4WDA" visible="false" type="SignalCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_gDaIYNXEEeKvE5oJHq4WDA" type="TemplateCompartment">
+      <element xmi:type="uml:RedefinableTemplateSignature" href="mmi:///#jtsig%5Ename=CommonDao%5Bjsrctype%5Ename=CommonDao%5Bjcu%5Ename=CommonDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.core%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.RedefinableTemplateSignature"/>
+    </children>
+    <element xmi:type="uml:Interface" href="mmi:///#jsrctype%5Ename=CommonDao%5Bjcu%5Ename=CommonDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.core%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Interface"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WNFjgdXEEeKvE5oJHq4WDA" x="6996" y="3828" height="5552"/>
+  </children>
+  <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_jgihINXFEeKvE5oJHq4WDA" fontName="Microsoft YaHei UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label" useClassifierShape="true">
+    <children xmi:type="notation:DecorationNode" xmi:id="_jgjIMNXFEeKvE5oJHq4WDA" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_jgjIMdXFEeKvE5oJHq4WDA" width="530" height="530"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jgjIMtXFEeKvE5oJHq4WDA" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jgjIM9XFEeKvE5oJHq4WDA" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jgjvQNXFEeKvE5oJHq4WDA" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_jgjvQdXFEeKvE5oJHq4WDA" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_jgjvQtXFEeKvE5oJHq4WDA" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_jgjvQ9XFEeKvE5oJHq4WDA" type="OperationCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_jgkWUNXFEeKvE5oJHq4WDA" visible="false" type="SignalCompartment"/>
+    <element xmi:type="uml:Interface" href="mmi:///#jsrctype%5Ename=UserDao%5Bjcu%5Ename=UserDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.repository%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Interface"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jgihIdXFEeKvE5oJHq4WDA" x="14784"/>
+  </children>
+  <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_uN738NXFEeKvE5oJHq4WDA" fontName="Microsoft YaHei UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label" useClassifierShape="true">
+    <children xmi:type="notation:DecorationNode" xmi:id="_uN8fANXFEeKvE5oJHq4WDA" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_uN8fAdXFEeKvE5oJHq4WDA" width="530" height="530"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_uN9GENXFEeKvE5oJHq4WDA" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_uN9GEdXFEeKvE5oJHq4WDA" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_uN9GEtXFEeKvE5oJHq4WDA" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_uN9GE9XFEeKvE5oJHq4WDA" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_uN9GFNXFEeKvE5oJHq4WDA" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_uN9tINXFEeKvE5oJHq4WDA" type="OperationCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_uN9tIdXFEeKvE5oJHq4WDA" visible="false" type="SignalCompartment"/>
+    <element xmi:type="uml:Interface" href="mmi:///#jsrctype%5Ename=CategoryDao%5Bjcu%5Ename=CategoryDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.repository%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Interface"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uN738dXFEeKvE5oJHq4WDA" x="9636"/>
+  </children>
+  <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_w3VjINXFEeKvE5oJHq4WDA" fontName="Microsoft YaHei UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label" useClassifierShape="true">
+    <children xmi:type="notation:DecorationNode" xmi:id="_w3VjItXFEeKvE5oJHq4WDA" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_w3VjI9XFEeKvE5oJHq4WDA" width="530" height="530"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_w3WKMNXFEeKvE5oJHq4WDA" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_w3WKMdXFEeKvE5oJHq4WDA" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_w3WKMtXFEeKvE5oJHq4WDA" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_w3WKM9XFEeKvE5oJHq4WDA" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_w3WKNNXFEeKvE5oJHq4WDA" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_w3WxQNXFEeKvE5oJHq4WDA" type="OperationCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_w3WxQdXFEeKvE5oJHq4WDA" visible="false" type="SignalCompartment"/>
+    <element xmi:type="uml:Interface" href="mmi:///#jsrctype%5Ename=ItemDao%5Bjcu%5Ename=ItemDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.repository%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Interface"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_w3VjIdXFEeKvE5oJHq4WDA" x="4884" width="2562"/>
+  </children>
+  <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_01kTQNXFEeKvE5oJHq4WDA" fontName="Microsoft YaHei UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label" useClassifierShape="true">
+    <children xmi:type="notation:DecorationNode" xmi:id="_01k6UNXFEeKvE5oJHq4WDA" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_01k6UdXFEeKvE5oJHq4WDA" width="530" height="530"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_01k6UtXFEeKvE5oJHq4WDA" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_01lhYNXFEeKvE5oJHq4WDA" type="Kind"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_01lhYdXFEeKvE5oJHq4WDA" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_01lhYtXFEeKvE5oJHq4WDA" type="Parent"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_01lhY9XFEeKvE5oJHq4WDA" type="AttributeCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_01lhZNXFEeKvE5oJHq4WDA" type="OperationCompartment"/>
+    <children xmi:type="notation:SemanticListCompartment" xmi:id="_01mIcNXFEeKvE5oJHq4WDA" visible="false" type="SignalCompartment"/>
+    <element xmi:type="uml:Interface" href="mmi:///#jsrctype%5Ename=RecordDao%5Bjcu%5Ename=RecordDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.repository%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Interface"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_01kTQdXFEeKvE5oJHq4WDA"/>
+  </children>
+  <element xsi:nil="true"/>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_nzxQ4NXFEeKvE5oJHq4WDA" source="_jgihINXFEeKvE5oJHq4WDA" target="_WNFjgNXEEeKvE5oJHq4WDA" fontName="Microsoft YaHei UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_nzxQ4tXFEeKvE5oJHq4WDA" type="NameLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_nzx38NXFEeKvE5oJHq4WDA" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_nzx38dXFEeKvE5oJHq4WDA" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nzxQ49XFEeKvE5oJHq4WDA" y="-186"/>
+    </children>
+    <element xmi:type="uml:Generalization" href="mmi:///#jgen%5Bjsrctype%5Ename=UserDao%5Bjcu%5Ename=UserDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.repository%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=CommonDao%5Bjcu%5Ename=CommonDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.core%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Generalization"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nzxQ4dXFEeKvE5oJHq4WDA" points="[40, 99, 6397, -2619]$[40, 1262, 6397, -1456]$[-6291, 1262, 66, -1456]$[-6291, 2320, 66, -398]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_21x3gNXFEeKvE5oJHq4WDA" id="(0.5,0.9387755102040817)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_21yekNXFEeKvE5oJHq4WDA" id="(0.8346572950652529,0.0)"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_usteoNXFEeKvE5oJHq4WDA" source="_uN738NXFEeKvE5oJHq4WDA" target="_WNFjgNXEEeKvE5oJHq4WDA" fontName="Microsoft YaHei UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_usteotXFEeKvE5oJHq4WDA" type="NameLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_usuFsNXFEeKvE5oJHq4WDA" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_usuFsdXFEeKvE5oJHq4WDA" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_usteo9XFEeKvE5oJHq4WDA" y="-186"/>
+    </children>
+    <element xmi:type="uml:Generalization" href="mmi:///#jgen%5Bjsrctype%5Ename=CategoryDao%5Bjcu%5Ename=CategoryDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.repository%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=CommonDao%5Bjcu%5Ename=CommonDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.core%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Generalization"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_usteodXFEeKvE5oJHq4WDA" points="[39, 99, 2177, -2619]$[39, 733, 2177, -1985]$[-2089, 733, 49, -1985]$[-2089, 2320, 49, -398]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_21yekdXFEeKvE5oJHq4WDA" id="(0.5,0.9387755102040817)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_21zFoNXFEeKvE5oJHq4WDA" id="(0.6260441094004894,0.0)"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_zYpCQNXFEeKvE5oJHq4WDA" source="_w3VjINXFEeKvE5oJHq4WDA" target="_WNFjgNXEEeKvE5oJHq4WDA" fontName="Microsoft YaHei UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_zYppUNXFEeKvE5oJHq4WDA" type="NameLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_zYppUtXFEeKvE5oJHq4WDA" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_zYppU9XFEeKvE5oJHq4WDA" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zYppUdXFEeKvE5oJHq4WDA" y="-186"/>
+    </children>
+    <element xmi:type="uml:Generalization" href="mmi:///#jgen%5Bjsrctype%5Ename=ItemDao%5Bjcu%5Ename=ItemDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.repository%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=CommonDao%5Bjcu%5Ename=CommonDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.core%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Generalization"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_zYpCQdXFEeKvE5oJHq4WDA" points="[40, 99, -2121, -2619]$[40, 733, -2121, -1985]$[2194, 733, 33, -1985]$[2194, 2320, 33, -398]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_21zssNXFEeKvE5oJHq4WDA" id="(0.5,0.9387755102040817)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_21zssdXFEeKvE5oJHq4WDA" id="(0.4174306051182702,0.0)"/>
+  </edges>
+  <edges xmi:type="umlnotation:UMLConnector" xmi:id="_1lBaQNXFEeKvE5oJHq4WDA" source="_01kTQNXFEeKvE5oJHq4WDA" target="_WNFjgNXEEeKvE5oJHq4WDA" fontName="Microsoft YaHei UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_1lBaQtXFEeKvE5oJHq4WDA" type="NameLabel">
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_1lCBUNXFEeKvE5oJHq4WDA" type="Stereotype"/>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_1lCBUdXFEeKvE5oJHq4WDA" type="Name"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1lBaQ9XFEeKvE5oJHq4WDA" y="-186"/>
+    </children>
+    <element xmi:type="uml:Generalization" href="mmi:///#jgen%5Bjsrctype%5Ename=RecordDao%5Bjcu%5Ename=RecordDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.repository%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D%5Bjsrctype%5Ename=CommonDao%5Bjcu%5Ename=CommonDao.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.core%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D%5D$uml.Generalization"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_1lBaQdXFEeKvE5oJHq4WDA" points="[40, 99, -6287, -2619]$[40, 1262, -6287, -1456]$[6344, 1262, 17, -1456]$[6344, 2320, 17, -398]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_210TwNXFEeKvE5oJHq4WDA" id="(0.49999999999999994,0.9387755102040817)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_210TwdXFEeKvE5oJHq4WDA" id="(0.20881726014477947,0.0)"/>
+  </edges>
+</umlnotation:UMLDiagram>

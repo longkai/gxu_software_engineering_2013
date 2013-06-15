@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 longkai
+ * Copyright 2013 longkai
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -29,12 +29,12 @@ import java.util.Map;
 /**
  * 通用的数据访问接口，包含简单的增删改查列表和总记录数方法。
  * 
- * @author longkai
+ * @author longkai(龙凯)
  * @email  im.longkai@gmail.com
  * @since  2013-3-28
  */
 public interface CommonDao<T> {
-
+	
 	/**
 	 * 将一个实体持久化。
 	 * @param entity
