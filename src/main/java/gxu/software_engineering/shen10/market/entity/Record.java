@@ -68,10 +68,10 @@ public class Record {
 	@NotNull(message = "物品不能为空！")
 	private Item	item;
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "buyer_id")
-	@NotNull(message = "买家不能为空！")
-	private User	buyer;
+//	@OneToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "buyer_id")
+//	@NotNull(message = "买家不能为空！")
+//	private User	buyer;
 
 	public Long getId() {
 		return id;
@@ -105,13 +105,13 @@ public class Record {
 		this.item = item;
 	}
 
-	public User getBuyer() {
-		return buyer;
-	}
-
-	public void setBuyer(User buyer) {
-		this.buyer = buyer;
-	}
+//	public User getBuyer() {
+//		return buyer;
+//	}
+//
+//	public void setBuyer(User buyer) {
+//		this.buyer = buyer;
+//	}
 
 	@Override
 	public int hashCode() {

@@ -29,13 +29,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 /**
  * user实体类
@@ -73,20 +73,26 @@ public class User {
 	@Size(min = 6, max = 18, message = "密码必须在6-18个字符之间！")
 	@JsonIgnore
 	private String	password;
+	
+	/** 联系方式 */
+	@NotNull(message = "手机号码不能为空！")
+	@Pattern(regexp = "^1[3|4|5|8]\\d{9}")
+	private String contact;
 
 	@Column(name = "register_time")
 	@JsonProperty("register_time")
-	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private Date	registerTime;
 
 	@Column(name = "last_login_time")
-	@DateTimeFormat(iso = ISO.DATE_TIME)
 	@JsonProperty("last_login_time")
 	private Date	lastLoginTime;
 
 	@Column(name = "login_times")
 	@JsonProperty("login_times")
 	private Integer	loginTimes;
+	
+	/** 用户的信用，由注册的买家评价 */
+//	private Long credit;
 
 	@JsonIgnore
 	private Boolean	blocked;
@@ -131,6 +137,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
 	public Date getRegisterTime() {
 		return registerTime;
 	}
@@ -154,6 +168,14 @@ public class User {
 	public void setLoginTimes(Integer loginTimes) {
 		this.loginTimes = loginTimes;
 	}
+
+//	public Long getCredit() {
+//		return credit;
+//	}
+//
+//	public void setCredit(Long credit) {
+//		this.credit = credit;
+//	}
 
 	public Boolean getBlocked() {
 		return blocked;
