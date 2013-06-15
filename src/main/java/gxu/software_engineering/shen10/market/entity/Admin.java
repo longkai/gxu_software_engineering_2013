@@ -1,5 +1,5 @@
 /*
- * Copyright Copyright 2013 Department of Computer Science and Technology, Guangxi University
+ * Copyright 2013 Department of Computer Science and Technology, Guangxi University
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
