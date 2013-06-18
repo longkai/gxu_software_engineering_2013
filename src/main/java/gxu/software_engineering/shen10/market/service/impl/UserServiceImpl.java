@@ -106,8 +106,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> latest(int count) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.list("User.list_latest", null, 0, count);
 	}
 
 	@Override

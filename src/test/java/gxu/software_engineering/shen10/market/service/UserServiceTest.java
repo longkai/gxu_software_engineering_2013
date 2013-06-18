@@ -25,6 +25,9 @@ package gxu.software_engineering.shen10.market.service;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.*;
+
+import java.util.List;
+
 import gxu.software_engineering.shen10.market.entity.User;
 
 import javax.inject.Inject;
@@ -134,9 +137,15 @@ public class UserServiceTest {
 		assertThat(userService.modify(u).getContact(), is(newContact));
 	}
 
+	@Test(expected = RuntimeException.class)
+	public void testLatestWithRongCount() {
+		userService.latest(100);
+	}
+	
 	@Test
 	public void testLatest() {
-		fail("Not yet implemented");
+		List<User> users = userService.latest(10);
+		assertThat(users.size() > 2, is(true));
 	}
 
 	@Test

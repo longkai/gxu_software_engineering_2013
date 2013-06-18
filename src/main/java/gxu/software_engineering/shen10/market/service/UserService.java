@@ -4,8 +4,10 @@ import gxu.software_engineering.shen10.market.entity.User;
 
 import java.util.List;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -41,7 +43,7 @@ public interface UserService {
 	 * 最新注册的用户列表。
 	 * @param count 需要多少条记录。
 	 */
-	public List<User> latest(int count);
+	public List<User> latest(@Min(1) @Max(50) int count);
 
 	/**
 	 * 查看更多用户。
