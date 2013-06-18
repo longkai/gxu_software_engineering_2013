@@ -36,11 +36,13 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 /**
  * 
@@ -49,6 +51,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @since  2013-6-18
  */
 @Service
+@Validated
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Throwable.class)
 public class UserServiceImpl implements UserService {
 
@@ -86,8 +89,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User login(String account, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("account", account);
+		params.put("password", Encryptor.MD5(password));
+		return userDao.find("User.login", params);
 	}
 
 	@Override

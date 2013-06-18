@@ -22,17 +22,18 @@
  */
 package gxu.software_engineering.shen10.market.service;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.*;
+import gxu.software_engineering.shen10.market.entity.User;
 
 import javax.inject.Inject;
-
-import gxu.software_engineering.shen10.market.entity.User;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +48,8 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/spring.xml")
 @Transactional
 public class UserServiceTest {
+	
+	private static final Logger L = LoggerFactory.getLogger(UserServiceTest.class);
 
 	@Inject
 	private UserService userService;
@@ -94,8 +97,22 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testLogin() {
-		fail("Not yet implemented");
+	public void testLoginWithRightAccountAndPwd() {
+		String rawPwd = u.getPassword();
+		User user = userService.register(u, rawPwd);
+		assertThat(user, notNullValue());
+		assertEquals(user, u);
+		L.info("u: {}", u);
+		L.info("user:{}", user);
+		
+		User login = userService.login(u.getAccount(), rawPwd);
+		assertThat(login, notNullValue());
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void testLoginWithWrongAccountAndPwd() {
+		User login = userService.login("abc", "321");
+		assertThat(login, nullValue());
 	}
 
 	@Test

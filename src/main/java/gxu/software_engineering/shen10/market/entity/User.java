@@ -49,7 +49,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Table(name = "users")
 @NamedQueries({
 	@NamedQuery(name = "User.account", query = "FROM User u WHERE u.account = :account"),
-	@NamedQuery(name = "User.nick", query = "FROM User u WHERE u.nick = :nick")
+	@NamedQuery(name = "User.nick", query = "FROM User u WHERE u.nick = :nick"),
+	@NamedQuery(name = "User.login", query = "FROM User u WHERE u.account = :account AND u.password = :password")
 })
 public class User {
 

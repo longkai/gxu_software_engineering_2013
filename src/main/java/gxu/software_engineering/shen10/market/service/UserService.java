@@ -5,6 +5,10 @@ import java.lang.String;
 import gxu.software_engineering.shen10.market.entity.Category;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 public interface UserService {
 
 	/**
@@ -17,7 +21,8 @@ public interface UserService {
 	 * 提供正确的登录信息，返回授权用户。
 	 * @return 已经注册但未被冻结的账户。
 	 */
-	public User login(String account, String password);
+	@NotNull(message = "用户名或者密码错误！")
+	public User login(@NotBlank String account, @NotBlank String password);
 
 	/**
 	 * 查看用户的信息。
