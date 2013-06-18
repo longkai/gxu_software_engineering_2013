@@ -128,7 +128,10 @@ public class UserServiceTest {
 
 	@Test
 	public void testModify() {
-		fail("Not yet implemented");
+		userService.register(u, u.getPassword());
+		String newContact = "14795633333";
+		u.setContact(newContact);
+		assertThat(userService.modify(u).getContact(), is(newContact));
 	}
 
 	@Test

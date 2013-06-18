@@ -1,8 +1,7 @@
 package gxu.software_engineering.shen10.market.service;
 
 import gxu.software_engineering.shen10.market.entity.User;
-import java.lang.String;
-import gxu.software_engineering.shen10.market.entity.Category;
+
 import java.util.List;
 
 import javax.validation.constraints.Min;
@@ -36,7 +35,7 @@ public interface UserService {
 	 * 修改用户信息。
 	 * @return 修改成功后的用户。
 	 */
-	public User modify(Category user);
+	public User modify(@NotNull User user);
 
 	/**
 	 * 最新注册的用户列表。

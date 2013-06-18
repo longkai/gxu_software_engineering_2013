@@ -22,7 +22,6 @@
  */
 package gxu.software_engineering.shen10.market.service.impl;
 
-import gxu.software_engineering.shen10.market.entity.Category;
 import gxu.software_engineering.shen10.market.entity.User;
 import gxu.software_engineering.shen10.market.repository.UserDao;
 import gxu.software_engineering.shen10.market.service.UserService;
@@ -36,7 +35,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -101,9 +99,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User modify(Category user) {
-		// TODO Auto-generated method stub
-		return null;
+	public User modify(User user) {
+		userDao.merge(user);
+		return user;
 	}
 
 	@Override
