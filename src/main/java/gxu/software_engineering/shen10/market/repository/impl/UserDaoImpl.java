@@ -22,15 +22,17 @@
  */
 package gxu.software_engineering.shen10.market.repository.impl;
 
+import gxu.software_engineering.shen10.market.core.AbstractCommonDaoImpl;
+import gxu.software_engineering.shen10.market.entity.User;
+import gxu.software_engineering.shen10.market.repository.UserDao;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Repository;
+import javax.persistence.NoResultException;
 
-import gxu.software_engineering.shen10.market.core.AbstractCommonDaoImpl;
-import gxu.software_engineering.shen10.market.entity.User;
-import gxu.software_engineering.shen10.market.repository.UserDao;
+import org.springframework.stereotype.Repository;
 
 /**
  * User(卖家)数据访问接口实现。
@@ -54,7 +56,11 @@ public class UserDaoImpl extends AbstractCommonDaoImpl<User> implements UserDao 
 	
 	@Override
 	public User find(String query, Map<String, Object> params) {
-		return super.executeQuery(query, User.class, params);
+		User u = null;
+		try {
+			u = super.executeQuery(query, User.class, params);
+		} catch (NoResultException e) {}
+		return u;
 	}
 
 	@Override

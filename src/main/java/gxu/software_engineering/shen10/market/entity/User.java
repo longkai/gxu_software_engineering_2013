@@ -28,6 +28,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -45,6 +47,10 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 @Entity
 @Table(name = "users")
+@NamedQueries({
+	@NamedQuery(name = "User.account", query = "FROM User u WHERE u.account = :account"),
+	@NamedQuery(name = "User.nick", query = "FROM User u WHERE u.nick = :nick")
+})
 public class User {
 
 	@Id
@@ -70,7 +76,7 @@ public class User {
 
 //	@NotNull(message = "密码不能为空！")
 	@NotBlank(message = "密码不能为空！")
-	@Size(min = 6, max = 18, message = "密码必须在6-18个字符之间！")
+	@Size(min = 32, max = 32, message = "密码格式错误！")
 	@JsonIgnore
 	private String	password;
 	

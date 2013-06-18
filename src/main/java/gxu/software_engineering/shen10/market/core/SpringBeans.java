@@ -59,7 +59,6 @@ import org.springframework.web.accept.PathExtensionContentNegotiationStrategy;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -104,16 +103,16 @@ public class SpringBeans extends WebMvcConfigurerAdapter {
 		configurer.favorPathExtension(true).favorParameter(false).ignoreAcceptHeader(false);
 	}
 	
-	@Bean
-	public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
-		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-		populator.addScript(new ClassPathResource("/db/market.sql"));
-		
-		DataSourceInitializer initializer = new DataSourceInitializer();
-		initializer.setDataSource(dataSource);
-		initializer.setDatabasePopulator(populator);
-		return initializer;
-	}
+//	@Bean
+//	public DataSourceInitializer dataSourceInitializer() {
+//		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+//		populator.addScript(new ClassPathResource("/db/market.sql"));
+//		
+//		DataSourceInitializer initializer = new DataSourceInitializer();
+//		initializer.setDataSource(dataSource());
+//		initializer.setDatabasePopulator(populator);
+//		return initializer;
+//	}
 
 	@Bean(destroyMethod = "close")
 	public DataSource dataSource() {
@@ -159,8 +158,8 @@ public class SpringBeans extends WebMvcConfigurerAdapter {
 		HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
 		jpaVendorAdapter.setShowSql(true);
 //		jpaVendorAdapter.setShowSql(false);
-		jpaVendorAdapter.setDatabase(Database.HSQL);
-		jpaVendorAdapter.setDatabasePlatform(org.hibernate.dialect.HSQLDialect.class.getName());
+		jpaVendorAdapter.setDatabase(Database.MYSQL);
+		jpaVendorAdapter.setDatabasePlatform(org.hibernate.dialect.MySQL5InnoDBDialect.class.getName());
 //		这里不管怎么设置，实际上最终还是依赖于jpaProperties的相关设置
 		jpaVendorAdapter.setGenerateDdl(false);
 		return jpaVendorAdapter;

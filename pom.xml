@@ -196,18 +196,18 @@
 		</dependency> -->
 
 		<!-- mysql -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.jdbc.version}</version>
-		</dependency> -->
+		</dependency>
 
 		<!-- hsqldb -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>${hsqldb.version}</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- slf4j -->
 		<dependency>
