@@ -97,8 +97,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User profile(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.find(id);
 	}
 
 	@Override

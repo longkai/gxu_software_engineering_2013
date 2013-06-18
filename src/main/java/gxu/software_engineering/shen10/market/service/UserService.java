@@ -5,6 +5,7 @@ import java.lang.String;
 import gxu.software_engineering.shen10.market.entity.Category;
 import java.util.List;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -28,7 +29,8 @@ public interface UserService {
 	 * 查看用户的信息。
 	 * @return 给定id的用户。
 	 */
-	public User profile(long id);
+	@NotNull(message = "您所查找的用户不存在！")
+	public User profile(@Min(1) long id);
 
 	/**
 	 * 修改用户信息。

@@ -117,7 +117,13 @@ public class UserServiceTest {
 
 	@Test
 	public void testProfile() {
-		fail("Not yet implemented");
+		User u = userService.profile(1L);
+		assertThat(u, notNullValue());
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void testProfileWithInvalidValue() {
+		userService.profile(1000L);
 	}
 
 	@Test
