@@ -50,7 +50,7 @@ public interface UserService {
 	 * @param lastUserId 上一个列表项目的用户标识，0表示刷新当前列表。
 	 * @param count 需要多少条记录。
 	 */
-	public List<User> list(long lastUserId, int count);
+	public List<User> list(@Min(0) long lastUserId, @Min(1) @Max(50) int count);
 
 	/**
 	 * 返回所有的卖家数。

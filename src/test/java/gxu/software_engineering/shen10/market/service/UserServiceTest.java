@@ -149,8 +149,16 @@ public class UserServiceTest {
 	}
 
 	@Test
-	public void testList() {
-		fail("Not yet implemented");
+	public void testListWithRefresh() {
+		List<User> users = userService.list(0, 10);
+//		这里的测试其实使用了小技巧 -:)
+		assertThat(users.get(0).getId() >= users.size(), is(true));
+	}
+	
+	@Test
+	public void testListMore() {
+		List<User> users = userService.list(4, 10);
+		assertThat(users.get(0).getId() < 4, is(true));
 	}
 
 	@Test

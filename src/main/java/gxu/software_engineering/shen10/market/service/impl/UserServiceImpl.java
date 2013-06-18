@@ -111,8 +111,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> list(long lastUserId, int count) {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> users = null;
+		if (lastUserId == 0) {
+			users = userDao.list("User.list_latest", null, 0, count);
+		} else {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("id", lastUserId);
+			users = userDao.list("User.list_latest_more", params, 0, count);
+		}
+		return users;
 	}
 
 	@Override

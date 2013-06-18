@@ -51,7 +51,8 @@ import org.hibernate.validator.constraints.NotBlank;
 	@NamedQuery(name = "User.account", query = "FROM User u WHERE u.account = :account"),
 	@NamedQuery(name = "User.nick", query = "FROM User u WHERE u.nick = :nick"),
 	@NamedQuery(name = "User.login", query = "FROM User u WHERE u.account = :account AND u.password = :password"),
-	@NamedQuery(name = "User.list_latest", query = "FROM User u ORDER BY u.id DESC")
+	@NamedQuery(name = "User.list_latest", query = "FROM User u ORDER BY u.id DESC"),
+	@NamedQuery(name = "User.list_latest_more", query = "FROM User u WHERE u.id < :id ORDER BY u.id DESC")
 })
 public class User {
 
