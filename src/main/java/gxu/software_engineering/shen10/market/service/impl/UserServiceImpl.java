@@ -124,8 +124,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public long size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.size();
 	}
 
 }

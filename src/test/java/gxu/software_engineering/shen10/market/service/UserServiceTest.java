@@ -163,7 +163,7 @@ public class UserServiceTest {
 
 	@Test
 	public void testSize() {
-		fail("Not yet implemented");
+		assertThat(userService.size() > 2, is(true));
 	}
 
 }
