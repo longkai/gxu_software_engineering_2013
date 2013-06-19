@@ -89,8 +89,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Category view(long categoryId) {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryDao.find(categoryId);
 	}
 
 	@Override

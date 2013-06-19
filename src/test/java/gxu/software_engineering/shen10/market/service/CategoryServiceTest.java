@@ -97,9 +97,16 @@ public class CategoryServiceTest {
 		L.info("category after: {}", c);
 	}
 
+	@Test(expected = RuntimeException.class)
+	public void testViewWitnNonExistId() {
+		categoryService.view(100000L);
+	}
+	
 	@Test
 	public void testView() {
-		fail("Not yet implemented");
+		Category c = categoryService.view(1L);
+		assertThat(c, notNullValue());
+		L.info("category: {}", c);
 	}
 
 	@Test

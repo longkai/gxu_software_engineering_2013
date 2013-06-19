@@ -5,6 +5,7 @@ import gxu.software_engineering.shen10.market.entity.Category;
 import java.util.List;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -27,7 +28,8 @@ public interface CategoryService {
 	 * @param 类别的id。
 	 * @return 若存在，则返回该类别，否则抛出异常。
 	 */
-	public Category view(long categoryId);
+	@NotNull(message = "您所查找的类别不存在！")
+	public Category view(@Min(1) long categoryId);
 
 	/**
 	 * 查看所有的类别。
