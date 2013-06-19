@@ -95,16 +95,9 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public Item modify(Item item) {
 		Item i = itemDao.find(item.getId());
-		Assert.notNull(i, "对不起，您所修改的物品不存在！");
-		if (!i.getSeller().equals(item.getSeller())) {
-			throw new SecurityException("对不起，不是你的物品，您无权修改之！");
-		}
-		if (i.getBlocked().booleanValue()) {
-			throw new RuntimeException("对不起，这个物品已经被管理员锁住，请联系管理员！");
-		}
-		if (i.getDeal().booleanValue()) {
-			throw new RuntimeException("对不起，此物品已经成功交易，不能再修改啦！");
-		}
+//		验证是否具有修改权限
+		this.modifiable(i, item.getSeller());
+		
 		i.setLastModifiedTime(new Date());
 		i.setName(item.getName());
 		i.setDescription(item.getDescription());
@@ -118,9 +111,13 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public void close(User user, long itemId) {
-		// TODO Auto-generated method stub
-		
+	public Item close(User user, long itemId) {
+		Item item = itemDao.find(itemId);
+		this.modifiable(item, user);
+		item.setLastModifiedTime(new Date());
+		item.setClosed(true);
+		itemDao.merge(item);
+		return item;
 	}
 
 	@Override
@@ -183,4 +180,17 @@ public class ItemServiceImpl implements ItemService {
 		return null;
 	}
 
+	private void modifiable(Item i, User seller) {
+		Assert.notNull(i, "对不起，您所修改的物品不存在！");
+		if (!i.getSeller().equals(seller)) {
+			throw new SecurityException("对不起，不是你的物品，您无权修改之！");
+		}
+		if (i.getBlocked().booleanValue()) {
+			throw new RuntimeException("对不起，这个物品已经被管理员锁住，请联系管理员！");
+		}
+		if (i.getDeal().booleanValue()) {
+			throw new RuntimeException("对不起，此物品已经成功交易，不能再修改啦！");
+		}
+	}
+	
 }

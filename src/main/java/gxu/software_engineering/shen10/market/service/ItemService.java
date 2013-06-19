@@ -27,7 +27,7 @@ public interface ItemService {
 	 * @param user 提出关闭申请的卖家。
 	 * @param itemId 想要关闭物品的标识。
 	 */
-	public void close(User user, long itemId);
+	public Item close(@NotNull User user, @Min(1) long itemId);
 
 	/**
 	 * 将已经关闭的物品置为打开状态（可以出售）。

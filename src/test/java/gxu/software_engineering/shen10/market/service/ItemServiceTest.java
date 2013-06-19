@@ -90,7 +90,11 @@ public class ItemServiceTest {
 
 	@Test
 	public void testClose() {
-		fail("Not yet implemented");
+		itemService.create(item, category.getId(), seller.getId());
+		assertThat(item.getId(), notNullValue());
+		
+		item = itemService.close(seller, item.getId());
+		assertThat(item.getClosed(), is(true));
 	}
 
 	@Test
