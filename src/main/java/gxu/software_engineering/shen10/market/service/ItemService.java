@@ -5,13 +5,16 @@ import gxu.software_engineering.shen10.market.entity.User;
 
 import java.util.List;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public interface ItemService {
 
 	/**
 	 * 发布一个新物品。
 	 * @return 若创建成功，返回成功创建的，否则抛出异常。
 	 */
-	public Item create(Item item);
+	public Item create(@NotNull Item item, @Min(1) long categoryId, @Min(1) long sellerId);
 
 	/**
 	 * 修改一个物品。
