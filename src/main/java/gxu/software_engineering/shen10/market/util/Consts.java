@@ -34,4 +34,7 @@ public final class Consts {
 	/** 每日最大发布新物品数量 */
 	public static final int DAILY_MAX_ITEM_COUNT = 3;
 	
+	/** 一次物品请求列表的最大长度 */
+	public static final int MAX_ITEM_COUNT = 50;
+	
 }

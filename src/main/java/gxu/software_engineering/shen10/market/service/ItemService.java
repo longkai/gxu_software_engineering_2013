@@ -5,6 +5,7 @@ import gxu.software_engineering.shen10.market.entity.User;
 
 import java.util.List;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -34,12 +35,13 @@ public interface ItemService {
 	 * 查看物品详细说明，若不存在，或者被管理员锁住，则会抛出异常。
 	 * @param 物品id标识。
 	 */
-	public Item detail(long itemId);
+	@NotNull(message = "对不起，您所要查早的物品不存在！")
+	public Item detail(@Min(1) long itemId);
 
 	/**
 	 * 查看最新的物品列表。
 	 */
-	public List<Item> latest(int count);
+	public List<Item> latest(@Min(1) @Max(50) int count);
 
 	/**
 	 * 查看物品的列表。

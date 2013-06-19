@@ -24,6 +24,9 @@ package gxu.software_engineering.shen10.market.service;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+
+import java.util.List;
+
 import gxu.software_engineering.shen10.market.entity.Category;
 import gxu.software_engineering.shen10.market.entity.Item;
 import gxu.software_engineering.shen10.market.entity.User;
@@ -108,12 +111,15 @@ public class ItemServiceTest {
 
 	@Test
 	public void testDetail() {
-		fail("Not yet implemented");
+		Item i = itemService.detail(1L);
+		assertThat(i, notNullValue());
 	}
 
 	@Test
 	public void testLatest() {
-		fail("Not yet implemented");
+		List<Item> items = itemService.latest(49);
+		assertThat(items.size() >= 2, is(true));
+		assertThat(items.get(0).getId() > items.get(1).getId(), is(true));
 	}
 
 	@Test

@@ -122,14 +122,12 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public Item detail(long itemId) {
-		// TODO Auto-generated method stub
-		return null;
+		return itemDao.find(itemId);
 	}
 
 	@Override
 	public List<Item> latest(int count) {
-		// TODO Auto-generated method stub
-		return null;
+		return itemDao.list(true, "Item.list_latest", null, 0, count);
 	}
 
 	@Override
