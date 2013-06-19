@@ -32,6 +32,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -49,6 +51,10 @@ import gxu.software_engineering.shen10.market.entity.User;
  */
 @Entity
 @Table(name = "records")
+@NamedQueries({
+	@NamedQuery(name = "Record.size_seller", query = "SELECT COUNT(*) FROM Record r WHERE r.item.seller.id = :seller_id"),
+	@NamedQuery(name = "Record.list_seller", query = "FROM Record r WHERE r.item.seller.id = :seller_id AND r.id < :last_id ORDER BY r.id DESC")
+})
 public class Record {
 
 	@Id
