@@ -139,14 +139,20 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public long size(boolean deal) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (deal) {
+			return itemDao.size(true, true, null, null);
+		}
+		return itemDao.size(false, true, "Item.size_deal", null);
 	}
 
 	@Override
 	public long size(long userId, boolean deal) {
-		// TODO Auto-generated method stub
-		return 0;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("seller_id", userId);
+		if (deal) {
+			return itemDao.size(false, true, "Item.size_seller", params);
+		}
+		return itemDao.size(false, true, "Item.size_seller_deal", params);
 	}
 
 	@Override
@@ -163,8 +169,9 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public long size(long categoryId) {
-		// TODO Auto-generated method stub
-		return 0;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("category_id", categoryId);
+		return itemDao.size(false, true, "Item.size_category", params);
 	}
 
 	@Override

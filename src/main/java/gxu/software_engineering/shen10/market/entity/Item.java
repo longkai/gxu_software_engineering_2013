@@ -59,7 +59,11 @@ import java.lang.String;
 	@NamedQuery(name = "Item.daily_limit", query = "SELECT COUNT(*) FROM Item i WHERE"
 			+ " i.addedTime >= :begin AND i.addedTime <= :end"),
 	@NamedQuery(name = "Item.list_latest", query = "FROM Item i WHERE i.blocked IS NULL OR i.blocked IS TRUE ORDER BY i.id DESC"),
-	@NamedQuery(name = "Item.list_more", query = "FROM Item i WHERE i.id < :id ORDER BY i.id DESC")
+	@NamedQuery(name = "Item.list_more", query = "FROM Item i WHERE i.id < :id ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.size_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.deal IS FALSE AND i.deal IS NOT NULL"),
+	@NamedQuery(name = "Item.size_seller_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id AND i.deal IS FALSE AND i.deal IS NOT NULL"),
+	@NamedQuery(name = "Item.size_seller", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id"),
+	@NamedQuery(name = "Item.size_category", query = "SELECT COUNT(*) FROM Item i WHERE i.category.id = :category_id")
 })
 public class Item {
 

@@ -61,7 +61,7 @@ public interface ItemService {
 	 * @param deal 是否已经卖出
 	 * @return 若deal为true，那么返回所有的，否则返回待售的。
 	 */
-	public long size(long userId, boolean deal);
+	public long size(@Min(1) long userId, boolean deal);
 
 	/**
 	 * 返回某个卖家的物品。
@@ -79,7 +79,7 @@ public interface ItemService {
 	/**
 	 * 返回某个类别下的待售物品数。
 	 */
-	public long size(long categoryId);
+	public long size(@Min(1) long categoryId);
 
 	/**
 	 * 返回最热门的物品列表。

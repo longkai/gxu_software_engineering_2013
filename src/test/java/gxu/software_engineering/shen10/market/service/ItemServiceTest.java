@@ -131,17 +131,29 @@ public class ItemServiceTest {
 
 	@Test
 	public void testSizeBoolean() {
-		fail("Not yet implemented");
+		long size = itemService.size(true);
+		System.err.println(size);
+		assertThat(size, not(0L));
+		size = itemService.size(false);
+		System.err.println(size);
+//		当前数据库是这样，后面就不知道了。。。
+//		assertThat(itemService.size(true), is(0L));
 	}
 
 	@Test
 	public void testSizeLongBoolean() {
-		fail("Not yet implemented");
+//		这里测试的仅仅当前的数据库，so，测试完我就注视掉好了
+//		long size = itemService.size(2, true);
+//		assertThat(size, is(2L));
+//		size = itemService.size(2, false);
+//		assertThat(size, is(0L));
 	}
 
 	@Test
 	public void testListLongIntBooleanLong() {
-		fail("Not yet implemented");
+		long size = itemService.size(category.getId());
+//		理由同上！
+//		assertThat(size, is(1L));
 	}
 
 	@Test
