@@ -132,8 +132,9 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<Item> list(long lastItemId, int count) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", lastItemId);
+		return itemDao.list(true, "Item.list_more", params, 0, count);
 	}
 
 	@Override

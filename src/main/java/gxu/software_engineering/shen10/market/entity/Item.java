@@ -58,7 +58,8 @@ import java.lang.String;
 @NamedQueries({
 	@NamedQuery(name = "Item.daily_limit", query = "SELECT COUNT(*) FROM Item i WHERE"
 			+ " i.addedTime >= :begin AND i.addedTime <= :end"),
-	@NamedQuery(name = "Item.list_latest", query = "FROM Item i WHERE i.blocked IS NULL OR i.blocked IS TRUE ORDER BY i.id DESC")
+	@NamedQuery(name = "Item.list_latest", query = "FROM Item i WHERE i.blocked IS NULL OR i.blocked IS TRUE ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.list_more", query = "FROM Item i WHERE i.id < :id ORDER BY i.id DESC")
 })
 public class Item {
 

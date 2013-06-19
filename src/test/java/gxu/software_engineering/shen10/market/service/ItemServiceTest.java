@@ -124,7 +124,9 @@ public class ItemServiceTest {
 
 	@Test
 	public void testListLongInt() {
-		fail("Not yet implemented");
+		long target = 4L;
+		List<Item> items = itemService.list(target, 50);
+		assertThat(items.get(0).getId() < target, is(true));
 	}
 
 	@Test

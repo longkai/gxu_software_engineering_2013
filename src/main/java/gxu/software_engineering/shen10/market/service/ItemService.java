@@ -47,7 +47,7 @@ public interface ItemService {
 	 * 查看物品的列表。
 	 * @param lastItemId 上一个物品的id，为0表示刷新。
 	 */
-	public List<Item> list(long lastItemId, int count);
+	public List<Item> list(@Min(1) long lastItemId, @Min(1) @Max(50) int count);
 
 	/**
 	 * 返回系统所有的物品数。
