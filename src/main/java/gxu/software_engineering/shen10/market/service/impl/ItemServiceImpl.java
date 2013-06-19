@@ -28,6 +28,7 @@ import gxu.software_engineering.shen10.market.repository.CategoryDao;
 import gxu.software_engineering.shen10.market.repository.ItemDao;
 import gxu.software_engineering.shen10.market.repository.UserDao;
 import gxu.software_engineering.shen10.market.service.ItemService;
+import gxu.software_engineering.shen10.market.util.Assert;
 import gxu.software_engineering.shen10.market.util.Consts;
 import gxu.software_engineering.shen10.market.util.CoreUtils;
 
@@ -70,11 +71,11 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	@Transactional(readOnly = false)
 	public Item create(Item item, long categoryId, long sellerId) {
-		String[] boundry = CoreUtils.boundry();
+		Date[] boundry = CoreUtils.boundry();
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("begin", boundry[0]);
 		params.put("end", boundry[1]);
-		long count = itemDao.size(false, false, "Item.daily_limit", params);
+		long count = itemDao.size(false, true, "Item.daily_limit", params);
 		if (count == Consts.DAILY_MAX_ITEM_COUNT) {
 			throw new RuntimeException("对不起，您今天已经达到了最大发布物品数量，请休息一下吧:-)");
 		}
@@ -93,8 +94,27 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public Item modify(Item item) {
-		// TODO Auto-generated method stub
-		return null;
+		Item i = itemDao.find(item.getId());
+		Assert.notNull(i, "对不起，您所修改的物品不存在！");
+		if (!i.getSeller().equals(item.getSeller())) {
+			throw new SecurityException("对不起，不是你的物品，您无权修改之！");
+		}
+		if (i.getBlocked().booleanValue()) {
+			throw new RuntimeException("对不起，这个物品已经被管理员锁住，请联系管理员！");
+		}
+		if (i.getDeal().booleanValue()) {
+			throw new RuntimeException("对不起，此物品已经成功交易，不能再修改啦！");
+		}
+		i.setLastModifiedTime(new Date());
+		i.setName(item.getName());
+		i.setDescription(item.getDescription());
+//		这个有单独的方法
+//		i.setClosed(item.getClosed());
+		i.setCategory(item.getCategory());
+		i.setExtra(item.getExtra());
+		i.setPrice(item.getPrice());
+		itemDao.merge(i);
+		return i;
 	}
 
 	@Override

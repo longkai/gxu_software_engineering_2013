@@ -23,6 +23,7 @@
 package gxu.software_engineering.shen10.market.util;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * 核心工具类。
@@ -34,16 +35,22 @@ import java.util.Calendar;
 public class CoreUtils {
 	
 	/**
-	 * 获得今天的开始和结束时刻格式化字符串。
+	 * 获得今天的开始和结束时刻
 	 * @return 数组，0，开始，1，结束
 	 */
-	public static String[] boundry() {
+	public static Date[] boundry() {
 		Calendar c = Calendar.getInstance();
-		int year = c.get(Calendar.YEAR);
-		int month = c.get(Calendar.MONTH) + 1;
-		int day = c.get(Calendar.DAY_OF_MONTH);
-		String today = year + "-" + month + "-" + day;
-		return new String[]{today + " 0:0:0", today + " 23:59:59"};
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		Date begin = c.getTime();
+		
+		c.set(Calendar.HOUR_OF_DAY, 23);
+		c.set(Calendar.MINUTE, 59);
+		c.set(Calendar.SECOND, 59);
+		
+		Date end = c.getTime();
+		return new Date[]{begin, end};
 	}
 	
 }

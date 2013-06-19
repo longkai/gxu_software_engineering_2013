@@ -80,7 +80,12 @@ public class ItemServiceTest {
 	
 	@Test
 	public void testModify() {
-		fail("Not yet implemented");
+		itemService.create(item, category.getId(), seller.getId());
+		assertThat(item.getId(), notNullValue());
+		
+		String newName = "newName";
+		item.setName(newName);
+		assertThat(itemService.modify(item).getName(), is(newName));
 	}
 
 	@Test

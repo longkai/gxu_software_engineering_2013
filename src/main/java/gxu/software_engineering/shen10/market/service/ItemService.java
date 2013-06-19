@@ -20,7 +20,7 @@ public interface ItemService {
 	 * 修改一个物品。
 	 * @return 返回修改成功后的物品，否则抛出异常。
 	 */
-	public Item modify(Item item);
+	public Item modify(@NotNull Item item);
 
 	/**
 	 * 物品所属人将物品标注为关闭状态。
