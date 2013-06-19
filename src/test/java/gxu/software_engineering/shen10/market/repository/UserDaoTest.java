@@ -66,7 +66,7 @@ public class UserDaoTest {
 		user.setAccount("longkai");
 		user.setContact("14795633343");
 		user.setNick("爱因斯坦的狗");
-		user.setPassword("123456");
+		user.setPassword("e10adc3949ba59abbe56e057f20f883e");
 		user.setRealName("龙凯");
 		user.setRegisterTime(new Date());
 		
@@ -75,7 +75,7 @@ public class UserDaoTest {
 		dummyUser.setAccount("dummy_test");
 		dummyUser.setContact("14795633343");
 		dummyUser.setNick("爱因斯坦的狗");
-		dummyUser.setPassword("654321");
+		dummyUser.setPassword("e10adc3949ba59abbe56e057f20f883e");
 		dummyUser.setRealName("test");
 		dummyUser.setRegisterTime(new Date());
 		

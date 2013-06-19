@@ -57,7 +57,7 @@ import java.lang.String;
 @Table(name = "items")
 @NamedQueries({
 	@NamedQuery(name = "Item.daily_limit", query = "SELECT COUNT(*) FROM Item i WHERE"
-			+ " i.addedTime = :today")
+			+ " i.addedTime >= :begin AND i.addedTime <= :end")
 })
 public class Item {
 

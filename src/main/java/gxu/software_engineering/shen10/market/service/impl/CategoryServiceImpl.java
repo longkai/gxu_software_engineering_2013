@@ -100,7 +100,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public long size() {
-		return categoryDao.size(true, false, null);
+		return categoryDao.size(true, false, null, null);
 	}
 
 }

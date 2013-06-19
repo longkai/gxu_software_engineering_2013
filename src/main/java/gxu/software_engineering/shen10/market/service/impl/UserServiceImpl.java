@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public long size() {
-		return userDao.size(true, false, null);
+		return userDao.size(true, false, null, null);
 	}
 
 }

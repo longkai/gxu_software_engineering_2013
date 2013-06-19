@@ -42,8 +42,8 @@ public class CoreUtils {
 		int year = c.get(Calendar.YEAR);
 		int month = c.get(Calendar.MONTH) + 1;
 		int day = c.get(Calendar.DAY_OF_MONTH);
-		String today = "'" + year + "-" + month + "-" + day;
-		return new String[]{today + " 0:0:0'", today + " 23:59:59'"};
+		String today = year + "-" + month + "-" + day;
+		return new String[]{today + " 0:0:0", today + " 23:59:59"};
 	}
 	
 }

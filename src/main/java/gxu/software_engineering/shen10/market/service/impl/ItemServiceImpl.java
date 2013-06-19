@@ -32,7 +32,9 @@ import gxu.software_engineering.shen10.market.util.Consts;
 import gxu.software_engineering.shen10.market.util.CoreUtils;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -68,10 +70,11 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	@Transactional(readOnly = false)
 	public Item create(Item item, long categoryId, long sellerId) {
-//		long count = itemDao.size(false, false, "Item.daily_limit");
 		String[] boundry = CoreUtils.boundry();
-		long count = itemDao.size(false, false, "SELECT COUNT(*) FROM Item i WHERE"
-			+ " i.addedTime >= " + boundry[0] + " AND i.addedTime <= " + boundry[1]);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("begin", boundry[0]);
+		params.put("end", boundry[1]);
+		long count = itemDao.size(false, false, "Item.daily_limit", params);
 		if (count == Consts.DAILY_MAX_ITEM_COUNT) {
 			throw new RuntimeException("对不起，您今天已经达到了最大发布物品数量，请休息一下吧:-)");
 		}
