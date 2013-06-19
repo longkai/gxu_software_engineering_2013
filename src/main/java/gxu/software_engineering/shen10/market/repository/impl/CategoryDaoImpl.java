@@ -69,7 +69,7 @@ public class CategoryDaoImpl extends AbstractCommonDaoImpl<Category> implements 
 	@Override
 	public List<Category> list(boolean namedQuery, String query, Map<String, Object> params,
 			int offset, int number) {
-		return super.executeQuery(false, query, Category.class, offset, number, params);
+		return super.executeQuery(true, query, Category.class, offset, number, params);
 	}
 
 	@Override
