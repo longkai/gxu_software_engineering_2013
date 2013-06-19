@@ -100,8 +100,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public long size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return categoryDao.size();
 	}
 
 }

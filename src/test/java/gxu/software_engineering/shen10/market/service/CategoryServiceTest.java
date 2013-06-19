@@ -115,7 +115,7 @@ public class CategoryServiceTest {
 
 	@Test
 	public void testSize() {
-		fail("Not yet implemented");
+		assertThat(categoryService.size() >= 2, is(true));
 	}
 
 }
