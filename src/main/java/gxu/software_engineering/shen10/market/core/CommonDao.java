@@ -65,9 +65,10 @@ public interface CommonDao<T> {
 	 * @param all 是否查询所有的记录数？
 	 * @param namedQuery 是否是静态查询？
 	 * @param query 自定义查询hql
+	 * @param params hql参数
 	 * @return 记录总数
 	 */
-	long size(boolean all, boolean namedQuery, String query);
+	long size(boolean all, boolean namedQuery, String query, Map<String, Object> params);
 	
 	/**
 	 * 自定义查询实体对象。

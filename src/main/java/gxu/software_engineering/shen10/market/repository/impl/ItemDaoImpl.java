@@ -48,11 +48,11 @@ public class ItemDaoImpl extends AbstractCommonDaoImpl<Item> implements ItemDao 
 	}
 
 	@Override
-	public long size(boolean all, boolean namedQuery, String query) {
+	public long size(boolean all, boolean namedQuery, String query, Map<String, Object> params) {
 		if (all) {
 			return super.size(Item.class);
 		}
-		return super.size(namedQuery, query);
+		return super.size(namedQuery, query, params);
 	}
 
 	@Override

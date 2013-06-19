@@ -50,11 +50,11 @@ public class UserDaoImpl extends AbstractCommonDaoImpl<User> implements UserDao 
 	}
 
 	@Override
-	public long size(boolean all, boolean namedQuery, String query) {
+	public long size(boolean all, boolean namedQuery, String query, Map<String, Object> params) {
 		if (all) {
 			return super.size(User.class);
 		}
-		return super.size(namedQuery, query);
+		return super.size(namedQuery, query, params);
 	}
 	
 	@Override

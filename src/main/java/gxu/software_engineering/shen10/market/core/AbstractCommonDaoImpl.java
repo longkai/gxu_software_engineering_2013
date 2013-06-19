@@ -85,13 +85,16 @@ public abstract class AbstractCommonDaoImpl<T> implements CommonDao<T> {
 	 * @param query 静态查询名字或者动态hql
 	 * @return 记录数目
 	 */
-	protected long size(boolean namedQuery, String query) {
+	protected long size(boolean namedQuery, String query, Map<String, Object> params) {
 		Assert.notEmpty(query, "查询参数不能为空！");
-		if (namedQuery) {
-			return em.createNamedQuery(query, Long.class).getSingleResult();
-		} else {
-			return em.createQuery(query, Long.class).getSingleResult();
+		TypedQuery<Long> _query = namedQuery ? em.createNamedQuery(query, Long.class)
+					: em.createQuery(query, Long.class);
+		if (params!= null && !params.isEmpty()) {
+			for (String s : params.keySet()) {
+				_query.setParameter(s, params.get(s));
+			}
 		}
+		return _query.getSingleResult();
 	}
 	
 	/**
