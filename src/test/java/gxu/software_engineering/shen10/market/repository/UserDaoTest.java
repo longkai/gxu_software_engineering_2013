@@ -116,7 +116,9 @@ public class UserDaoTest {
 	@Test
 	public void testSize() {
 		dao.persist(dummyUser);
-		assertThat(dao.size(), is(2L));
+		long size = dao.size(true, false, null);
+		System.out.println(size);
+		assertThat(size > 2, is(true));
 	}
 
 	@Test

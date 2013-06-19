@@ -95,12 +95,12 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public List<Category> list() {
-		return categoryDao.list("Category.list", null, 0, Integer.MAX_VALUE);
+		return categoryDao.list(true, "Category.list", null, 0, Integer.MAX_VALUE);
 	}
 
 	@Override
 	public long size() {
-		return categoryDao.size();
+		return categoryDao.size(true, false, null);
 	}
 
 }

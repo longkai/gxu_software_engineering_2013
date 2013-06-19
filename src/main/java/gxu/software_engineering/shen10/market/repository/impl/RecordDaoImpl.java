@@ -48,19 +48,28 @@ public class RecordDaoImpl extends AbstractCommonDaoImpl<Record> implements Reco
 	}
 
 	@Override
-	public long size() {
-		return super.size(Record.class);
+	public long size(boolean all, boolean namedQuery, String query) {
+		if (all) {
+			return super.size(Record.class);
+		}
+		return super.size(namedQuery, query);
 	}
 
 	@Override
 	public Record find(String query, Map<String, Object> params) {
-		return super.executeQuery(query, Record.class, params);
+		return super.executeQuery(true, query, Record.class, params);
 	}
 
 	@Override
-	public List<Record> list(String query, Map<String, Object> params,
+	public List<Record> list(boolean namedQuery, String query, Map<String, Object> params,
 			int offset, int number) {
-		return super.executeQuery(query, Record.class, offset, number, params);
+		return super.executeQuery(true, query, Record.class, offset, number, params);
+	}
+
+	@Override
+	public List<Record> search(String hql, Map<String, Object> params,
+			int number) {
+		return super.executeQuery(false, hql, Record.class, 0, number, params);
 	}
 
 }

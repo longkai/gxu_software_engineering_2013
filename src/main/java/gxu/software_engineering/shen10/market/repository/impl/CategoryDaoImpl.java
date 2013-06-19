@@ -50,23 +50,32 @@ public class CategoryDaoImpl extends AbstractCommonDaoImpl<Category> implements 
 	}
 
 	@Override
-	public long size() {
-		return super.size(Category.class);
+	public long size(boolean all, boolean namedQuery, String query) {
+		if (all) {
+			return super.size(Category.class);
+		}
+		return super.size(namedQuery, query);
 	}
 
 	@Override
 	public Category find(String query, Map<String, Object> params) {
 		Category category = null;
 		try {
-			category = super.executeQuery(query, Category.class, params);
+			category = super.executeQuery(true, query, Category.class, params);
 		} catch (NoResultException e) {}
 		return category;
 	}
 
 	@Override
-	public List<Category> list(String query, Map<String, Object> params,
+	public List<Category> list(boolean namedQuery, String query, Map<String, Object> params,
 			int offset, int number) {
-		return super.executeQuery(query, Category.class, offset, number, params);
+		return super.executeQuery(false, query, Category.class, offset, number, params);
+	}
+
+	@Override
+	public List<Category> search(String hql, Map<String, Object> params,
+			int number) {
+		throw new UnsupportedOperationException("对不起，不受支持的操作！");
 	}
 
 }

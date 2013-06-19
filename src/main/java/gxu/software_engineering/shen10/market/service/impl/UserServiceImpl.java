@@ -35,8 +35,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,8 +51,6 @@ import org.springframework.validation.annotation.Validated;
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Throwable.class)
 public class UserServiceImpl implements UserService {
 
-	private static final Logger L = LoggerFactory.getLogger(UserServiceImpl.class);
-	
 	@Inject
 	private UserDao userDao;
 	
@@ -106,25 +102,25 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> latest(int count) {
-		return userDao.list("User.list_latest", null, 0, count);
+		return userDao.list(true, "User.list_latest", null, 0, count);
 	}
 
 	@Override
 	public List<User> list(long lastUserId, int count) {
 		List<User> users = null;
 		if (lastUserId == 0) {
-			users = userDao.list("User.list_latest", null, 0, count);
+			users = userDao.list(true, "User.list_latest", null, 0, count);
 		} else {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("id", lastUserId);
-			users = userDao.list("User.list_latest_more", params, 0, count);
+			users = userDao.list(true, "User.list_latest_more", params, 0, count);
 		}
 		return users;
 	}
 
 	@Override
 	public long size() {
-		return userDao.size();
+		return userDao.size(true, false, null);
 	}
 
 }

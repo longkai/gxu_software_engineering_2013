@@ -50,23 +50,31 @@ public class UserDaoImpl extends AbstractCommonDaoImpl<User> implements UserDao 
 	}
 
 	@Override
-	public long size() {
-		return super.size(User.class);
+	public long size(boolean all, boolean namedQuery, String query) {
+		if (all) {
+			return super.size(User.class);
+		}
+		return super.size(namedQuery, query);
 	}
 	
 	@Override
 	public User find(String query, Map<String, Object> params) {
 		User u = null;
 		try {
-			u = super.executeQuery(query, User.class, params);
+			u = super.executeQuery(true, query, User.class, params);
 		} catch (NoResultException e) {}
 		return u;
 	}
 
 	@Override
-	public List<User> list(String query, Map<String, Object> params,
+	public List<User> list(boolean namedQuery, String query, Map<String, Object> params,
 			int offset, int number) {
-		return super.executeQuery(query, User.class, offset, number, params);
+		return super.executeQuery(namedQuery, query, User.class, offset, number, params);
+	}
+
+	@Override
+	public List<User> search(String hql, Map<String, Object> params, int number) {
+		return super.executeQuery(false, hql, User.class, 0, number, params);
 	}
 
 }
