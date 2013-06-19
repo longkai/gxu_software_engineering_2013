@@ -1,8 +1,12 @@
 package gxu.software_engineering.shen10.market.service;
 
+import gxu.software_engineering.shen10.market.entity.Category;
+
 import java.util.List;
 
-import gxu.software_engineering.shen10.market.entity.Category;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 public interface CategoryService {
 
@@ -16,7 +20,7 @@ public interface CategoryService {
 	 * 修改类别。
 	 * @return 若成功，返回修改后的类别，否则抛出异常。
 	 */
-	public Category modify(Category category);
+	public Category modify(@Min(1) long categoryId, @NotBlank String name, @NotBlank String description);
 
 	/**
 	 * 根据类别的id，查看该类别的详细信息。

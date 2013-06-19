@@ -37,6 +37,7 @@ import org.springframework.validation.annotation.Validated;
 import gxu.software_engineering.shen10.market.entity.Category;
 import gxu.software_engineering.shen10.market.repository.CategoryDao;
 import gxu.software_engineering.shen10.market.service.CategoryService;
+import gxu.software_engineering.shen10.market.util.Assert;
 
 /**
  * 
@@ -68,9 +69,22 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public Category modify(Category category) {
-		// TODO Auto-generated method stub
-		return null;
+	public Category modify(long categoryId, String name, String description) {
+//		验证类别是否存在
+		Category c = categoryDao.find(categoryId);
+		Assert.notNull(c, "对不起，你所查找的类别不存在！");
+//		验证类别名称是否存在
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("name", name);
+		Category tmp = categoryDao.find("Category.name", params);
+		if (tmp != null && !tmp.equals(c)) {
+			throw new RuntimeException("对不起，该类别已经存在，无法重复添加！");
+		}
+//		更新数据库
+		c.setName(name);
+		c.setDescription(description);
+		categoryDao.merge(c);
+		return c;
 	}
 
 	@Override

@@ -22,8 +22,9 @@
  */
 package gxu.software_engineering.shen10.market.service;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 import gxu.software_engineering.shen10.market.entity.Category;
 
 import javax.inject.Inject;
@@ -31,6 +32,8 @@ import javax.inject.Inject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +49,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CategoryServiceTest {
 
+	private static final Logger L = LoggerFactory
+			.getLogger(CategoryServiceTest.class);
+	
 	@Inject
 	private CategoryService categoryService;
 	
@@ -75,9 +81,20 @@ public class CategoryServiceTest {
 		categoryService.add(tmp);
 	}
 
+	@Test(expected = RuntimeException.class)
+	public void testModifyWithExsitName() {
+		categoryService.add(c);
+		Category tmp = categoryService.view(1L);
+		
+		categoryService.modify(c.getId(), tmp.getName(), tmp.getDescription());
+	}
+	
 	@Test
 	public void testModify() {
-		fail("Not yet implemented");
+		categoryService.add(c);
+		L.info("category before: {}", c);
+		categoryService.modify(c.getId(), "hello", c.getDescription());
+		L.info("category after: {}", c);
 	}
 
 	@Test
