@@ -26,6 +26,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.stereotype.Repository;
 
 import gxu.software_engineering.shen10.market.core.AbstractCommonDaoImpl;
@@ -54,7 +56,11 @@ public class CategoryDaoImpl extends AbstractCommonDaoImpl<Category> implements 
 
 	@Override
 	public Category find(String query, Map<String, Object> params) {
-		return super.executeQuery(query, Category.class, params);
+		Category category = null;
+		try {
+			category = super.executeQuery(query, Category.class, params);
+		} catch (NoResultException e) {}
+		return category;
 	}
 
 	@Override
