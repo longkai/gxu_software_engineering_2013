@@ -80,6 +80,21 @@ public abstract class AbstractCommonDaoImpl<T> implements CommonDao<T> {
 	}
 	
 	/**
+	 * 选择性查询记录数。
+	 * @param namedQuery 是否使用静态查询
+	 * @param query 静态查询名字或者动态hql
+	 * @return 记录数目
+	 */
+	protected long size(boolean namedQuery, String query) {
+		Assert.notEmpty(query, "查询参数不能为空！");
+		if (namedQuery) {
+			return em.createNamedQuery(query, Long.class).getSingleResult();
+		} else {
+			return em.createQuery(query, Long.class).getSingleResult();
+		}
+	}
+	
+	/**
 	 * 查询，只返回一个对象，支持<b style="color: red;"> ? </b>格式来作为占位符。
 	 * @param namedQuery 是否使用namedQuery
 	 * @param query hql

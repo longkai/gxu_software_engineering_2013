@@ -22,15 +22,15 @@
  */
 package gxu.software_engineering.shen10.market.repository.impl;
 
+import gxu.software_engineering.shen10.market.core.AbstractCommonDaoImpl;
+import gxu.software_engineering.shen10.market.entity.Item;
+import gxu.software_engineering.shen10.market.repository.ItemDao;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
-
-import gxu.software_engineering.shen10.market.core.AbstractCommonDaoImpl;
-import gxu.software_engineering.shen10.market.entity.Item;
-import gxu.software_engineering.shen10.market.repository.ItemDao;
 
 /**
  * item(物品)数据访问接口实现。
@@ -48,19 +48,27 @@ public class ItemDaoImpl extends AbstractCommonDaoImpl<Item> implements ItemDao 
 	}
 
 	@Override
-	public long size() {
-		return super.size(Item.class);
+	public long size(boolean all, boolean namedQuery, String query) {
+		if (all) {
+			return super.size(Item.class);
+		}
+		return super.size(namedQuery, query);
 	}
 
 	@Override
 	public Item find(String query, Map<String, Object> params) {
-		return super.executeQuery(query, Item.class, params);
+		return super.executeQuery(false, query, Item.class, params);
 	}
 
 	@Override
-	public List<Item> list(String query, Map<String, Object> params,
+	public List<Item> list(boolean namedQuery, String query, Map<String, Object> params,
 			int offset, int number) {
-		return super.executeQuery(query, Item.class, offset, number, params);
+		return super.executeQuery(true, query, Item.class, offset, number, params);
+	}
+
+	@Override
+	public List<Item> search(String hql, Map<String, Object> params, int number) {
+		return super.executeQuery(false, hql, Item.class, 0, number, params);
 	}
 
 }

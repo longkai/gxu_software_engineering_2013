@@ -61,10 +61,13 @@ public interface CommonDao<T> {
 	T find(Serializable pk);
 	
 	/**
-	 * 实体类的记录总数。
+	 * 实体类的记录数。
+	 * @param all 是否查询所有的记录数？
+	 * @param namedQuery 是否是静态查询？
+	 * @param query 自定义查询hql
 	 * @return 记录总数
 	 */
-	long size();
+	long size(boolean all, boolean namedQuery, String query);
 	
 	/**
 	 * 自定义查询实体对象。
@@ -76,12 +79,22 @@ public interface CommonDao<T> {
 	
 	/**
 	 * 获取实体类对象的列表。
+	 * @param namedQuery 是否使用静态查询hql
 	 * @param query 查询hql
 	 * @param params 查询参数
 	 * @param offset 偏移量，即，从第几条记录开始取
 	 * @param number 抓取数，即，抓取多少条记录
 	 * @return 实体类对象列表
 	 */
-	List<T> list(String query, Map<String, Object> params, int offset, int number);
+	List<T> list(boolean namedQuery, String query, Map<String, Object> params, int offset, int number);
+	
+	/**
+	 * 搜索。
+	 * @param hql
+	 * @param params
+	 * @param number
+	 * @return 搜索到的实体类对象列表
+	 */
+	List<T> search(String hql, Map<String, Object> params, int number);
 	
 }
