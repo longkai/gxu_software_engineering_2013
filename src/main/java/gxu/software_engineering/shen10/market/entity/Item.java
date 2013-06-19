@@ -60,10 +60,14 @@ import java.lang.String;
 			+ " i.addedTime >= :begin AND i.addedTime <= :end"),
 	@NamedQuery(name = "Item.list_latest", query = "FROM Item i WHERE i.blocked IS NULL OR i.blocked IS TRUE ORDER BY i.id DESC"),
 	@NamedQuery(name = "Item.list_more", query = "FROM Item i WHERE i.id < :id ORDER BY i.id DESC"),
-	@NamedQuery(name = "Item.size_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.deal IS FALSE AND i.deal IS NOT NULL"),
-	@NamedQuery(name = "Item.size_seller_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id AND i.deal IS FALSE AND i.deal IS NOT NULL"),
+	@NamedQuery(name = "Item.size_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.deal IS FALSE OR i.deal IS NULL"),
+	@NamedQuery(name = "Item.size_seller_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id AND (i.deal IS FALSE OR i.deal IS NULL)"),
 	@NamedQuery(name = "Item.size_seller", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id"),
-	@NamedQuery(name = "Item.size_category", query = "SELECT COUNT(*) FROM Item i WHERE i.category.id = :category_id")
+	@NamedQuery(name = "Item.size_category", query = "SELECT COUNT(*) FROM Item i WHERE i.category.id = :category_id"),
+	@NamedQuery(name = "Item.list_user_all", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.list_user_deal", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id AND (i.deal IS FALSE OR i.deal IS NULL) ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.list_category_deal", query = "FROM Item i WHERE i.category.id = :category_id AND i.id < :last_id AND (i.deal IS FALSE OR i.deal IS NULL) ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.list_hot", query = "FROM Item i ORDER BY i.clickTimes DESC")
 })
 public class Item {
 

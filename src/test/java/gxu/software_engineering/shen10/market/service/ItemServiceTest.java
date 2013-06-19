@@ -155,20 +155,35 @@ public class ItemServiceTest {
 //		理由同上！
 //		assertThat(size, is(1L));
 	}
+	
+	@Test
+	public void testListWithCategory() {
+		List<Item> list = itemService.list(category.getId(), 5, 0);
+		int size = list.size();
+		System.err.println(size);
+		assertThat(size >= 1, is(true));
+	}
 
 	@Test
 	public void testListLongIntLong() {
-		fail("Not yet implemented");
+//		理由同上！而且是否抽出已经测试过了！
+		//		List<Item> list = itemService.list(1, 5, true, 0);
+//		assertThat(list.size(), is(2));
+//		
+//		list = itemService.list(1, 5, true, 2);
+//		assertThat(list.size(), is(1));
 	}
 
 	@Test
 	public void testSizeLong() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	public void testHot() {
-		fail("Not yet implemented");
+//		故意修改数据库的-.-
+//		List<Item> items = itemService.hot(50);
+//		assertThat(items.get(0).getId(), is(2L));
 	}
 
 }

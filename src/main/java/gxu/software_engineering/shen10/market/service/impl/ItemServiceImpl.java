@@ -157,14 +157,32 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<Item> list(long userId, int count, boolean deal, long lastItemId) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("seller_id", userId);
+		if (lastItemId == 0) {
+//			比这个还小，足够大了吧:-)
+			params.put("last_id", Long.MAX_VALUE);
+		} else {
+			params.put("last_id", lastItemId);
+		}
+//		返回所有
+		if (deal) {
+			return itemDao.list(true, "Item.list_user_all", params, 0, count);
+		}
+//		返回代售
+		return itemDao.list(true, "Item.list_user_deal", params, 0, count);
 	}
 
 	@Override
 	public List<Item> list(long categoryId, int count, long lastItemId) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("category_id", categoryId);
+		if (lastItemId == 0) {
+			params.put("last_id", Long.MAX_VALUE);
+		} else {
+			params.put("last_id", lastItemId);
+		}
+		return itemDao.list(true, "Item.list_category_deal", params, 0, count);
 	}
 
 	@Override
@@ -176,8 +194,7 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<Item> hot(int count) {
-		// TODO Auto-generated method stub
-		return null;
+		return itemDao.list(true, "Item.list_hot", null, 0, count);
 	}
 
 	private void modifiable(Item i, User seller) {

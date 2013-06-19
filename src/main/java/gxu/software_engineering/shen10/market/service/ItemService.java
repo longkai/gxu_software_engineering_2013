@@ -68,13 +68,13 @@ public interface ItemService {
 	 * @param lastItemId 查看更多的物品的偏移量，为0表示刷新。
 	 * @return 若deal为true，那么返回的是所有的，否则返回待售的。
 	 */
-	public List<Item> list(long userId, int count, boolean deal, long lastItemId);
+	public List<Item> list(@Min(1) long userId, @Min(1) @Max(50) int count, boolean deal, @Min(0) long lastItemId);
 
 	/**
-	 * 返回某个类别下的代售物品。
+	 * 返回某个类别下的待售物品。
 	 * @param lastItemId 查看更多的物品的偏移量，为0表示刷新。
 	 */
-	public List<Item> list(long categoryId, int count, long lastItemId);
+	public List<Item> list(@Min(1) long categoryId, @Min(1) @Max(50) int count, @Min(0) long lastItemId);
 
 	/**
 	 * 返回某个类别下的待售物品数。
@@ -84,6 +84,6 @@ public interface ItemService {
 	/**
 	 * 返回最热门的物品列表。
 	 */
-	public List<Item> hot(int count);
+	public List<Item> hot(@Min(1) @Max(50) int count);
 
 }
