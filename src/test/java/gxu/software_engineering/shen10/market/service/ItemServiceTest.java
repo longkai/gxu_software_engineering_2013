@@ -93,13 +93,17 @@ public class ItemServiceTest {
 		itemService.create(item, category.getId(), seller.getId());
 		assertThat(item.getId(), notNullValue());
 		
-		item = itemService.close(seller, item.getId());
+		item = itemService.close(true, seller, item.getId());
 		assertThat(item.getClosed(), is(true));
 	}
 
 	@Test
 	public void testOpen() {
-		fail("Not yet implemented");
+		itemService.create(item, category.getId(), seller.getId());
+		assertThat(item.getId(), notNullValue());
+		
+		item = itemService.close(false, seller, item.getId());
+		assertThat(item.getClosed(), is(false));
 	}
 
 	@Test

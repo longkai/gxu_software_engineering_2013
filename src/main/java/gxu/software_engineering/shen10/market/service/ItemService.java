@@ -23,16 +23,12 @@ public interface ItemService {
 	public Item modify(@NotNull Item item);
 
 	/**
-	 * 物品所属人将物品标注为关闭状态。
-	 * @param user 提出关闭申请的卖家。
-	 * @param itemId 想要关闭物品的标识。
+	 * 物品所属人将物品标注为关闭状态，或者将已经关闭的物品置为打开状态（可以出售）。
+	 * @param closed 是否关闭。
+	 * @param user 提出申请的卖家。
+	 * @param itemId 想要关闭或者打开的物品的标识。
 	 */
-	public Item close(@NotNull User user, @Min(1) long itemId);
-
-	/**
-	 * 将已经关闭的物品置为打开状态（可以出售）。
-	 */
-	public void open(User user, long itemId);
+	public Item close(boolean close, @NotNull User user, @Min(1) long itemId);
 
 	/**
 	 * 查看物品详细说明，若不存在，或者被管理员锁住，则会抛出异常。

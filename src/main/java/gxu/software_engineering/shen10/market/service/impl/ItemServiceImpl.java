@@ -111,19 +111,13 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public Item close(User user, long itemId) {
+	public Item close(boolean close, User user, long itemId) {
 		Item item = itemDao.find(itemId);
 		this.modifiable(item, user);
 		item.setLastModifiedTime(new Date());
-		item.setClosed(true);
+		item.setClosed(close);
 		itemDao.merge(item);
 		return item;
-	}
-
-	@Override
-	public void open(User user, long itemId) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
