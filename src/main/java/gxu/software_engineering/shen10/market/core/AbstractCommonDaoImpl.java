@@ -81,44 +81,49 @@ public abstract class AbstractCommonDaoImpl<T> implements CommonDao<T> {
 	
 	/**
 	 * 查询，只返回一个对象，支持<b style="color: red;"> ? </b>格式来作为占位符。
-	 * @param hql hql
+	 * @param namedQuery 是否使用namedQuery
+	 * @param query hql
 	 * @param type 查询的实体类型
 	 * @param keys 参数名， 为null表示无参数
 	 * @param objects 参数值, 为null表示无参数
 	 * @return 单个对象
 	 */
-	protected T executeQuery(String hql, Class<T> clazz, String[] keys, Object[] values) {
-		TypedQuery<T> query = em.createNamedQuery(hql, clazz);
+	protected T executeQuery(boolean namedQuery, String query, Class<T> clazz, String[] keys, Object[] values) {
+		TypedQuery<T> _query = namedQuery ? em.createNamedQuery(query, clazz)
+				: em.createQuery(query, clazz);
 		if (keys != null && values != null) {
 			Assert.equals(keys.length, values.length,
 					String.format("查询参数的数目不一致！键->%d, 值->%d", keys.length, values.length));
 			for (int i = 0; i < keys.length; i++) {
-				query.setParameter(i + 1, values[i]);
+				_query.setParameter(i + 1, values[i]);
 			}
 		}
-		return query.getSingleResult();
+		return _query.getSingleResult();
 	}
 	
 	/**
 	 * 查询，只返回一个对象，支持<b style="color: red;"> :xxx </b>格式来作为参数占位符。
-	 * @param hql 预处理hql
+	 * @param namedQuery 是否使用namedQuery
+	 * @param query 预处理hql
 	 * @param type 查询的实体类型
 	 * @param objects 参数map, 不能为空
 	 * @return 单个对象
 	 */
-	protected T executeQuery(String hql, Class<T> clazz, Map<String, Object> params) {
-		TypedQuery<T> query = em.createNamedQuery(hql, clazz);
+	protected T executeQuery(boolean namedQuery, String query, Class<T> clazz, Map<String, Object> params) {
+		TypedQuery<T> _query = namedQuery ? em.createNamedQuery(query, clazz)
+								: em.createQuery(query, clazz);
 		if (params != null) {
 			for (String name : params.keySet()) {
-				query.setParameter(name, params.get(name));
+				_query.setParameter(name, params.get(name));
 			}
 		}
-		return query.getSingleResult();
+		return _query.getSingleResult();
 	}
 
 	/**
 	 * 查询，返回一个列表，支持<b style="color: red;"> ? </b>格式来作为参数占位符。
-	 * @param hql hql
+	 * @param namedQuery 是否使用namedQuery
+	 * @param query hql
 	 * @param clazz 查询的实体类型
 	 * @param offset 偏移量，即，从第几条记录开始取
 	 * @param number 抓取数，即，抓取多少条记录
@@ -126,38 +131,41 @@ public abstract class AbstractCommonDaoImpl<T> implements CommonDao<T> {
 	 * @param objects 参数值, 为null表示无参数
 	 * @return 对象列表
 	 */
-	protected List<T> executeQuery(String hql, Class<T> clazz, int offset, int number, String[] keys, Object[] values) {
+	protected List<T> executeQuery(boolean namedQuery, String query, Class<T> clazz, int offset, int number, String[] keys, Object[] values) {
 		offset = rangeCheck(offset, clazz);
-		TypedQuery<T> query = em.createNamedQuery(hql, clazz);
+		TypedQuery<T> _query = namedQuery ? em.createNamedQuery(query, clazz)
+								: em.createQuery(query, clazz);
 		if (keys != null && values != null) {
 			Assert.equals(keys.length, values.length,
 					String.format("查询参数的数目不一致！键->%d, 值->%d", keys.length, values.length));
 			
 			for (int i = 0; i < keys.length; i++) {
-				query.setParameter(i + 1, values[i]);
+				_query.setParameter(i + 1, values[i]);
 			}
 		}
-		return query.setFirstResult(offset).setMaxResults(number).getResultList();
+		return _query.setFirstResult(offset).setMaxResults(number).getResultList();
 	}
 	
 	/**
 	 * 查询，返回一个列表，支持<b style="color: red;"> :xxx </b>格式来作为参数占位符。
-	 * @param hql hql
+	 * @param namedQuery 是否使用namedQuery
+	 * @param query hql
 	 * @param clazz 查询的实体类型
 	 * @param offset 偏移量，即，从第几条记录开始取
 	 * @param number 抓取数，即，抓取多少条记录
 	 * @param params 参数map，不能为空
 	 * @return 对象列表
 	 */
-	protected List<T> executeQuery(String hql, Class<T> clazz, int offset, int number, Map<String, Object> params) {
+	protected List<T> executeQuery(boolean namedQuery, String query, Class<T> clazz, int offset, int number, Map<String, Object> params) {
 		offset = rangeCheck(offset, clazz);
-		TypedQuery<T> query = em.createNamedQuery(hql, clazz);
+		TypedQuery<T> _query = namedQuery ? em.createNamedQuery(query, clazz)
+								: em.createQuery(query, clazz);
 		if (params != null) {
 			for (String name : params.keySet()) {
-				query.setParameter(name, params.get(name));
+				_query.setParameter(name, params.get(name));
 			}
 		}
-		return query.setFirstResult(offset).setMaxResults(number).getResultList();
+		return _query.setFirstResult(offset).setMaxResults(number).getResultList();
 	}
 	
 	/**
