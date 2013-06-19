@@ -69,6 +69,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public Category modify(long categoryId, String name, String description) {
 //		验证类别是否存在
 		Category c = categoryDao.find(categoryId);
@@ -94,8 +95,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public List<Category> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryDao.list("Category.list", null, 0, Integer.MAX_VALUE);
 	}
 
 	@Override

@@ -22,9 +22,8 @@
  */
 package gxu.software_engineering.shen10.market.service;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 import gxu.software_engineering.shen10.market.entity.Category;
 
 import javax.inject.Inject;
@@ -111,7 +110,7 @@ public class CategoryServiceTest {
 
 	@Test
 	public void testList() {
-		fail("Not yet implemented");
+		assertThat(categoryService.list().size() >= 3, is(true));
 	}
 
 	@Test

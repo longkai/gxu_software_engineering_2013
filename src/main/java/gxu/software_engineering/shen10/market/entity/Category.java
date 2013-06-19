@@ -45,7 +45,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Table(name = "categories")
 @NamedQueries({
-	@NamedQuery(name = "Category.name", query = "FROM Category c WHERE c.name = :name")
+	@NamedQuery(name = "Category.name", query = "FROM Category c WHERE c.name = :name"),
+	@NamedQuery(name = "Category.list", query = "FROM Category")
 })
 public class Category {
 
