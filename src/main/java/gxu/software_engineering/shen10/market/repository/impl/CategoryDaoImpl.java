@@ -48,11 +48,11 @@ public class CategoryDaoImpl extends AbstractCommonDaoImpl<Category> implements 
 	}
 
 	@Override
-	public long size(boolean all, boolean namedQuery, String query) {
+	public long size(boolean all, boolean namedQuery, String query, Map<String, Object> params) {
 		if (all) {
 			return super.size(Category.class);
 		}
-		return super.size(namedQuery, query);
+		return super.size(namedQuery, query, params);
 	}
 
 	@Override
