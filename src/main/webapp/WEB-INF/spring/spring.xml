@@ -12,4 +12,11 @@
 	<context:annotation-config />
 	<bean class="gxu.software_engineering.shen10.market.core.SpringBeans" />
 	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/users/*/modify" />
+			<bean class="gxu.software_engineering.shen10.market.interceptor.UserInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 </beans>
