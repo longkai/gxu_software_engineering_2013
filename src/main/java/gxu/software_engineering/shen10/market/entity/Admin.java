@@ -30,6 +30,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -46,6 +48,9 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 @Entity
 @Table(name = "admins")
+@NamedQueries({
+	@NamedQuery(name = "Admin.login", query = "FROM Admin a WHERE a.account = :account AND a.password = :password")
+})
 public class Admin {
 
 	@Id

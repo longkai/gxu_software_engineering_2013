@@ -22,28 +22,47 @@
  */
 package gxu.software_engineering.shen10.market.service;
 
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 import gxu.software_engineering.shen10.market.entity.Admin;
 
-import java.lang.String;
+import javax.inject.Inject;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotBlank;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * 管理员服务接口。
+ * 
  * @author longkai(龙凯)
  * @email  im.longkai@gmail.com
+ * @since  2013-6-20
  */
-public interface AdminService {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/spring.xml")
+@Transactional
+public class AdminServiceTest {
 
-	/**
-	 * 管理员登陆。
-	 */
-	@NotNull(message = "用户名或者密码错误！")
-	Admin login(@NotBlank String account, @NotBlank @Size(min = 6, max = 32) String password);
+	@Inject
+	private AdminService adminService;
+	
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void testLogin() {
+		Admin admin = adminService.login("admin123", "123456");
+		assertThat(admin, notNullValue());
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void testLoginWithWrong() {
+		Admin admin = adminService.login("admin123", "1234567");
+		assertThat(admin, notNullValue());
+	}
 
 }

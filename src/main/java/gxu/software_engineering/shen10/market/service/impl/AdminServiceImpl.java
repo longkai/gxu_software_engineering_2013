@@ -20,30 +20,44 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package gxu.software_engineering.shen10.market.service;
+package gxu.software_engineering.shen10.market.service.impl;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.inject.Inject;
 
 import gxu.software_engineering.shen10.market.entity.Admin;
+import gxu.software_engineering.shen10.market.repository.AdminDao;
+import gxu.software_engineering.shen10.market.service.AdminService;
+import gxu.software_engineering.shen10.market.util.Encryptor;
 
-import java.lang.String;
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 /**
- * 管理员服务接口。
+ * 管理员服务的实现
+ * 
  * @author longkai(龙凯)
  * @email  im.longkai@gmail.com
+ * @since  2013-6-20
  */
-public interface AdminService {
+@Service
+@Validated
+@Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Throwable.class)
+public class AdminServiceImpl implements AdminService {
+	
+	@Inject
+	private AdminDao adminDao;
 
-	/**
-	 * 管理员登陆。
-	 */
-	@NotNull(message = "用户名或者密码错误！")
-	Admin login(@NotBlank String account, @NotBlank @Size(min = 6, max = 32) String password);
+	@Override
+	public Admin login(String account, String password) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("account", account);
+		params.put("password", Encryptor.MD5(password));
+		return adminDao.find("Admin.login", params);
+	}
 
 }
