@@ -37,4 +37,34 @@ public final class Consts {
 	/** 一次物品请求列表的最大长度 */
 	public static final int MAX_ITEM_COUNT = 50;
 	
+	/** http 请求状态 */
+	public static final String STATUS = "status";
+	
+	/** http 请求成功标志 */
+	public static final int STATUS_OK = 1;
+	
+	/** http 请求失败标志 */
+	public static final int STATUS_NO = 0;
+	
+	/** user 字符串，标志为单个卖家 */
+	public static final String USER = "user";
+	
+	/** users 字符串，标志为卖家列表 */
+	public static final String USERS = "users";
+	
+	/** 错误的请求，用户只提供ajax数据的情形 */
+	public static final String BAD_REQUEST = "bad_request";
+	
+	/** http 请求返回信息 */
+	public static final String MESSAGE = "msg";
+	
+	/** http 请求失败原因 */
+	public static final String EXP_REASON = "reason";
+	
+	/** http 请求失败未知原因 */
+	public static final String UNKNOWN_REASON = "我们没有能收集足够的错误信息，请您稍后再试！";
+	
+	/** http 请求错误html视图 */
+	public static final String ERROR_PAGE = "error";
+	
 }

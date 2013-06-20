@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational 建模平台（com.ibm.xtools.rmp）" url="" version="7.0.0"/></signature>?>
+<umlnotation:UMLDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xmi:id="_NRi1cNmhEeKHgfCjNY7cvQ" type="Class" name="controller_classes_diagram.dnx">
+  <eAnnotations xmi:id="_NRi1cdmhEeKHgfCjNY7cvQ" source="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+    <details xmi:id="_NRjcgNmhEeKHgfCjNY7cvQ" key="com.ibm.xtools.activities.javaVisualizerActivity" value="1"/>
+  </eAnnotations>
+  <children xmi:type="umlnotation:UMLShape" xmi:id="_j15zMNmhEeKHgfCjNY7cvQ" fontName="Microsoft YaHei UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+    <children xmi:type="notation:DecorationNode" xmi:id="_j1_SwNmhEeKHgfCjNY7cvQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_j1_SwdmhEeKHgfCjNY7cvQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_j1_50NmhEeKHgfCjNY7cvQ" type="Stereotype"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_j2GAcNmhEeKHgfCjNY7cvQ" type="Name"/>
+    <children xmi:type="notation:BasicDecorationNode" xmi:id="_j2GAcdmhEeKHgfCjNY7cvQ" type="Parent"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_j2GngNmhEeKHgfCjNY7cvQ" type="ANNOTATION_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_j2H1oNmhEeKHgfCjNY7cvQ" type="ANNOTATED_ATTRIBUTE_COMPARTMENT"/>
+    <children xmi:type="notation:ListCompartment" xmi:id="_j2IcsNmhEeKHgfCjNY7cvQ" type="ANNOTATED_OPERATION_COMPARTMENT"/>
+    <element xmi:type="uml:Class" href="mmi:///#jsrctype%5Ename=UserController%5Bjcu%5Ename=UserController.java%5Bjpack%5Ename=gxu.software_engineering.shen10.market.controller%5Bjsrcroot%5Esrcfolder=src/main/java%5Bproject%5Eid=market%5D%5D%5D%5D$uml.Class"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_j15zMdmhEeKHgfCjNY7cvQ" x="3564" y="1320"/>
+  </children>
+  <element xsi:nil="true"/>
+</umlnotation:UMLDiagram>

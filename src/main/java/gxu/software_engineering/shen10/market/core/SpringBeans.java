@@ -39,11 +39,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.http.MediaType;
-import org.springframework.jdbc.datasource.init.DataSourceInitializer;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -59,6 +56,7 @@ import org.springframework.web.accept.PathExtensionContentNegotiationStrategy;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -77,7 +75,7 @@ import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 @Configuration
 @ComponentScan("gxu.software_engineering.shen10.market")
 @EnableTransactionManagement
-//@EnableWebMvc // 假如不在web容器上测试的话，那么请注释掉此注解！
+@EnableWebMvc // 假如不在web容器上测试的话，那么请注释掉此注解！
 public class SpringBeans extends WebMvcConfigurerAdapter {
 
 	private static final Logger L = LoggerFactory.getLogger(SpringBeans.class);
