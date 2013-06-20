@@ -16,6 +16,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/users/*/modify" />
 			<mvc:mapping path="/items/add" />
+			<mvc:mapping path="/records/add" />
 			<bean class="gxu.software_engineering.shen10.market.interceptor.UserInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>

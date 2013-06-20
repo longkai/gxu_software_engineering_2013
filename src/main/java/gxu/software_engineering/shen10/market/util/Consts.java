@@ -87,6 +87,12 @@ public final class Consts {
 	/** items 物品列表 */
 	public static final String ITEMS = "items";
 	
+	/** records 成功交易 */
+	public static final String RECORD = "records";
+	
+	/** records 成功交易列表 */
+	public static final String RECORDS = "records";
+	
 	/** 最新信息 */
 	public static final int	LATEST		= 1;
 
