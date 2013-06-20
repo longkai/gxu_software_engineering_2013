@@ -42,6 +42,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 /**
+ * 交易记录对外服务的实现。
  * 
  * @author longkai(龙凯)
  * @email  im.longkai@gmail.com

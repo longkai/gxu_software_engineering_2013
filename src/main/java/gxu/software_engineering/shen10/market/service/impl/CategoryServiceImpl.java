@@ -40,6 +40,7 @@ import gxu.software_engineering.shen10.market.service.CategoryService;
 import gxu.software_engineering.shen10.market.util.Assert;
 
 /**
+ * 类别相关服务的实现。
  * 
  * @author longkai(龙凯)
  * @email  im.longkai@gmail.com

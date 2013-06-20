@@ -39,14 +39,13 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 /**
+ * 物品相关服务的实现。
  * 
  * @author longkai(龙凯)
  * @email  im.longkai@gmail.com
@@ -56,8 +55,6 @@ import org.springframework.validation.annotation.Validated;
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true, rollbackFor = Throwable.class)
 @Validated
 public class ItemServiceImpl implements ItemService {
-	
-	private static final Logger L = LoggerFactory.getLogger(ItemServiceImpl.class);
 	
 	@Inject
 	private ItemDao itemDao;
@@ -93,6 +90,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public Item modify(Item item) {
 		Item i = itemDao.find(item.getId());
 //		验证是否具有修改权限
@@ -111,6 +109,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public Item close(boolean close, User user, long itemId) {
 		Item item = itemDao.find(itemId);
 		this.modifiable(item, user);

@@ -41,6 +41,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 /**
+ * 用户相关服务的实现。
  * 
  * @author longkai(龙凯)
  * @email  im.longkai@gmail.com
@@ -95,6 +96,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public User modify(User user) {
 		userDao.merge(user);
 		return user;
