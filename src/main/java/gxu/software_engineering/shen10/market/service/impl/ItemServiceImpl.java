@@ -132,7 +132,11 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<Item> list(long lastItemId, int count) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("id", lastItemId);
+		if (lastItemId == 0) {
+			params.put("id", Long.MAX_VALUE);
+		} else {
+			params.put("id", lastItemId);
+		}
 		return itemDao.list(true, "Item.list_more", params, 0, count);
 	}
 

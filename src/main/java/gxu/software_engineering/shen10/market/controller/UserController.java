@@ -32,15 +32,6 @@ public class UserController {
 	
 	private static final Logger L = LoggerFactory.getLogger(UserController.class);
 	
-	/** 最新信息 */
-	private static final int	LATEST		= 1;
-
-	/** 加载更多 */
-	private static final int	LATEST_MORE	= 2;
-
-	/** 刷新 */
-	private static final int	REFRESH		= 3;
-	
 	@Inject
 	private UserService userService;
 	

@@ -22,6 +22,11 @@
  */
 package gxu.software_engineering.shen10.market.util;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import gxu.software_engineering.shen10.market.entity.User;
+
 /**
  * 终于感觉还是有必要弄一个常量池了。。。
  * 
@@ -75,5 +80,37 @@ public final class Consts {
 	
 	/** categories 类别列表 */
 	public static final String CATEGORIES = "categories";
+	
+	/** item 物品 */
+	public static final String ITEM = "item";
+	
+	/** items 物品列表 */
+	public static final String ITEMS = "items";
+	
+	/** 最新信息 */
+	public static final int	LATEST		= 1;
+
+	/** 加载更多 */
+	public static final int	LATEST_MORE	= 2;
+
+	/** 刷新 */
+	public static final int	REFRESH		= 3;
+	
+	/** 某个用户相关 */
+	public static final int LIST_BY_USER = 4;
+	
+	/** 某个类别相关 */
+	public static final int LIST_BY_CATEGORY = 5;
+	
+	/** 某个热门相关 */
+	public static final int LIST_BY_HOT = 6;
+	
+	public static User resolveUser(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute(Consts.USER) == null) {
+			throw new RuntimeException("对不起，您没有登陆或者登陆超时，请登陆后再操作！");
+		}
+		return (User) session.getAttribute(Consts.USER);
+	}
 	
 }
