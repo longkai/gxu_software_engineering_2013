@@ -67,4 +67,13 @@ public final class Consts {
 	/** http 请求错误html视图 */
 	public static final String ERROR_PAGE = "error";
 	
+	/** admin 管理员 */
+	public static final String ADMIN = "admin";
+	
+	/** category 类别 */
+	public static final String CATEGORY = "category";
+	
+	/** categories 类别列表 */
+	public static final String CATEGORIES = "categories";
+	
 }

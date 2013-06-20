@@ -17,6 +17,10 @@
 			<mvc:mapping path="/users/*/modify" />
 			<bean class="gxu.software_engineering.shen10.market.interceptor.UserInterceptor" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/categories/add" />
+			<bean class="gxu.software_engineering.shen10.market.interceptor.AdminInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 	
 </beans>
