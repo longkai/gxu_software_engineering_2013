@@ -22,8 +22,8 @@
  */
 package gxu.software_engineering.shen10.market.service;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;  
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import gxu.software_engineering.shen10.market.entity.Record;
 
 import javax.inject.Inject;

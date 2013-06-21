@@ -22,9 +22,7 @@
  */
 package gxu.software_engineering.shen10.market.entity;
 
-import java.lang.Long;
 import java.util.Date;
-import java.lang.String;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,9 +37,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.codehaus.jackson.annotate.JsonProperty;
-
-import gxu.software_engineering.shen10.market.entity.Item;
-import gxu.software_engineering.shen10.market.entity.User;
 
 /**
  * record实体类（指的是一个成功交易的记录）

@@ -24,10 +24,6 @@ package gxu.software_engineering.shen10.market.service;
 
 import gxu.software_engineering.shen10.market.entity.Admin;
 
-import java.lang.String;
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 

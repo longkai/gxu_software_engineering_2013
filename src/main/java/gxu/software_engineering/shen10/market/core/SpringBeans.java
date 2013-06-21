@@ -56,7 +56,6 @@ import org.springframework.web.accept.PathExtensionContentNegotiationStrategy;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -75,7 +74,7 @@ import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 @Configuration
 @ComponentScan("gxu.software_engineering.shen10.market")
 @EnableTransactionManagement
-@EnableWebMvc // 假如不在web容器上测试的话，那么请注释掉此注解！
+//@EnableWebMvc // 假如不在web容器上测试的话，那么请注释掉此注解！
 public class SpringBeans extends WebMvcConfigurerAdapter {
 
 	private static final Logger L = LoggerFactory.getLogger(SpringBeans.class);

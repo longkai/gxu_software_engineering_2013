@@ -12,6 +12,8 @@
 	<context:annotation-config />
 	<bean class="gxu.software_engineering.shen10.market.core.SpringBeans" />
 	
+	<mvc:annotation-driven />
+	
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/users/*/modify" />
