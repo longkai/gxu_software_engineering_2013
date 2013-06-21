@@ -87,8 +87,8 @@ public final class Consts {
 	/** items 物品列表 */
 	public static final String ITEMS = "items";
 	
-	/** records 成功交易 */
-	public static final String RECORD = "records";
+	/** record 成功交易 */
+	public static final String RECORD = "record";
 	
 	/** records 成功交易列表 */
 	public static final String RECORDS = "records";
