@@ -205,10 +205,10 @@ public class ItemServiceImpl implements ItemService {
 		if (!i.getSeller().equals(seller)) {
 			throw new SecurityException("对不起，不是你的物品，您无权修改之！");
 		}
-		if (i.getBlocked().booleanValue()) {
+		if (i.isBlocked()) {
 			throw new RuntimeException("对不起，这个物品已经被管理员锁住，请联系管理员！");
 		}
-		if (i.getDeal().booleanValue()) {
+		if (i.isDeal()) {
 			throw new RuntimeException("对不起，此物品已经成功交易，不能再修改啦！");
 		}
 	}

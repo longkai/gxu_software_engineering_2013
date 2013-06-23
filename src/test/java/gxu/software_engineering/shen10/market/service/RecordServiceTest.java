@@ -29,6 +29,7 @@ import gxu.software_engineering.shen10.market.entity.Record;
 import javax.inject.Inject;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -57,6 +58,7 @@ public class RecordServiceTest {
 	}
 
 	@Test
+	@Ignore
 	public void testCreate() {
 		recordService.create(1, 1, null);
 	}
@@ -68,6 +70,7 @@ public class RecordServiceTest {
 	}
 
 	@Test
+	@Ignore
 	public void testList() {
 		assertThat(recordService.list(1, 5, 0).size(), is(0));
 		recordService.create(1, 1, null);

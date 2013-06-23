@@ -97,7 +97,7 @@ public class ItemServiceTest {
 		assertThat(item.getId(), notNullValue());
 		
 		item = itemService.close(true, seller, item.getId());
-		assertThat(item.getClosed(), is(true));
+		assertThat(item.isClosed(), is(true));
 	}
 
 	@Test
@@ -106,7 +106,7 @@ public class ItemServiceTest {
 		assertThat(item.getId(), notNullValue());
 		
 		item = itemService.close(false, seller, item.getId());
-		assertThat(item.getClosed(), is(false));
+		assertThat(item.isClosed(), is(false));
 	}
 
 	@Test

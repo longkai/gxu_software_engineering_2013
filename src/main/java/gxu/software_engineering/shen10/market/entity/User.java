@@ -64,7 +64,8 @@ public class User {
 //	@NotNull(message = "真实姓名不能为空！")
 	@NotBlank(message = "真实姓名不能为空！")
 	@Size(min = 2, max = 4, message = "用户名必须在1-4个字符之间！")
-	@JsonIgnore
+	//@JsonIgnore
+	@JsonProperty("real_name")
 	private String	realName;
 
 //	@NotNull(message = "昵称不能为空！")
@@ -104,7 +105,7 @@ public class User {
 //	private Long credit;
 
 	@JsonIgnore
-	private Boolean	blocked;
+	private boolean	blocked;
 
 	public Long getId() {
 		return id;
@@ -186,14 +187,14 @@ public class User {
 //		this.credit = credit;
 //	}
 
-	public Boolean getBlocked() {
+	public boolean isBlocked() {
 		return blocked;
 	}
-
-	public void setBlocked(Boolean blocked) {
+	
+	public void setBlocked(boolean blocked) {
 		this.blocked = blocked;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

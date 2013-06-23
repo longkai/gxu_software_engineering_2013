@@ -65,12 +65,11 @@ public class RecordServiceImpl implements RecordService {
 		Item item = itemDao.find(itemId);
 		Assert.notNull(item, "对不起，您所查找的物品不存在！");
 		
-		if (item.getBlocked() != null && item.getBlocked().booleanValue()) {
+		if (item.isBlocked()) {
 			throw new RuntimeException("对不起，该物品已经被管理员冻结，您不能出售它！请联系管理员！");
 		}
 		
-		Boolean blocked = item.getSeller().getBlocked();
-		if (blocked != null && blocked.booleanValue()) {
+		if (item.getSeller().isBlocked()) {
 			throw new RuntimeException("对不起，您的账号已经被冻结，请联系管理员！");
 		}
 		

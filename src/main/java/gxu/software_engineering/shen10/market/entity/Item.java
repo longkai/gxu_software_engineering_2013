@@ -44,8 +44,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import gxu.software_engineering.shen10.market.entity.Category;
 import gxu.software_engineering.shen10.market.entity.User;
-import java.lang.Boolean;
-import java.lang.String;
 
 /**
  * item实体类（指的是一个可以买卖，交易的物品）
@@ -58,16 +56,16 @@ import java.lang.String;
 @NamedQueries({
 	@NamedQuery(name = "Item.daily_limit", query = "SELECT COUNT(*) FROM Item i WHERE"
 			+ " i.addedTime >= :begin AND i.addedTime <= :end"),
-	@NamedQuery(name = "Item.list_latest", query = "FROM Item i WHERE i.blocked IS NULL OR i.blocked IS TRUE ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.list_latest", query = "FROM Item i WHERE i.blocked IS FALSE AND i.closed IS FALSE AND i.deal IS FALSE ORDER BY i.id DESC"),
 	@NamedQuery(name = "Item.list_more", query = "FROM Item i WHERE i.id < :id ORDER BY i.id DESC"),
-	@NamedQuery(name = "Item.size_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.deal IS FALSE OR i.deal IS NULL"),
-	@NamedQuery(name = "Item.size_seller_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id AND (i.deal IS FALSE OR i.deal IS NULL)"),
+	@NamedQuery(name = "Item.size_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.deal IS FALSE"),
+	@NamedQuery(name = "Item.size_seller_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id AND i.deal IS FALSE"),
 	@NamedQuery(name = "Item.size_seller", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id"),
 	@NamedQuery(name = "Item.size_category", query = "SELECT COUNT(*) FROM Item i WHERE i.category.id = :category_id"),
 	@NamedQuery(name = "Item.list_user_all", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id ORDER BY i.id DESC"),
-	@NamedQuery(name = "Item.list_user_deal", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id AND (i.deal IS FALSE OR i.deal IS NULL) ORDER BY i.id DESC"),
-	@NamedQuery(name = "Item.list_category_deal", query = "FROM Item i WHERE i.category.id = :category_id AND i.id < :last_id AND (i.deal IS FALSE OR i.deal IS NULL) ORDER BY i.id DESC"),
-	@NamedQuery(name = "Item.list_hot", query = "FROM Item i ORDER BY i.clickTimes DESC")
+	@NamedQuery(name = "Item.list_user_deal", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id AND i.deal IS FALSE ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.list_category_deal", query = "FROM Item i WHERE i.category.id = :category_id AND i.id < :last_id AND i.deal IS FALSE ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.list_hot", query = "FROM Item i WHERE i.blocked IS FALSE AND i.closed IS FALSE AND i.deal IS FALSE ORDER BY i.clickTimes DESC")
 })
 public class Item {
 
@@ -108,7 +106,7 @@ public class Item {
 	private User		seller;
 
 	/** 是否被用户自己关闭交易 */
-	private Boolean		closed;
+	private boolean		closed;
 	
 	@NotBlank(message = "描述信息不能为空！")
 	@Size(min = 10, max = 255, message = "描述信息必须在10-255个字段内！")
@@ -116,10 +114,10 @@ public class Item {
 
 	/** 由于不符合规定，由管理员将其锁住 */
 	@JsonIgnore
-	private Boolean		blocked;
+	private boolean		blocked;
 
 	/** 交易是否成功了 */
-	private Boolean deal;
+	private boolean deal;
 
 	/** 额外说明，optional */
 	@Size(min = 2, max = 255, message = "额外说明最大不能超过255个字符！")
@@ -189,11 +187,11 @@ public class Item {
 		this.seller = seller;
 	}
 
-	public Boolean getClosed() {
+	public boolean isClosed() {
 		return closed;
 	}
 
-	public void setClosed(Boolean closed) {
+	public void setClosed(boolean closed) {
 		this.closed = closed;
 	}
 
@@ -205,19 +203,19 @@ public class Item {
 		this.description = description;
 	}
 
-	public Boolean getBlocked() {
+	public boolean isBlocked() {
 		return blocked;
 	}
 
-	public void setBlocked(Boolean blocked) {
+	public void setBlocked(boolean blocked) {
 		this.blocked = blocked;
 	}
-	
-	public Boolean getDeal() {
+
+	public boolean isDeal() {
 		return deal;
 	}
 
-	public void setDeal(Boolean deal) {
+	public void setDeal(boolean deal) {
 		this.deal = deal;
 	}
 

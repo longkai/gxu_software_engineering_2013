@@ -70,7 +70,7 @@ INSERT INTO users (real_name, nick, account, password, contact) values ('你好'
 INSERT INTO users (real_name, nick, account, password, contact) values ('世界', '我叫拜登', 'world', 'e10adc3949ba59abbe56e057f20f883e', '14795633343');
 INSERT INTO users (real_name, nick, account, password, contact) values ('测试', '我叫Obama', 'test123', 'e10adc3949ba59abbe56e057f20f883e', '14795633343');
 
-INSERT INTO categories (name, description) values ('日用百货', '各种日用百货。。。');
+INSERT INTO categories (name, description, added_time) values ('日用百货', '各种日用百货。。。', "2013-05-20 13:14:00");
 INSERT INTO categories (name, description) values ('新旧书市', '各种新旧书市。。。');
 INSERT INTO categories (name, description) values ('家用电器', '各种家用电器。。。');
 INSERT INTO categories (name, description) values ('电子产品', '各种电子产品。。。');

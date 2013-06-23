@@ -143,8 +143,8 @@ public class SpringBeans extends WebMvcConfigurerAdapter {
 		entityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter());
 
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "none");
-//		properties.setProperty("hibernate.hbm2ddl.auto", "update");
+		//properties.setProperty("hibernate.hbm2ddl.auto", "none");
+		properties.setProperty("hibernate.hbm2ddl.auto", "update");
 		entityManagerFactoryBean.setJpaProperties(properties);
 		entityManagerFactoryBean.setPackagesToScan("gxu.software_engineering.shen10.market.entity");
 		return entityManagerFactoryBean;
