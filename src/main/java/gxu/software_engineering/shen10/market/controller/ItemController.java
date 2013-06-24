@@ -22,23 +22,16 @@
  */
 package gxu.software_engineering.shen10.market.controller;
 
-import static gxu.software_engineering.shen10.market.util.Consts.BAD_REQUEST;
-import static gxu.software_engineering.shen10.market.util.Consts.CLOSED_ITEMS;
-import static gxu.software_engineering.shen10.market.util.Consts.ITEM;
-import static gxu.software_engineering.shen10.market.util.Consts.ITEMS;
-import static gxu.software_engineering.shen10.market.util.Consts.LATEST;
-import static gxu.software_engineering.shen10.market.util.Consts.LATEST_MORE;
-import static gxu.software_engineering.shen10.market.util.Consts.LIST_BY_CATEGORY;
-import static gxu.software_engineering.shen10.market.util.Consts.LIST_BY_HOT;
-import static gxu.software_engineering.shen10.market.util.Consts.LIST_BY_USER;
-import static gxu.software_engineering.shen10.market.util.Consts.REFRESH;
-import static gxu.software_engineering.shen10.market.util.Consts.STATUS;
-import static gxu.software_engineering.shen10.market.util.Consts.STATUS_OK;
+import static gxu.software_engineering.shen10.market.util.Consts.*;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+import gxu.software_engineering.shen10.market.entity.Category;
 import gxu.software_engineering.shen10.market.entity.Item;
+import gxu.software_engineering.shen10.market.entity.User;
+import gxu.software_engineering.shen10.market.service.CategoryService;
 import gxu.software_engineering.shen10.market.service.ItemService;
+import gxu.software_engineering.shen10.market.service.UserService;
 
 import java.util.List;
 
@@ -68,6 +61,12 @@ public class ItemController {
 	
 	@Inject
 	private ItemService itemService;
+	
+	@Inject
+	private UserService userService;
+	
+	@Inject
+	private CategoryService categoryService;
 	
 	@RequestMapping(value = "/items/add", method = POST)
 	public String add(Model model, Item item,
@@ -156,6 +155,21 @@ public class ItemController {
 			throw new RuntimeException("对不起，没有这个选项！");
 		}
 		model.addAttribute(ITEMS, items);
+		return BAD_REQUEST;
+	}
+	
+	@RequestMapping(value = "/sync", method = GET)
+	public String sync(
+			Model model,
+			@RequestParam("last") long millis,
+			@RequestParam("count") int count) {
+		List<User> users = userService.sync(millis, count);
+		List<Category> categories = categoryService.list();
+		List<Item> items = itemService.sync(millis, count);
+		model.addAttribute(USERS, users);
+		model.addAttribute(CATEGORIES, categories);
+		model.addAttribute(ITEMS, items);
+		model.addAttribute(STATUS, STATUS_OK);
 		return BAD_REQUEST;
 	}
 	
