@@ -99,7 +99,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public User modify(User user) {
+	public User modify(long uid, boolean isPwd, String s) {
+		User user = userDao.find(uid);
+		if (isPwd) {
+			user.setPassword(Encryptor.MD5(s));
+		} else {
+			user.setContact(s);
+		}
 		userDao.merge(user);
 		return user;
 	}

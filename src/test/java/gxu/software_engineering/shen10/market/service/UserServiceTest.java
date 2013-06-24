@@ -133,8 +133,8 @@ public class UserServiceTest {
 	public void testModify() {
 		userService.register(u, u.getPassword());
 		String newContact = "14795633333";
-		u.setContact(newContact);
-		assertThat(userService.modify(u).getContact(), is(newContact));
+//		u.setContact(newContact);
+		assertThat(userService.modify(u.getId(), false, newContact).getContact(), is(newContact));
 	}
 
 	@Test(expected = RuntimeException.class)

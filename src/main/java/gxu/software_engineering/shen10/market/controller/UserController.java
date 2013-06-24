@@ -1,22 +1,30 @@
 package gxu.software_engineering.shen10.market.controller;
 
-import java.util.List;
-
+import static gxu.software_engineering.shen10.market.util.Consts.BAD_REQUEST;
+import static gxu.software_engineering.shen10.market.util.Consts.LATEST;
+import static gxu.software_engineering.shen10.market.util.Consts.LATEST_MORE;
+import static gxu.software_engineering.shen10.market.util.Consts.REFRESH;
+import static gxu.software_engineering.shen10.market.util.Consts.STATUS;
+import static gxu.software_engineering.shen10.market.util.Consts.STATUS_OK;
+import static gxu.software_engineering.shen10.market.util.Consts.USER;
+import static gxu.software_engineering.shen10.market.util.Consts.USERS;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 import gxu.software_engineering.shen10.market.entity.User;
 import gxu.software_engineering.shen10.market.service.UserService;
-import static gxu.software_engineering.shen10.market.util.Consts.*;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import static org.springframework.web.bind.annotation.RequestMethod.*;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -65,10 +73,14 @@ public class UserController {
 	
 	@RequestMapping(value = "/users/{uid}/modify", method = PUT)
 	public String modify(
-			Model model, HttpRequest request,
-			@PathVariable("uid") long uid, User user) {
-		userService.modify(user);
+			Model model,
+			@PathVariable("uid") long uid,
+			@RequestParam("type") boolean type,
+			@RequestParam("value") String value) {
+		L.info("用户：{} 请求修改信息， type: {}, 值：{}", uid, type, value);
+		User u = userService.modify(uid, type, value);
 		model.addAttribute(STATUS, STATUS_OK);
+		model.addAttribute(USER, u);
 		return BAD_REQUEST;
 	}
 	

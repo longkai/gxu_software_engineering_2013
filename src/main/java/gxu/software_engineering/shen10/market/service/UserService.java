@@ -63,7 +63,7 @@ public interface UserService {
 	 * 修改用户信息。
 	 * @return 修改成功后的用户。
 	 */
-	User modify(@NotNull User user);
+	User modify(@Min(1) long uid, boolean isPwd, @NotBlank String s);
 
 	/**
 	 * 最新注册的用户列表。
