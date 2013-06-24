@@ -23,7 +23,6 @@
 package gxu.software_engineering.shen10.market.service;
 
 import gxu.software_engineering.shen10.market.entity.Item;
-import gxu.software_engineering.shen10.market.entity.User;
 
 import java.util.List;
 
