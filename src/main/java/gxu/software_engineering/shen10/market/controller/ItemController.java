@@ -22,15 +22,27 @@
  */
 package gxu.software_engineering.shen10.market.controller;
 
+import static gxu.software_engineering.shen10.market.util.Consts.BAD_REQUEST;
+import static gxu.software_engineering.shen10.market.util.Consts.CLOSED_ITEMS;
+import static gxu.software_engineering.shen10.market.util.Consts.ITEM;
+import static gxu.software_engineering.shen10.market.util.Consts.ITEMS;
+import static gxu.software_engineering.shen10.market.util.Consts.LATEST;
+import static gxu.software_engineering.shen10.market.util.Consts.LATEST_MORE;
+import static gxu.software_engineering.shen10.market.util.Consts.LIST_BY_CATEGORY;
+import static gxu.software_engineering.shen10.market.util.Consts.LIST_BY_HOT;
+import static gxu.software_engineering.shen10.market.util.Consts.LIST_BY_USER;
+import static gxu.software_engineering.shen10.market.util.Consts.REFRESH;
+import static gxu.software_engineering.shen10.market.util.Consts.STATUS;
+import static gxu.software_engineering.shen10.market.util.Consts.STATUS_OK;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+import gxu.software_engineering.shen10.market.entity.Item;
+import gxu.software_engineering.shen10.market.service.ItemService;
+
 import java.util.List;
 
-import gxu.software_engineering.shen10.market.entity.Item;
-import gxu.software_engineering.shen10.market.entity.User;
-import gxu.software_engineering.shen10.market.service.ItemService;
-import static gxu.software_engineering.shen10.market.util.Consts.*;
-
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +52,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
  * 物品控制器。
@@ -70,10 +80,17 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "/items/{id}/modify", method = PUT)
-	public String modify(Model model, @PathVariable("id") long id, Item item) {
+	public String modify(
+			Model model,
+			@PathVariable("id") long id,
+			@RequestParam("uid") long uid,
+			@RequestParam("cid") long cid,
+			Item item) {
 		L.info("修改物品信息: {}", item);
 		item.setId(id);
-		itemService.modify(item);
+		Item i = itemService.modify(item, cid, uid);
+		model.addAttribute(STATUS, STATUS_OK);
+		model.addAttribute(ITEM, i);
 		return BAD_REQUEST;
 	}
 	
@@ -86,16 +103,15 @@ public class ItemController {
 	@RequestMapping(value = "/items/{id}/{open}", method = PUT)
 	public String close(
 			Model model,
-			HttpServletRequest request,
 			@PathVariable("id") long id,
+			@RequestParam("uid") long uid,
 			@PathVariable("open") String type) {
 		L.info("{} 物品id：{}", type, id);
 		Item i = null;
-		User u = resolveUser(request);
 		if (type.equals("open")) {
-			itemService.close(false, u, id);
+			itemService.close(false, uid, id);
 		} else if (type.equals("close")) {
-			itemService.close(true, u, id);
+			itemService.close(true, uid, id);
 		} else {
 			throw new IllegalArgumentException("对不起，没有这个选项！"); 
 		}

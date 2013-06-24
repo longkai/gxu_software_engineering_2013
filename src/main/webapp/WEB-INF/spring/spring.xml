@@ -15,12 +15,15 @@
 	<mvc:annotation-driven />
 	
 	<mvc:interceptors>
+		<!--
+			 由于只有Android客户端了，当用户成功登陆之后就已经默认他是已经登陆的了，所以取消原有的拦截器。
 		<mvc:interceptor>
 			<mvc:mapping path="/users/*/modify" />
 			<mvc:mapping path="/items/add" />
 			<mvc:mapping path="/records/add" />
 			<bean class="gxu.software_engineering.shen10.market.interceptor.UserInterceptor" />
 		</mvc:interceptor>
+		-->
 		<mvc:interceptor>
 			<mvc:mapping path="/categories/add" />
 			<bean class="gxu.software_engineering.shen10.market.interceptor.AdminInterceptor" />

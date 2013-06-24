@@ -63,10 +63,10 @@ public class MappingJacksonJsonpView extends MappingJacksonJsonView {
 	public void render(Map<String, ?> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		如果到了这里还没有确定字符集，那么就使用默认的utf8字符集
-		String charset = response.getCharacterEncoding();
-		if (charset == null || charset.length() == 0) {
-			response.setCharacterEncoding(DEFAULT_CHARSET);
-		}
+		// String charset = response.getCharacterEncoding();
+		// if (charset == null || charset.length() == 0) {
+		// 	response.setCharacterEncoding(DEFAULT_CHARSET);
+		// }
 		
 		if (request.getMethod().toUpperCase().equals("GET")) {
 			if (request.getParameterMap().containsKey("callback")) {

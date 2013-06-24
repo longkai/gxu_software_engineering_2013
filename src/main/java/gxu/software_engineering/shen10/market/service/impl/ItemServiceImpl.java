@@ -91,17 +91,17 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public Item modify(Item item) {
+	public Item modify(Item item, long cid, long uid) {
 		Item i = itemDao.find(item.getId());
 //		验证是否具有修改权限
-		this.modifiable(i, item.getSeller());
+		this.modifiable(i, uid);
 		
 		i.setLastModifiedTime(new Date());
 		i.setName(item.getName());
 		i.setDescription(item.getDescription());
 //		这个有单独的方法
 //		i.setClosed(item.getClosed());
-		i.setCategory(item.getCategory());
+		i.setCategory(categoryDao.find(cid));
 		i.setExtra(item.getExtra());
 		i.setPrice(item.getPrice());
 		itemDao.merge(i);
@@ -110,9 +110,9 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public Item close(boolean close, User user, long itemId) {
+	public Item close(boolean close, long uid, long itemId) {
 		Item item = itemDao.find(itemId);
-		this.modifiable(item, user);
+		this.modifiable(item, uid);
 		item.setLastModifiedTime(new Date());
 		item.setClosed(close);
 		itemDao.merge(item);
@@ -202,9 +202,9 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.list(true, "Item.list_hot", null, 0, count);
 	}
 
-	private void modifiable(Item i, User seller) {
+	private void modifiable(Item i, long uid) {
 		Assert.notNull(i, "对不起，您所修改的物品不存在！");
-		if (!i.getSeller().equals(seller)) {
+		if (i.getSeller().getId() != uid) {
 			throw new SecurityException("对不起，不是你的物品，您无权修改之！");
 		}
 		if (i.isBlocked()) {

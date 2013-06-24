@@ -64,6 +64,7 @@ public class RecordServiceTest {
 	}
 
 	@Test
+	@Ignore
 	public void testSize() {
 		long size = recordService.size(1L);
 		assertThat(size == 0, is(true));

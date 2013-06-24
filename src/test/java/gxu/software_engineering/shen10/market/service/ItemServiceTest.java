@@ -88,7 +88,7 @@ public class ItemServiceTest {
 		
 		String newName = "newName";
 		item.setName(newName);
-		assertThat(itemService.modify(item).getName(), is(newName));
+		assertThat(itemService.modify(item, category.getId(), seller.getId()).getName(), is(newName));
 	}
 
 	@Test
@@ -96,7 +96,7 @@ public class ItemServiceTest {
 		itemService.create(item, category.getId(), seller.getId());
 		assertThat(item.getId(), notNullValue());
 		
-		item = itemService.close(true, seller, item.getId());
+		item = itemService.close(true, seller.getId(), item.getId());
 		assertThat(item.isClosed(), is(true));
 	}
 
@@ -105,7 +105,7 @@ public class ItemServiceTest {
 		itemService.create(item, category.getId(), seller.getId());
 		assertThat(item.getId(), notNullValue());
 		
-		item = itemService.close(false, seller, item.getId());
+		item = itemService.close(false, seller.getId(), item.getId());
 		assertThat(item.isClosed(), is(false));
 	}
 

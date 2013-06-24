@@ -77,6 +77,8 @@ public class UserServiceImpl implements UserService {
 //		md5加密密码
 		user.setPassword(Encryptor.MD5(confirmedPassword));
 		user.setRegisterTime(new Date());
+		user.setLastLoginTime(user.getRegisterTime());
+		user.setLoginTimes(0);
 //		验证字段并持久化到数据库
 		userDao.persist(user);
 		return user;

@@ -49,7 +49,7 @@ public interface ItemService {
 	 * 修改一个物品。
 	 * @return 返回修改成功后的物品，否则抛出异常。
 	 */
-	Item modify(@NotNull Item item);
+	Item modify(@NotNull Item item, @Min(1) long cid, @Min(1) long uid);
 
 	/**
 	 * 物品所属人将物品标注为关闭状态，或者将已经关闭的物品置为打开状态（可以出售）。
@@ -57,7 +57,7 @@ public interface ItemService {
 	 * @param user 提出申请的卖家。
 	 * @param itemId 想要关闭或者打开的物品的标识。
 	 */
-	Item close(boolean close, @NotNull User user, @Min(1) long itemId);
+	Item close(boolean close, @Min(1) long uid, @Min(1) long itemId);
 
 	/**
 	 * 查看物品详细说明，若不存在，或者被管理员锁住，则会抛出异常。
