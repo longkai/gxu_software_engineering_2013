@@ -23,7 +23,6 @@
 package gxu.software_engineering.shen10.market.service.impl;
 
 import gxu.software_engineering.shen10.market.entity.Item;
-import gxu.software_engineering.shen10.market.entity.User;
 import gxu.software_engineering.shen10.market.repository.CategoryDao;
 import gxu.software_engineering.shen10.market.repository.ItemDao;
 import gxu.software_engineering.shen10.market.repository.UserDao;
@@ -225,6 +224,14 @@ public class ItemServiceImpl implements ItemService {
 			params.put("last_id", lastItemId);
 		}
 		return itemDao.list(true, "Item.list_user_closed", params, 0, count);
+	}
+
+	@Override
+	public List<Item> sync(long lastSyncMills, int count) {
+		Date d = new Date(lastSyncMills);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("last_modified_time", d);
+		return itemDao.list(true, "Item.list_sync", params, 0, count);
 	}
 	
 }

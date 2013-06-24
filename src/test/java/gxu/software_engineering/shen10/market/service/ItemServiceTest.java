@@ -25,6 +25,7 @@ package gxu.software_engineering.shen10.market.service;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
+import java.util.Calendar;
 import java.util.List;
 
 import gxu.software_engineering.shen10.market.entity.Category;
@@ -186,4 +187,13 @@ public class ItemServiceTest {
 //		assertThat(items.get(0).getId(), is(2L));
 	}
 
+	@Test
+	public void testSync() {
+		Calendar c = Calendar.getInstance();
+		c.set(2013, Calendar.JUNE, 24);
+		List<Item> items = itemService.sync(c.getTimeInMillis(), 50);
+		System.err.println(items.size());
+		assertThat(items.size() > 1, is(true));
+	}
+	
 }

@@ -119,5 +119,11 @@ public interface ItemService {
 	 * 返回最热门的物品列表。
 	 */
 	List<Item> hot(@Min(1) @Max(50) int count);
+	
+	/**
+	 * 同步
+	 * @param lastSyncMills
+	 */
+	List<Item> sync(@Min(1) long lastSyncMills, @Min(1) @Max(200) int count);
 
 }
