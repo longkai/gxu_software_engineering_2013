@@ -111,6 +111,9 @@ public final class Consts {
 	/** 某个热门相关 */
 	public static final int LIST_BY_HOT = 6;
 	
+	/** 已经关闭的交易物品 */
+	public static final int CLOSED_ITEMS = 7;
+	
 	public static User resolveUser(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if (session == null || session.getAttribute(Consts.USER) == null) {

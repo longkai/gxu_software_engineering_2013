@@ -97,6 +97,12 @@ public interface ItemService {
 	 * @return 若deal为true，那么返回的是所有的，否则返回待售的。
 	 */
 	List<Item> list(@Min(1) long userId, @Min(1) @Max(50) int count, boolean deal, @Min(0) long lastItemId);
+	
+	/**
+	 * 返回某个卖家关闭交易的物品列表。
+	 * @param lastItemId 查看更多的物品的偏移量，为0表示刷新。
+	 */
+	List<Item> closed(@Min(1) long userId, @Min(1) @Max(50) int count, @Min(0) long lastItemId);
 
 	/**
 	 * 返回某个类别下的待售物品。

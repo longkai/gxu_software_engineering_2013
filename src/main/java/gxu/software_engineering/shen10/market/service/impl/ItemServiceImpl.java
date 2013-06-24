@@ -168,11 +168,13 @@ public class ItemServiceImpl implements ItemService {
 		} else {
 			params.put("last_id", lastItemId);
 		}
-//		返回所有
+//		返回已售
 		if (deal) {
-			return itemDao.list(true, "Item.list_user_all", params, 0, count);
+			params.put("deal", true);
+			return itemDao.list(true, "Item.list_user_deal", params, 0, count);
 		}
-//		返回代售
+//		返回待售
+		params.put("deal", false);
 		return itemDao.list(true, "Item.list_user_deal", params, 0, count);
 	}
 
@@ -211,6 +213,18 @@ public class ItemServiceImpl implements ItemService {
 		if (i.isDeal()) {
 			throw new RuntimeException("对不起，此物品已经成功交易，不能再修改啦！");
 		}
+	}
+
+	@Override
+	public List<Item> closed(long userId, int count, long lastItemId) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("seller_id", userId);
+		if (lastItemId == 0) {
+			params.put("last_id", Long.MAX_VALUE);
+		} else {
+			params.put("last_id", lastItemId);
+		}
+		return itemDao.list(true, "Item.list_user_closed", params, 0, count);
 	}
 	
 }

@@ -133,6 +133,9 @@ public class ItemController {
 		case LIST_BY_HOT:
 			items = itemService.hot(count);
 			break;
+		case CLOSED_ITEMS:
+			items = itemService.closed(uid, count, lastId);
+			break;
 		default:
 			throw new RuntimeException("对不起，没有这个选项！");
 		}

@@ -62,8 +62,9 @@ import gxu.software_engineering.shen10.market.entity.User;
 	@NamedQuery(name = "Item.size_seller_deal", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id AND i.deal IS FALSE"),
 	@NamedQuery(name = "Item.size_seller", query = "SELECT COUNT(*) FROM Item i WHERE i.seller.id = :seller_id"),
 	@NamedQuery(name = "Item.size_category", query = "SELECT COUNT(*) FROM Item i WHERE i.category.id = :category_id"),
-	@NamedQuery(name = "Item.list_user_all", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id ORDER BY i.id DESC"),
-	@NamedQuery(name = "Item.list_user_deal", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id AND i.deal IS FALSE ORDER BY i.id DESC"),
+//	@NamedQuery(name = "Item.list_user_all", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id AND i.closed IS FALSE ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.list_user_deal", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id AND i.deal IS :deal ORDER BY i.id DESC"),
+	@NamedQuery(name = "Item.list_user_closed", query = "FROM Item i WHERE i.seller.id = :seller_id AND i.id < :last_id AND i.closed IS TRUE ORDER BY i.id DESC"),
 	@NamedQuery(name = "Item.list_category_deal", query = "FROM Item i WHERE i.category.id = :category_id AND i.id < :last_id AND i.deal IS FALSE ORDER BY i.id DESC"),
 	@NamedQuery(name = "Item.list_hot", query = "FROM Item i WHERE i.blocked IS FALSE AND i.closed IS FALSE AND i.deal IS FALSE ORDER BY i.clickTimes DESC")
 })
