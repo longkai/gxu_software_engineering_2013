@@ -26,6 +26,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
 import java.util.List;
 
 import gxu.software_engineering.shen10.market.entity.User;
@@ -164,6 +165,15 @@ public class UserServiceTest {
 	@Test
 	public void testSize() {
 		assertThat(userService.size() > 2, is(true));
+	}
+	
+	@Test
+	public void testSync() {
+		Calendar c = Calendar.getInstance();
+		c.set(2013, Calendar.JUNE, 20);
+		List<User> users = userService.sync(c.getTimeInMillis(), 40);
+		System.err.println(users.size());
+		assertThat(users.size() > 4, is(true));
 	}
 
 }

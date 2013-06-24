@@ -133,4 +133,12 @@ public class UserServiceImpl implements UserService {
 		return userDao.size(true, false, null, null);
 	}
 
+	@Override
+	public List<User> sync(long lastSyncMills, int count) {
+		Date d = new Date(lastSyncMills);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("register_time", d);
+		return userDao.list(true, "User.list_sync", params, 0, count);
+	}
+
 }

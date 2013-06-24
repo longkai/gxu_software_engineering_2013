@@ -77,6 +77,12 @@ public interface UserService {
 	 * @param count 需要多少条记录。
 	 */
 	List<User> list(@Min(0) long lastUserId, @Min(1) @Max(50) int count);
+	
+	/**
+	 * 同步用户列表。
+	 * @param lastSyncMills 上一次同步的时间戳。
+	 */
+	List<User> sync(long lastSyncMills, @Min(1) @Max(50) int count);
 
 	/**
 	 * 返回所有的卖家数。
