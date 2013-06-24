@@ -109,9 +109,9 @@ public class ItemController {
 		L.info("{} 物品id：{}", type, id);
 		Item i = null;
 		if (type.equals("open")) {
-			itemService.close(false, uid, id);
+			i = itemService.close(false, uid, id);
 		} else if (type.equals("close")) {
-			itemService.close(true, uid, id);
+			i = itemService.close(true, uid, id);
 		} else {
 			throw new IllegalArgumentException("对不起，没有这个选项！"); 
 		}

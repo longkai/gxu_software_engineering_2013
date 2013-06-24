@@ -65,6 +65,10 @@ public class RecordServiceImpl implements RecordService {
 		Item item = itemDao.find(itemId);
 		Assert.notNull(item, "对不起，您所查找的物品不存在！");
 		
+		if (item.isDeal()) {
+			throw new RuntimeException("对不起，该物品已经交易过来，不能再交易啦！");
+		}
+		
 		if (item.isBlocked()) {
 			throw new RuntimeException("对不起，该物品已经被管理员冻结，您不能出售它！请联系管理员！");
 		}
@@ -83,6 +87,8 @@ public class RecordServiceImpl implements RecordService {
 		record.setItem(item);
 		
 		recordDao.persist(record);
+		item.setDeal(true);
+		itemDao.merge(item);
 		return record;
 	}
 
