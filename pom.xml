@@ -39,9 +39,9 @@
 		<hsqldb.version>2.2.9</hsqldb.version>
 		
 		<servlet-api.version>3.1.0</servlet-api.version>
-		<jetty.version>9.0.3.v20130506</jetty.version>
+		<jetty.version>8.1.11.v20130520</jetty.version>
 		<junit.version>4.11</junit.version>
-		<java.version>1.7</java.version>
+		<java.version>1.6</java.version>
 	</properties>
 
 	<dependencies>
@@ -257,7 +257,7 @@
 		<plugins>
 			<!-- jetty -->
 			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
+				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
