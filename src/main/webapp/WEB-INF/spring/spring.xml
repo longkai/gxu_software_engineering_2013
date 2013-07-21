@@ -13,6 +13,7 @@
 	<bean class="gxu.software_engineering.shen10.market.core.SpringBeans" />
 	
 	<mvc:annotation-driven />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
 	<mvc:interceptors>
 		<!--

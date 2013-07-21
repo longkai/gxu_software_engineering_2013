@@ -204,6 +204,7 @@ public class SpringBeans extends WebMvcConfigurerAdapter {
 		settings.setProperty("datetime_format", "yyyy-MM-dd HH:mm:ss");
 		settings.setProperty("classic_compatible", "true");
 		settings.setProperty("template_exception_handler", "ignore");
+		settings.setProperty("auto_import", "macro.ftl as L");
 		configurer.setFreemarkerSettings(settings);
 		return configurer;
 	}

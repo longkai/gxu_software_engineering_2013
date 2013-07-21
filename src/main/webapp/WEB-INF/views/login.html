@@ -1,0 +1,71 @@
+<@L.html>
+<@L.head title="管理员登陆">
+<style type="text/css">
+#login {
+	margin-top: 200px;
+}
+
+#login form {
+	margin-top: 20px;
+}
+</style>
+</@L.head>
+<body>
+	<div class="container" id="login">
+		<div class="row">
+			<div class="span6">
+				<div class="hero-unit">
+					<h2>欢迎来到管理员后台！</h2>
+				</div>
+			</div>
+			<div class="span6">
+				<form class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label" for="account">账号</label>
+						<div class="controls">
+							<input type="text" id="account" name="account" placeholder="账号" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="password">密码</label>
+						<div class="controls">
+							<input type="password" id="password" name="password" placeholder="密码" />
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<input type="button" id="submit" class="btn btn-primary" value="登陆" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+<@L.script>
+<script type="text/javascript">
+$(function() {
+	$('#submit').click(function(e) {
+		e.preventDefault();
+		var data = $('form').serialize();
+		$.ajax({
+			url: '/admin/_login',
+			dataType: 'json',
+			type: 'GET',
+			data: data,
+			success: function(data) {
+				if (data.status === 1) {
+					console.log('ok!')
+				} else {
+					console.log(data.msg + ' ' + data.reason);
+				}
+			},
+			error: function() {
+				console.log('error');
+			}
+		})
+	})
+})
+</script>
+</@L.script>
+</@L.html>
