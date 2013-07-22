@@ -28,6 +28,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/**" />
 			<mvc:mapping path="/categories/add" />
+			<mvc:mapping path="/categories/*/modify" />
 			<mvc:exclude-mapping path="/admin/login" />
 			<mvc:exclude-mapping path="/admin/_login" />
 			<bean class="gxu.software_engineering.shen10.market.interceptor.AdminInterceptor" />

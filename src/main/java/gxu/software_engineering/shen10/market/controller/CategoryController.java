@@ -91,6 +91,7 @@ public class CategoryController {
 		L.info("修改类别信息：{}", category);
 		Category c = categoryService.modify(cid, category.getName(), category.getDescription());
 		model.addAttribute(CATEGORY, c);
+		model.addAttribute(STATUS, STATUS_OK);
 		return BAD_REQUEST;
 	}
 	

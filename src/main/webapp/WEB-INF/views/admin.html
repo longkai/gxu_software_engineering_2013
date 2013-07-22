@@ -66,24 +66,26 @@ i {
 		<h3 id="ctitle"></h3>
 	</div>
 	<div class="modal-body">
-		<div class="control-group">
-			<label class="control-label" for="cname">类别名称</label>
-			<div class="controls">
-				<input type="text" id="cname" name="name" placeholder="类别名称" />
+		<form action="#" id="c_modify_form"> 
+			<div class="control-group">
+				<label class="control-label" for="cname">类别名称</label>
+				<div class="controls">
+					<input type="text" id="cname" name="name" placeholder="类别名称" />
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="cdescription">详细描述</label>
-			<div class="controls">
-				<textarea id="cdescription" name="description"></textarea>
+			<div class="control-group">
+				<label class="control-label" for="cdescription">详细描述</label>
+				<div class="controls">
+					<textarea id="cdescription" name="description"></textarea>
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="cextra">额外信息（可选）</label>
-			<div class="controls">
-				<textarea id="cextra" name="extra"></textarea>
+			<div class="control-group">
+				<label class="control-label" for="cextra">额外信息（可选）</label>
+				<div class="controls">
+					<textarea id="cextra" name="extra"></textarea>
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 	<div class="modal-footer">
 		<a href="#" class="btn btn-warning" id="cmodify">确认修改</a>
@@ -318,6 +320,23 @@ $(function() {
 
 	$('#cmodify').click(function(e) {
 		e.preventDefault();
+		var cid = $(this).attr('cid');
+		var data = $('#c_modify_form').serialize();
+		$.ajax({
+			url: '/categories/' + cid + '/modify',
+			type: 'PUT',
+			data: data,
+			dataType: 'json',
+			success: function(data) {
+				console.log(data.status);
+				if (data.status === 1) {
+					alert('修改成功！');
+				} else {
+					alert('修改失败！');
+				}
+			}
+		})
+		// location.reload();
 		$('#cmodal').modal('hide');
 	})
 
