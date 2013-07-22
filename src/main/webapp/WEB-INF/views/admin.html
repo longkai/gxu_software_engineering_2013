@@ -145,6 +145,7 @@ i {
 		</form>
 	</div>
 	<div class="modal-footer">
+		<a href="#" class="btn btn-success" id="reset_pwd">重置用户密码</a>
 		<a href="#" class="btn btn-warning" id="ualter">确认修改</a>
 		<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
 	</div>
@@ -432,6 +433,26 @@ $(function() {
 					alert('修改成功！');
 					$('#umodal').modal('hide');
 					location.reload();
+				} else {
+					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
+				}
+			}
+		})
+	})
+
+	$('#reset_pwd').click(function(e) {
+		e.preventDefault();
+		var pwd = prompt('请输入需要重置的密码！');
+		// $.trim(pwd)
+		var uid = $('#u_block').attr('uid');
+		$.ajax({
+			url: '/users/' + uid + '/reset_pwd?pwd=' + pwd,
+			type: 'PUT',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data.status);
+				if (data.status === 1) {
+					alert('修改成功！');
 				} else {
 					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
 				}

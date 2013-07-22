@@ -31,6 +31,7 @@
 			<mvc:mapping path="/categories/*/modify" />
 			<mvc:mapping path="/users/block" />
 			<mvc:mapping path="/users/*/alter" />
+			<mvc:mapping path="/users/*/reset_pwd" />
 			<mvc:exclude-mapping path="/admin/login" />
 			<mvc:exclude-mapping path="/admin/_login" />
 			<bean class="gxu.software_engineering.shen10.market.interceptor.AdminInterceptor" />

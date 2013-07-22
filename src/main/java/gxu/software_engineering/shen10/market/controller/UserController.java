@@ -129,4 +129,14 @@ public class UserController {
 		return BAD_REQUEST;
 	}
 	
+	@RequestMapping(value = "/users/{uid}/reset_pwd", method = PUT)
+	public String resetPwd(Model model, @PathVariable("uid") long uid,
+			@RequestParam("pwd") String pwd) {
+		L.info("重置用户密码 uid: {}", uid);
+		User u = userService.modify(uid, true, pwd);
+		model.addAttribute(STATUS, STATUS_OK);
+		model.addAttribute(USER, u);
+		return BAD_REQUEST;
+	}
+	
 }
