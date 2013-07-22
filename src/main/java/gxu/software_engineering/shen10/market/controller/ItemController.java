@@ -173,4 +173,14 @@ public class ItemController {
 		return BAD_REQUEST;
 	}
 	
+	@RequestMapping(value = "/items/{id}/block", method = PUT)
+	public String block(Model model, @PathVariable("id") long id,
+			@RequestParam("block") boolean block) {
+		L.info("将物品 {} block 状态置为 {}", id, block);
+		Item i = itemService.block(id, block);
+		model.addAttribute(STATUS, STATUS_OK);
+		model.addAttribute(ITEM, i);
+		return BAD_REQUEST;
+	}
+	
 }

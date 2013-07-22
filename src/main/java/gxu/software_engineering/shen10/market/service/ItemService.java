@@ -66,6 +66,14 @@ public interface ItemService {
 	Item detail(@Min(1) long itemId);
 
 	/**
+	 * 将物品屏蔽或者解开屏蔽（适用于管理员）。
+	 * @param id
+	 * @param blocked
+	 */
+	@NotNull(message = "对不起，您所要查早的物品不存在！")
+	Item block(@Min(1) long id, boolean blocked);
+
+	/**
 	 * 查看最新的物品列表。
 	 */
 	List<Item> latest(@Min(1) @Max(50) int count);

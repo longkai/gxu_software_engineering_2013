@@ -233,5 +233,14 @@ public class ItemServiceImpl implements ItemService {
 		params.put("last_modified_time", d);
 		return itemDao.list(true, "Item.list_sync", params, 0, count);
 	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public Item block(long id, boolean blocked) {
+		Item i = itemDao.find(id);
+		i.setBlocked(blocked);
+		itemDao.merge(i);
+		return i;
+	}
 	
 }

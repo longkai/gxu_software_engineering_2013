@@ -115,7 +115,7 @@ public class Item {
 	private String		description;
 
 	/** 由于不符合规定，由管理员将其锁住 */
-	@JsonIgnore
+//	@JsonIgnore
 	private boolean		blocked;
 
 	/** 交易是否成功了 */

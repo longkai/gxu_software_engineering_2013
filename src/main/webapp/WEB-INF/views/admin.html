@@ -459,6 +459,48 @@ $(function() {
 			}
 		})
 	})
+
+	$('#i_block').click(function(e) {
+		e.preventDefault();
+		var this$ = $(this);
+		var id = this$.attr('_id');
+		$.ajax({
+			url: '/items/' + id + '/block?block=1',
+			type: 'PUT',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data.status);
+				if (data.status === 1) {
+					alert('修改成功！');
+					this$.hide();
+					$('#i_unblock').show();
+				} else {
+					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
+				}
+			}
+		})
+	})
+
+	$('#i_unblock').click(function(e) {
+		e.preventDefault();
+		var this$ = $(this);
+		var id = this$.attr('_id');
+		$.ajax({
+			url: '/items/' + id + '/block?block=0',
+			type: 'PUT',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data.status);
+				if (data.status === 1) {
+					alert('修改成功！');
+					this$.hide();
+					$('#i_block').show();
+				} else {
+					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
+				}
+			}
+		})
+	})
 })
 
 $('body').on('click', 'li.c', function(e) {
@@ -526,6 +568,8 @@ $('body').on('click', 'li.i', function(e) {
 		success: function(data) {
 			var i = data.item;
 			// console.log(i.name);
+			$('#i_unblock').attr('_id', i.id).hide();
+			$('#i_block').attr('_id', i.id).hide();
 			$('#ititle').text(i.name);
 			$('#iname').val(i.name);
 			$('#icategory').val(i.category.name);
@@ -545,8 +589,9 @@ $('body').on('click', 'li.i', function(e) {
 			} else {
 				$('#ideal').val('未完成交易');
 			}
+			console.log(i.blocked);
 			if (i.blocked) {
-				$('i_unblock').show();
+				$('#i_unblock').show();
 			} else {
 				$('#i_block').show();
 			}
