@@ -35,7 +35,7 @@ i {
 		<div class="span2">
 			<div class="nav nav-list">
 				<li class="nav-header">类别管理</li>
-				<li><a href="#">添加类别<i class="icon-chevron-right"></i></a></li>
+				<li id="new_category"><a href="#">添加类别<i class="icon-chevron-right"></i></a></li>
 				<li id="clist"><a href="#">类别列表<i class="icon-chevron-right"></i></a></li>
 
 				<li class="nav-header">用户管理</li>
@@ -219,6 +219,38 @@ i {
 		<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
 	</div>
 </div>
+<div class="modal hide fade" id="new_category_modal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h2>添加新类别</h2>
+	</div>
+	<div class="modal-body">
+		<form action="#" id="cform">
+			<div class="control-group">
+				<label class="control-label" for="name">类别名称</label>
+				<div class="controls">
+					<input type="text" name="name" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="cdescription">详细描述</label>
+				<div class="controls">
+					<textarea name="description"></textarea>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="extra">额外信息（可选）</label>
+				<div class="controls">
+					<textarea  name="extra"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn btn-success" id="new_category_ok">确认</a>
+		<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">取消</a>
+	</div>
+</div>
 </body>
 <@L.script>
 <script type="text/javascript" src="/resources/js/common/datetime.js"></script>
@@ -274,7 +306,7 @@ $(function() {
 			type: 'GET',
 			dataType: 'json',
 			success: function(data) {
-				$.each(data.items, function(i, i) {
+				$.each(data.items, function(index, i) {
 					console.log(i.name);
 					$('<li>').append($('<a>').attr({
 						href: '/items/' + i.id
@@ -294,6 +326,33 @@ $(function() {
 		var uid = $(this).attr('uid');
 		$('#imodal').modal('hide');
 		userProfle('/users/' + uid);
+	})
+
+	$('#new_category').click(function(e) {
+		e.preventDefault();
+		$('#new_category_modal').modal();
+	})
+
+	$('#new_category_ok').click(function(e) {
+		e.preventDefault();
+		var data = $('#cform').serialize();
+		// console.log(data);
+		$.ajax({
+			url: '/categories/add',
+			data: data,
+			type: 'POST',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data.status);
+				if (data.status === 1) {
+					alert('添加成功！');
+					console.log(data.category.id);
+					$('#new_category_modal').modal('hide');
+				} else {
+					alert('添加失败！\n\n信息：' + data.msg + '\n原因：' + data.reason);
+				}
+			}
+		})
 	})
 })
 
@@ -363,7 +422,7 @@ $('body').on('click', 'li.i', function(e) {
 			$('#ititle').text(i.name);
 			$('#iname').val(i.name);
 			$('#icategory').val(i.category.name);
-			$('#iprice').val('￥' + i.price);
+			$('#iprice').val(i.price);
 			$('#iseller').val(i.seller.nick);
 			$('#iseller').attr('uid', i.seller.id);
 			$('#iadded_time').val(datetime.relativeTime(i.added_time));

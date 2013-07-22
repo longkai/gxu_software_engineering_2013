@@ -44,6 +44,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -65,9 +66,15 @@ public class CategoryController {
 	
 	@RequestMapping(value = "/categories/add", method = POST) 
 	public String add(Model model, @Valid Category category, BindingResult result) {
-		if (result.hasFieldErrors()) {
-			throw new IllegalArgumentException(result.getFieldError().getDefaultMessage());
+		if (result.hasErrors()) {
+			List<ObjectError> errors = result.getAllErrors();
+			String msg = "您输入的信息有误！\n";
+			for (int i = 0; i < errors.size(); i++) {
+				msg += errors.get(i).getDefaultMessage() + "\n";
+			}
+			throw new IllegalArgumentException(msg);
 		}
+		categoryService.add(category);
 		model.addAttribute(STATUS, STATUS_OK);
 		return BAD_REQUEST;
 	}
