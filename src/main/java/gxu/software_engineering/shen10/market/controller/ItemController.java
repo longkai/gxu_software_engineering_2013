@@ -183,4 +183,17 @@ public class ItemController {
 		return BAD_REQUEST;
 	}
 	
+	@RequestMapping(value = "/items/{id}/alter", method = PUT)
+	public String alter(Model model, @PathVariable("id") long id,
+			@RequestParam("name") String name,
+			@RequestParam("price") float price,
+			@RequestParam("description") String desc,
+			@RequestParam("extra") String extra) {
+		L.info("修正物品信息 {} extra:{}", id, extra);
+		Item i = itemService.alter(id, price, name, desc, extra.equals("") ? null : extra);
+		model.addAttribute(STATUS, STATUS_OK);
+		model.addAttribute(ITEM, i);
+		return BAD_REQUEST;
+	}
+	
 }

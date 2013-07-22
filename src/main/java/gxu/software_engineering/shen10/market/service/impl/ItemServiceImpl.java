@@ -242,5 +242,18 @@ public class ItemServiceImpl implements ItemService {
 		itemDao.merge(i);
 		return i;
 	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public Item alter(long id, float price, String name, String desc,
+			String extra) {
+		Item i = itemDao.find(id);
+		i.setPrice(price);
+		i.setName(name);
+		i.setDescription(desc);
+		i.setExtra(extra);
+		itemDao.merge(i);
+		return i;
+	}
 	
 }

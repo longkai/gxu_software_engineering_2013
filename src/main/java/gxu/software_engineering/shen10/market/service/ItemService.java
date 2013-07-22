@@ -49,6 +49,13 @@ public interface ItemService {
 	 * @return 返回修改成功后的物品，否则抛出异常。
 	 */
 	Item modify(@NotNull Item item, @Min(1) long cid, @Min(1) long uid);
+	
+	/**
+	 * 修正一个物品的信息。
+	 * @return 返回修改成功后的物品，否则抛出异常。
+	 */
+	@NotNull(message = "对不起，您所要查早的物品不存在！")
+	Item alter(@Min(1) long id, float price, String name, String desc, String extra);
 
 	/**
 	 * 物品所属人将物品标注为关闭状态，或者将已经关闭的物品置为打开状态（可以出售）。

@@ -156,71 +156,73 @@ i {
 		<h3 id="ititle"></h3>
 	</div>
 	<div class="modal-body">
-		<div class="control-group">
-			<label class="control-label" for="iname">名称</label>
-			<div class="controls">
-				<input type="text" id="iname" name="name" />
+		<form action="#" id="alter_item_form">
+			<div class="control-group">
+				<label class="control-label" for="iname">名称</label>
+				<div class="controls">
+					<input type="text" id="iname" name="name" />
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="icategory">类别</label>
-			<div class="controls">
-				<input type="text" id="icategory" name="_category" disabled="true" />
-				<input type="hidden" name="cid" id="_cid" />
+			<div class="control-group">
+				<label class="control-label" for="icategory">类别</label>
+				<div class="controls">
+					<input type="text" id="icategory" name="_category" disabled="true" />
+					<input type="hidden" name="cid" id="_cid" />
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="iprice">价格</label>
-			<div class="controls">
-				<input type="text" id="iprice" name="price" />
+			<div class="control-group">
+				<label class="control-label" for="iprice">价格</label>
+				<div class="controls">
+					<input type="text" id="iprice" name="price" />
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="iadded_time">添加时间</label>
-			<div class="controls">
-				<input type="text" id="iadded_time" name="added_time" disabled="true" />
+			<div class="control-group">
+				<label class="control-label" for="iadded_time">添加时间</label>
+				<div class="controls">
+					<input type="text" id="iadded_time" name="added_time" disabled="true" />
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="iseller">卖家</label>
-			<div class="controls">
-				<input type="button" id="iseller" class="btn btn-info" name="_seller" />
+			<div class="control-group">
+				<label class="control-label" for="iseller">卖家</label>
+				<div class="controls">
+					<input type="button" id="iseller" class="btn btn-info" name="_seller" />
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="isClose">是否已经被卖家关闭交易</label>
-			<div class="controls">
-				<input type="button" class="btn btn-warning" id="isClose" />
+			<div class="control-group">
+				<label class="control-label" for="isClose">是否已经被卖家关闭交易</label>
+				<div class="controls">
+					<input type="button" class="btn btn-warning" id="isClose" />
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="ideal">是否已经交易完成</label>
-			<div class="controls">
-				<input type="button" class="btn btn-warning" id="ideal" />
+			<div class="control-group">
+				<label class="control-label" for="ideal">是否已经交易完成</label>
+				<div class="controls">
+					<input type="button" class="btn btn-warning" id="ideal" />
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="cextra">屏蔽/解开屏蔽</label>
-			<div class="controls">
-				<input type="button" class="btn btn-warning hide" id="i_block" value="是否将其屏蔽？" />
-				<input type="button" class="btn btn-warning hide" id="i_unblock" value="是否将其解开屏蔽？" />
+			<div class="control-group">
+				<label class="control-label" for="cextra">屏蔽/解开屏蔽</label>
+				<div class="controls">
+					<input type="button" class="btn btn-warning hide" id="i_block" value="是否将其屏蔽？" />
+					<input type="button" class="btn btn-warning hide" id="i_unblock" value="是否将其解开屏蔽？" />
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="idescription">详细描述</label>
-			<div class="controls">
-				<textarea id="idescription" name="description"></textarea>
+			<div class="control-group">
+				<label class="control-label" for="idescription">详细描述</label>
+				<div class="controls">
+					<textarea id="idescription" name="description"></textarea>
+				</div>
 			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="iextra">额外信息</label>
-			<div class="controls">
-				<textarea id="iextra" name="extra"></textarea>
+			<div class="control-group">
+				<label class="control-label" for="iextra">额外信息</label>
+				<div class="controls">
+					<textarea id="iextra" name="extra"></textarea>
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 	<div class="modal-footer">
-		<a href="#" class="btn btn-warning" id="cmodify">确认修改</a>
+		<a href="#" class="btn btn-warning" id="calter">确认修改</a>
 		<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
 	</div>
 </div>
@@ -495,6 +497,27 @@ $(function() {
 					alert('修改成功！');
 					this$.hide();
 					$('#i_block').show();
+				} else {
+					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
+				}
+			}
+		})
+	})
+
+	$('#calter').click(function(e) {
+		e.preventDefault();
+		var data = $('#alter_item_form').serialize();
+		console.log(data);
+		var id = $('#i_block').attr('_id');
+		$.ajax({
+			url: '/items/' + id + '/alter',
+			data: data,
+			dataType: 'json',
+			type: 'PUT',
+			success: function(data) {
+				if (data.status === 1) {
+					alert('修改成功！');
+					location.reload();
 				} else {
 					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
 				}
