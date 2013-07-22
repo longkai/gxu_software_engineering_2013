@@ -150,4 +150,15 @@ public class UserServiceImpl implements UserService {
 		return u;
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public User alter(long uid, String account, String nick, String contact) {
+		User u = userDao.find(uid);
+		u.setAccount(account);
+		u.setNick(nick);
+		u.setContact(contact);
+		userDao.merge(u);
+		return u;
+	}
+
 }

@@ -71,6 +71,16 @@ public interface UserService {
 	 * @param blocked
 	 */
 	User block(@Min(1) long uid, boolean blocked);
+	
+	/**
+	 * 修正用户不适当的信息（适用于管理员）。
+	 * @param uid
+	 * @param account
+	 * @param nick
+	 * @param contact
+	 */
+	@NotNull(message = "对不起，您所要操作的用户不存在！")
+	User alter(@Min(1) long uid, String account, String nick, String contact);
 
 	/**
 	 * 最新注册的用户列表。

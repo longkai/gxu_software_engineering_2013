@@ -98,7 +98,8 @@ i {
 		<h3 id="utitle"></h3>
 	</div>
 	<div class="modal-body">
-		<div class="control-group">
+		<form action="#" id="u_alter_form">
+					<div class="control-group">
 			<label class="control-label" for="unick">昵称</label>
 			<div class="controls">
 				<input type="text" id="unick" name="nick" />
@@ -141,9 +142,10 @@ i {
 				<input type="button" class="btn btn-warning hide" id="u_unblock" value="是否将其解开屏蔽？" />
 			</div>
 		</div>
+		</form>
 	</div>
 	<div class="modal-footer">
-		<a href="#" class="btn btn-warning" id="cmodify">确认修改</a>
+		<a href="#" class="btn btn-warning" id="ualter">确认修改</a>
 		<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
 	</div>
 </div>
@@ -408,6 +410,28 @@ $(function() {
 					alert('修改成功！');
 					this$.hide();
 					$('#u_block').show();
+				} else {
+					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
+				}
+			}
+		})
+	})
+
+	$('#ualter').click(function(e) {
+		e.preventDefault();
+		var data = $('#u_alter_form').serialize();
+		var uid = $('#u_unblock').attr('uid');
+		$.ajax({
+			url: '/users/' + uid + '/alter',
+			type: 'PUT',
+			data: data,
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data.status);
+				if (data.status === 1) {
+					alert('修改成功！');
+					$('#umodal').modal('hide');
+					location.reload();
 				} else {
 					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
 				}

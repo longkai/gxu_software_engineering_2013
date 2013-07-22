@@ -117,4 +117,16 @@ public class UserController {
 		return BAD_REQUEST;
 	}
 	
+	@RequestMapping(value = "/users/{uid}/alter", method = PUT)
+	public String alter(Model model,@PathVariable("uid") long uid,
+			@RequestParam("nick") String nick,
+			@RequestParam("account") String account,
+			@RequestParam("contact") String contact) {
+		L.info("修正用户信息：uid：{}", uid);
+		User u = userService.alter(uid, account, nick, contact);
+		model.addAttribute(STATUS, STATUS_OK);
+		model.addAttribute(USER, u);
+		return BAD_REQUEST;
+	}
+	
 }
