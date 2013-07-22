@@ -1,0 +1,393 @@
+<@L.html>
+<@L.head>
+<style type="text/css">
+.navbar {
+	margin-top: 10px;
+}
+i {
+	float: right;
+}
+</style>
+</@L.head>
+<body>
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+
+			<a class="brand" href="#">管理员页面</a>
+
+			<div class="nav-collapse collapse pull-right">
+				<ul class="nav">
+					<li><a href="#">退出</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="span2">
+			<div class="nav nav-list">
+				<li class="nav-header">类别管理</li>
+				<li><a href="#">添加类别<i class="icon-chevron-right"></i></a></li>
+				<li id="clist"><a href="#">类别列表<i class="icon-chevron-right"></i></a></li>
+
+				<li class="nav-header">用户管理</li>
+				<li id="ulist"><a href="#">用户列表<i class="icon-chevron-right"></i></a></li>
+
+				<li class="nav-header">物品管理</li>
+				<li id="ilist"><a href="#">物品列表<i class="icon-chevron-right"></i></a></li>
+			</div>
+		</div>
+		<div class="span10">
+			<div id="categories" class="hide">
+				<ul class="unstyled"></ul>
+			</div>
+			<div id="users" class="hide">
+				<ul class="unstyled"></ul>
+				<button class="btn btn-block btn-info">查看更多</button>
+			</div>
+			<div id="items" class="hide">
+				<ul class="unstyled"></ul>
+				<button class="btn btn-block btn-info">查看更多</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal hide fade" id="cmodal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="ctitle"></h3>
+	</div>
+	<div class="modal-body">
+		<div class="control-group">
+			<label class="control-label" for="cname">类别名称</label>
+			<div class="controls">
+				<input type="text" id="cname" name="name" placeholder="类别名称" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="cdescription">详细描述</label>
+			<div class="controls">
+				<textarea id="cdescription" name="description"></textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="cextra">额外信息（可选）</label>
+			<div class="controls">
+				<textarea id="cextra" name="extra"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn btn-warning" id="cmodify">确认修改</a>
+		<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
+	</div>
+</div>
+<div class="modal hide fade" id="umodal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="utitle"></h3>
+	</div>
+	<div class="modal-body">
+		<div class="control-group">
+			<label class="control-label" for="unick">昵称</label>
+			<div class="controls">
+				<input type="text" id="unick" name="nick" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="uaccount">账号</label>
+			<div class="controls">
+				<input type="text" id="uaccount" name="account" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="ucontact">联系方式</label>
+			<div class="controls">
+				<input type="text" id="ucontact" name="contact" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="uregister_time">注册时间</label>
+			<div class="controls">
+				<input type="text" id="uregister_time" name="register_time" disabled="true" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="ulast_login_time">上一次登陆时间</label>
+			<div class="controls">
+				<input type="text" id="ulast_login_time" name="last_login_time" disabled="true" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="ulogin_times">登陆次数</label>
+			<div class="controls">
+				<input type="text" id="ulogin_times" name="login_times" disabled="true" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="cextra">屏蔽/解开屏蔽</label>
+			<div class="controls">
+				<input type="button" class="btn btn-warning hide" id="u_block" value="是否将其屏蔽？" />
+				<input type="button" class="btn btn-warning hide" id="u_unblock" value="是否将其解开屏蔽？" />
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn btn-warning" id="cmodify">确认修改</a>
+		<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
+	</div>
+</div>
+<div class="modal hide fade" id="imodal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="ititle"></h3>
+	</div>
+	<div class="modal-body">
+		<div class="control-group">
+			<label class="control-label" for="iname">名称</label>
+			<div class="controls">
+				<input type="text" id="iname" name="name" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="icategory">类别</label>
+			<div class="controls">
+				<input type="text" id="icategory" name="_category" disabled="true" />
+				<input type="hidden" name="cid" id="_cid" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="iprice">价格</label>
+			<div class="controls">
+				<input type="text" id="iprice" name="price" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="iadded_time">添加时间</label>
+			<div class="controls">
+				<input type="text" id="iadded_time" name="added_time" disabled="true" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="iseller">卖家</label>
+			<div class="controls">
+				<input type="button" id="iseller" class="btn btn-info" name="_seller" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="isClose">是否已经被卖家关闭交易</label>
+			<div class="controls">
+				<input type="button" class="btn btn-warning" id="isClose" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="ideal">是否已经交易完成</label>
+			<div class="controls">
+				<input type="button" class="btn btn-warning" id="ideal" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="cextra">屏蔽/解开屏蔽</label>
+			<div class="controls">
+				<input type="button" class="btn btn-warning hide" id="i_block" value="是否将其屏蔽？" />
+				<input type="button" class="btn btn-warning hide" id="i_unblock" value="是否将其解开屏蔽？" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="idescription">详细描述</label>
+			<div class="controls">
+				<textarea id="idescription" name="description"></textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="iextra">额外信息</label>
+			<div class="controls">
+				<textarea id="iextra" name="extra"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn btn-warning" id="cmodify">确认修改</a>
+		<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
+	</div>
+</div>
+</body>
+<@L.script>
+<script type="text/javascript" src="/resources/js/common/datetime.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#clist').click(function(e) {
+		e.preventDefault();
+		$('.span10 div ul').empty();
+		$('.span10 div').hide();
+		$('#categories').show();
+		$.ajax({
+			url: '/categories',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				$.each(data.categories, function(i, c) {
+					console.log(c.name);
+					$('<li>').append($('<a>').attr({
+						href: '/categories/' + c.id
+					}).text(c.name)).addClass('c').appendTo('#categories ul');
+				});
+			}
+		})
+	})
+
+	$('#ulist').click(function(e) {
+		e.preventDefault();
+		$('.span10 div ul').empty();
+		$('.span10 div').hide();
+		$('#users').show();
+		$.ajax({
+			url: '/users?type=1&count=20',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				$.each(data.users, function(i, u) {
+					console.log(u.nick);
+					$('<li>').append($('<a>').attr({
+						href: '/users/' + u.id
+					}).text(u.nick)).addClass('u').appendTo('#users ul');
+				});
+			}
+		})
+	})
+
+	$('#ilist').click(function(e) {
+		e.preventDefault();
+		$('.span10 div ul').empty();
+		$('.span10 div').hide();
+		$('#items').show();
+		$.ajax({
+			url: '/items?type=1&count=20',
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				$.each(data.items, function(i, i) {
+					console.log(i.name);
+					$('<li>').append($('<a>').attr({
+						href: '/items/' + i.id
+					}).text(i.name)).addClass('i').appendTo('#items ul');
+				});
+			}
+		})
+	})
+
+	$('#cmodify').click(function(e) {
+		e.preventDefault();
+		$('#cmodal').modal('hide');
+	})
+
+	$('#iseller').click(function(e) {
+		e.preventDefault();
+		var uid = $(this).attr('uid');
+		$('#imodal').modal('hide');
+		userProfle('/users/' + uid);
+	})
+})
+
+$('body').on('click', 'li.c', function(e) {
+	e.preventDefault();
+	var url = $(this).find('a').attr('href');
+	// console.log(url);
+	$.ajax({
+		url: url,
+		dataType: 'json',
+		type: 'GET',
+		success: function(data) {
+			// console.log(data.category.name);
+			var c = data.category;
+			$('#cmodify').attr('cid', c.id);
+			$('#ctitle').text(c.name);
+			$('#cname').val(c.name);
+			$('#cdescription').val(c.description);
+			$('#cextra').val(c.extra);
+			$('#cmodal').modal();
+		}
+	})
+})
+
+$('body').on('click', 'li.u', function(e) {
+	e.preventDefault();
+	var url = $(this).find('a').attr('href');
+	// console.log(url);
+	userProfle(url);
+})
+function userProfle(url) {
+	$.ajax({
+		url: url,
+		type: 'GET',
+		dataType: 'json',
+		success: function(data) {
+			console.log(data.user.account);
+			var u = data.user;
+			$('#utitle').text(u.nick);
+			$('#unick').val(u.nick);
+			$('#uaccount').val(u.account);
+			$('#ucontact').val(u.contact);
+			// relativeTime 
+			$('#uregister_time').val(datetime.relativeTime(u.register_time));
+			$('#ulast_login_time').val(datetime.relativeTime(u.last_login_time));
+			$('#ulogin_times').val(u.login_times);
+			if (u.blocked) {
+				$('#u_unblock').show();
+			} else {
+				$('#u_block').show();
+			}
+			$('#umodal').modal();
+		}
+	})
+}
+$('body').on('click', 'li.i', function(e) {
+	e.preventDefault();
+	var url = $(this).find('a').attr('href');
+	// console.log(url);
+	$.ajax({
+		url: url,
+		type: 'GET',
+		dataType: 'json',
+		success: function(data) {
+			var i = data.item;
+			// console.log(i.name);
+			$('#ititle').text(i.name);
+			$('#iname').val(i.name);
+			$('#icategory').val(i.category.name);
+			$('#iprice').val('￥' + i.price);
+			$('#iseller').val(i.seller.nick);
+			$('#iseller').attr('uid', i.seller.id);
+			$('#iadded_time').val(datetime.relativeTime(i.added_time));
+			$('#idescription').val(i.description);
+			$('#iextra').val(i.extra);
+			if (i.closed) {
+				$('#isClose').val('已关闭');
+			} else {
+				$('#isClose').val('未关闭');
+			}
+			if (i.deal) {
+				$('#ideal').val('已经完成交易');
+			} else {
+				$('#ideal').val('未完成交易');
+			}
+			if (i.blocked) {
+				$('i_unblock').show();
+			} else {
+				$('#i_block').show();
+			}
+			$('#imodal').modal();
+		}
+	})
+})
+</script>
+</@L.script>
+</@L.html>

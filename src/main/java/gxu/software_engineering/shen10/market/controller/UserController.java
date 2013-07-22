@@ -102,7 +102,7 @@ public class UserController {
 			users = userService.list(lastId, count);
 			break;
 		default:
-			throw new IllegalArgumentException("地不起，没有这个选项！");
+			throw new IllegalArgumentException("对不起，没有这个选项！");
 		}
 		model.addAttribute(USERS, users);
 		return BAD_REQUEST;

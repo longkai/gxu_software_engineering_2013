@@ -77,6 +77,11 @@ public class AdminController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "admin", method = GET)
+	public String admin() {
+		return ADMIN;
+	}
+	
 	@RequestMapping(value = "_login", method = GET)
 	public String login(
 			Model model,
@@ -92,8 +97,14 @@ public class AdminController {
 //			throw new IllegalArgumentException(msg);
 //		}
 		Admin admin = adminService.login(account, password);
-		request.getSession().setAttribute("admin", admin);
+		request.getSession().setAttribute(ADMIN, admin);
 		model.addAttribute(STATUS, STATUS_OK);
 		return BAD_REQUEST;
 	}
+	
+	@RequestMapping(value = "categoies", method = GET)
+	public String add(int i) {
+		return BAD_REQUEST;
+	}
+	
 }

@@ -87,7 +87,7 @@ public class User {
 	
 	/** 联系方式 */
 	@NotNull(message = "手机号码不能为空！")
-	@Pattern(regexp = "^1[3|4|5|8]\\d{9}", message = "机号吗格式不正确！")
+	@Pattern(regexp = "^1[3|4|5|8]\\d{9}", message = "手机号吗格式不正确！")
 	private String contact;
 
 	@Column(name = "register_time")
@@ -105,7 +105,7 @@ public class User {
 	/** 用户的信用，由注册的买家评价 */
 //	private Long credit;
 
-	@JsonIgnore
+//	@JsonIgnore
 	private boolean	blocked;
 
 	public Long getId() {
