@@ -64,6 +64,13 @@ public interface UserService {
 	 * @return 修改成功后的用户。
 	 */
 	User modify(@Min(1) long uid, boolean isPwd, @NotBlank String s);
+	
+	/**
+	 * 将用户屏蔽或者解开屏蔽。
+	 * @param uid
+	 * @param blocked
+	 */
+	User block(@Min(1) long uid, boolean blocked);
 
 	/**
 	 * 最新注册的用户列表。

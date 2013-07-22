@@ -141,4 +141,13 @@ public class UserServiceImpl implements UserService {
 		return userDao.list(true, "User.list_sync", params, 0, count);
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public User block(long uid, boolean blocked) {
+		User u = userDao.find(uid);
+		u.setBlocked(blocked);
+		userDao.merge(u);
+		return u;
+	}
+
 }

@@ -108,4 +108,13 @@ public class UserController {
 		return BAD_REQUEST;
 	}
 	
+	@RequestMapping(value = "/users/block", method = PUT)
+	public String block(Model model, @RequestParam("uid") long uid, @RequestParam("block") boolean blocked) {
+		L.debug("isblock: {}", blocked);
+		User u = userService.block(uid, blocked);
+		model.addAttribute(STATUS, STATUS_OK);
+		model.addAttribute(USER, u);
+		return BAD_REQUEST;
+	}
+	
 }

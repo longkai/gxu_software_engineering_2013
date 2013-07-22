@@ -373,6 +373,47 @@ $(function() {
 			}
 		})
 	})
+
+	$('#u_block').click(function(e) {
+		e.preventDefault();
+		var this$ = $(this);
+		var uid = this$.attr('uid');
+		$.ajax({
+			url: '/users/block?block=1&uid=' + uid,
+			type: 'PUT',
+			dataType: 'json',
+			success: function(data) {
+				// console.log(data.status);
+				if (data.status === 1) {
+					alert('修改成功！');
+					this$.hide();
+					$('#u_unblock').show();
+				} else {
+					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
+				}
+			}
+		})
+	})
+
+	$('#u_unblock').click(function(e) {
+		e.preventDefault();
+		var this$ = $(this);
+		var uid = this$.attr('uid');
+		$.ajax({
+			url: '/users/block?block=0&uid=' + uid,
+			type: 'PUT',
+			dataType: 'json',
+			success: function(data) {
+				if (data.status === 1) {
+					alert('修改成功！');
+					this$.hide();
+					$('#u_block').show();
+				} else {
+					alert('修改失败！\n信息：' + data.msg + '\n原因：' + data.reason);
+				}
+			}
+		})
+	})
 })
 
 $('body').on('click', 'li.c', function(e) {
@@ -410,6 +451,8 @@ function userProfle(url) {
 		success: function(data) {
 			console.log(data.user.account);
 			var u = data.user;
+			$('#u_block').attr('uid', u.id).hide();
+			$('#u_unblock').attr('uid', u.id).hide();
 			$('#utitle').text(u.nick);
 			$('#unick').val(u.nick);
 			$('#uaccount').val(u.account);
