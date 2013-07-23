@@ -22,7 +22,7 @@ i {
 			<a class="brand" href="#">管理员页面</a>
 
 			<form class="navbar-form pull-left">
-					<input class="span2" id="query" type="text" />
+					<input class="span2" id="query" type="text" autofocus="autofocus" />
 					<select class="span2" id="query_type">
 						<option value="1" selected="selected">类别</option>
 						<option value="2">用户</option>
@@ -552,6 +552,9 @@ $(function() {
 			case '2':
 				queryUsers();
 				break;
+			case '3':
+				queryItems();
+				break;
 			default:
 				break;
 		}
@@ -603,6 +606,29 @@ function queryUsers() {
 					$('#users button').hide();
 				}
 			}
+		}
+	})
+}
+
+function queryItems() {
+	$.ajax({
+		url: '/items/q?count=20',
+		type: 'GET',
+		dataType: 'json',
+		data: {
+			name: $('#query').val()
+		},
+		success: function(data) {
+			// console.log(data.total);
+			$('<li>').text('共找到' + data.total + '条记录！').appendTo('#items > ul');
+				$.each(data.list, function(index, i) {
+					$('<li>').append($('<a>').attr('href', '/items/' + i.id)
+						.text(i.name)).addClass('i').appendTo('#items > ul');
+				});
+				$('#items').show();
+				if (data.list.length === data.total) {
+					$('#items button').hide();
+				}
 		}
 	})
 }

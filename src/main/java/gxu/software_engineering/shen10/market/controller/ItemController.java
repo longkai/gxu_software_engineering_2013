@@ -34,6 +34,7 @@ import gxu.software_engineering.shen10.market.service.ItemService;
 import gxu.software_engineering.shen10.market.service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -193,6 +194,18 @@ public class ItemController {
 		Item i = itemService.alter(id, price, name, desc, extra.equals("") ? null : extra);
 		model.addAttribute(STATUS, STATUS_OK);
 		model.addAttribute(ITEM, i);
+		return BAD_REQUEST;
+	}
+	
+	@RequestMapping(value = "/items/q", method = GET)
+	public String query(Model model,
+			@RequestParam(value = "name", required = false) String name,
+			@RequestParam(value = "price1", defaultValue = "0") float minPrice,
+			@RequestParam(value = "price2", defaultValue = "-1") float maxPrice,
+			@RequestParam(value = "last_id", defaultValue = "0") long lastId,
+			@RequestParam(value = "count") int count) {
+		Map<String, Object> result = itemService.search(name, minPrice, maxPrice, lastId, count);
+		model.addAllAttributes(result);
 		return BAD_REQUEST;
 	}
 	

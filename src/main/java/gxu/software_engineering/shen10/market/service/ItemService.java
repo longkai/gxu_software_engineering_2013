@@ -25,6 +25,7 @@ package gxu.software_engineering.shen10.market.service;
 import gxu.software_engineering.shen10.market.entity.Item;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -140,4 +141,15 @@ public interface ItemService {
 	 */
 	List<Item> sync(@Min(1) long lastSyncMills, @Min(1) @Max(200) int count);
 
+	/**
+	 * 物品相关的搜索。
+	 * @param name
+	 * @param minPrice
+	 * @param maxPrice
+	 * @param lastId (用于加载更多)
+	 * @param count
+	 */
+	Map<String, Object> search(String name, float minPrice, float maxPrice,
+			long lastId, int count);
+	
 }

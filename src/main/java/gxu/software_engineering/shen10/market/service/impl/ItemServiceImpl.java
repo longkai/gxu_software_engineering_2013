@@ -30,6 +30,7 @@ import gxu.software_engineering.shen10.market.service.ItemService;
 import gxu.software_engineering.shen10.market.util.Assert;
 import gxu.software_engineering.shen10.market.util.Consts;
 import gxu.software_engineering.shen10.market.util.CoreUtils;
+import gxu.software_engineering.shen10.market.util.TextUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -254,6 +255,31 @@ public class ItemServiceImpl implements ItemService {
 		i.setExtra(extra);
 		itemDao.merge(i);
 		return i;
+	}
+
+	@Override
+	public Map<String, Object> search(String name, float minPrice,
+			float maxPrice, long lastId, int count) {
+		StringBuilder sb = new StringBuilder("FROM Item i WHERE 1=1 ");
+		if (!TextUtils.isEmpty(name)) {
+			sb.append("AND i.name like '%").append(name).append("%' ");
+		}
+		if (maxPrice > minPrice) {
+			sb.append("AND i.price>").append(minPrice)
+				.append(" AND i.price<").append(maxPrice).append(" ");
+		}
+		if (lastId > 0) {
+			sb.append("AND i.id<").append(lastId).append(" ");
+		}
+		sb.append("ORDER BY i.id DESC");
+		String query = sb.toString();
+		List<Item> list = itemDao.search(query, null, count);
+		query = "SELECT COUNT(i.id) " + query;
+		long total = itemDao.size(false, false, query, null);
+		Map<String, Object> map = new HashMap<String, Object>(2);
+		map.put("list", list);
+		map.put("total", total);
+		return map;
 	}
 	
 }
