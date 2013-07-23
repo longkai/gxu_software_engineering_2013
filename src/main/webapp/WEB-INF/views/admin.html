@@ -7,6 +7,10 @@
 i {
 	float: right;
 }
+.span10 div ul li {
+	padding: 2px;
+	font-size: 15px;
+}
 </style>
 </@L.head>
 <body>
@@ -273,6 +277,8 @@ i {
 <script type="text/javascript" src="/resources/js/common/datetime.js"></script>
 <script type="text/javascript">
 $(function() {
+	$('.nav-list li a').addClass('text-warning');
+
 	$('#clist').click(function(e) {
 		e.preventDefault();
 		$('.span10 div ul').empty();
@@ -366,7 +372,9 @@ $(function() {
 
 	$('#new_category').click(function(e) {
 		e.preventDefault();
-		$('#new_category_modal').modal();
+		$('#new_category_modal').modal({
+			keyboard: true
+		});
 	})
 
 	$('#new_category_ok').click(function(e) {
@@ -545,6 +553,7 @@ $(function() {
 		e.preventDefault();
 		$('.span10 div ul').empty();
 		$('.span10 div').hide();
+		$('.span10 div button').hide();
 		var type = $('#query_type :selected').val();
 		console.log(type);
 		switch (type) {
