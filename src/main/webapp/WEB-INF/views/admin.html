@@ -65,7 +65,7 @@ i {
 			</div>
 			<div id="items" class="hide">
 				<ul class="unstyled"></ul>
-				<button class="btn btn-block btn-info">查看更多</button>
+				<button class="btn btn-block btn-info" id="more_items">查看更多</button>
 			</div>
 		</div>
 	</div>
@@ -318,6 +318,7 @@ $(function() {
 		e.preventDefault();
 		$('.span10 div ul').empty();
 		$('.span10 div').hide();
+		$('#more_items').removeAttr('disabled').text('查看更多');
 		$('#items').show();
 		$.ajax({
 			url: '/items?type=1&count=20',
@@ -325,10 +326,10 @@ $(function() {
 			dataType: 'json',
 			success: function(data) {
 				$.each(data.items, function(index, i) {
-					console.log(i.name);
+					// console.log(i.name);
 					$('<li>').append($('<a>').attr({
 						href: '/items/' + i.id
-					}).text(i.name)).addClass('i').appendTo('#items ul');
+					}).text(i.name)).addClass('i').attr('_id', i.id).appendTo('#items ul');
 				});
 			}
 		})
@@ -588,6 +589,29 @@ $(function() {
 		})
 	})
 
+	$('#more_items').click(function(e) {
+		e.preventDefault();
+		var id = $('#items li:last').attr('_id');
+		// console.log(id);
+		$.ajax({
+			url: '/items?type=2&count=20&last_id=' + id,
+			dataType: 'json',
+			type: 'GET',
+			success: function(data) {
+				// console.log(data.items.length);
+				if (data.items.length < 5) {
+					$('#more_items').attr('disabled', 'disabled').text('没有更多啦！');
+				}
+
+				$.each(data.items, function(index, i) {
+					// console.log(i.name);
+					$('<li>').append($('<a>').attr({
+						href: '/items/' + i.id
+					}).text(i.name)).addClass('i').attr('_id', i.id).appendTo('#items ul');
+				});
+			}
+		})
+	})
 })
 
 function queryCategory() {
