@@ -261,7 +261,7 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<scanIntervalSeconds>0</scanIntervalSeconds>
 					<webApp>
 						<contextPath>/</contextPath>
 						<!-- <defaultsDescriptor>src/main/resources/config/webdefault.xml</defaultsDescriptor> -->
