@@ -61,7 +61,7 @@ i {
 			</div>
 			<div id="users" class="hide">
 				<ul class="unstyled"></ul>
-				<button class="btn btn-block btn-info">查看更多</button>
+				<button class="btn btn-block btn-info" id="more_users">查看更多</button>
 			</div>
 			<div id="items" class="hide">
 				<ul class="unstyled"></ul>
@@ -297,17 +297,18 @@ $(function() {
 		e.preventDefault();
 		$('.span10 div ul').empty();
 		$('.span10 div').hide();
+		$('#more_users').removeAttr('disabled').text('查看更多');
 		$('#users').show();
 		$.ajax({
-			url: '/users?type=1&count=20',
+			url: '/users?type=1&count=5',
 			type: 'GET',
 			dataType: 'json',
 			success: function(data) {
 				$.each(data.users, function(i, u) {
-					console.log(u.nick);
+					// console.log(u.nick);
 					$('<li>').append($('<a>').attr({
 						href: '/users/' + u.id
-					}).text(u.nick)).addClass('u').appendTo('#users ul');
+					}).text(u.nick)).addClass('u').attr('uid', u.id).appendTo('#users ul');
 				});
 			}
 		})
@@ -558,6 +559,33 @@ $(function() {
 			default:
 				break;
 		}
+	})
+
+	$('#more_users').click(function(e) {
+		e.preventDefault();
+		var lastId = $('#users li:last').attr('uid');
+		console.log(lastId);
+		$.ajax({
+			url: '/users?type=2&count=5',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				last_id: lastId
+			},
+			success: function(data) {
+				// console.log(data.users.length);
+				if (data.users.length < 5) {
+					$('#more_users').attr('disabled', 'disabled').text('没有更多啦！');
+				}
+
+				$.each(data.users, function(i, u) {
+					// console.log(u.nick);
+					$('<li>').append($('<a>').attr({
+						href: '/users/' + u.id
+					}).text(u.nick)).addClass('u').attr('uid', u.id).appendTo('#users ul');
+				});
+			}
+		})
 	})
 
 })
