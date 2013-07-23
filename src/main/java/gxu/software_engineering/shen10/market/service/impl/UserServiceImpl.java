@@ -27,6 +27,7 @@ import gxu.software_engineering.shen10.market.repository.UserDao;
 import gxu.software_engineering.shen10.market.service.UserService;
 import gxu.software_engineering.shen10.market.util.Assert;
 import gxu.software_engineering.shen10.market.util.Encryptor;
+import gxu.software_engineering.shen10.market.util.TextUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -159,6 +160,35 @@ public class UserServiceImpl implements UserService {
 		u.setContact(contact);
 		userDao.merge(u);
 		return u;
+	}
+
+	@Override
+	public Map<String, Object> search(String nick, String account, String realName,
+			String contact, long lastId, int count) {
+		StringBuilder sb = new StringBuilder("FROM User u WHERE 1=1 ");
+		if (!TextUtils.isEmpty(nick)) {
+			sb.append("AND u.nick like '%").append(nick).append("%' ");
+		}
+		if (!TextUtils.isEmpty(account)) {
+			sb.append("AND u.account like '%").append(account).append("%' ");
+		}
+		if (!TextUtils.isEmpty(realName)) {
+			sb.append("AND u.realName like '%").append(realName).append("%' ");
+		}
+		if (!TextUtils.isEmpty(contact)) {
+			sb.append("AND u.contact like '%").append(contact).append("%' ");
+		}
+		if (lastId > 0) {
+			sb.append("AND u.id<").append(lastId).append(" ORDER BY u.id DESC");
+		}
+		String query = sb.toString();
+		List<User> list = userDao.search(query, null, count);
+		query = "SELECT COUNT(u.id) " + query;
+		long total = userDao.size(false, false, query, null);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("total", total);
+		return map;
 	}
 
 }

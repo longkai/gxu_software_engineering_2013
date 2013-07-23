@@ -15,6 +15,7 @@ import gxu.software_engineering.shen10.market.entity.User;
 import gxu.software_engineering.shen10.market.service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -136,6 +137,19 @@ public class UserController {
 		User u = userService.modify(uid, true, pwd);
 		model.addAttribute(STATUS, STATUS_OK);
 		model.addAttribute(USER, u);
+		return BAD_REQUEST;
+	}
+	
+	@RequestMapping(value = "/users/q", method = GET)
+	public String query(Model model,
+			@RequestParam(value = "nick", required = false) String nick,
+			@RequestParam(value = "account", required = false) String account,
+			@RequestParam(value = "contact", required = false) String contact,
+			@RequestParam(value = "real_name", required = false) String realName,
+			@RequestParam(value = "last_id", defaultValue = "0") long lastId,
+			@RequestParam(value = "count") int count) {
+		Map<String, Object> result = userService.search(nick, account, contact, realName, lastId, count);
+		model.addAllAttributes(result);
 		return BAD_REQUEST;
 	}
 	

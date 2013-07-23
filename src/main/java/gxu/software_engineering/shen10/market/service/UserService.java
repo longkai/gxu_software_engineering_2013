@@ -25,6 +25,7 @@ package gxu.software_engineering.shen10.market.service;
 import gxu.software_engineering.shen10.market.entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -105,5 +106,14 @@ public interface UserService {
 	 * 返回所有的卖家数。
 	 */
 	long size();
+	
+	/**
+	 * 非常简单的搜索功能。
+	 * @param nick
+	 * @param account
+	 * @param contact
+	 */
+	Map<String, Object> search(String nick, String account, String contact, String realName,
+			long lastId, int count);
 
 }

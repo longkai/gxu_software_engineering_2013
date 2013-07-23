@@ -455,6 +455,9 @@ $(function() {
 	$('#reset_pwd').click(function(e) {
 		e.preventDefault();
 		var pwd = prompt('请输入需要重置的密码！');
+		if (!pwd) {
+			return;
+		}
 		// $.trim(pwd)
 		var uid = $('#u_block').attr('uid');
 		$.ajax({
@@ -546,6 +549,9 @@ $(function() {
 			case '1':
 				queryCategory();
 				break;
+			case '2':
+				queryUsers();
+				break;
 			default:
 				break;
 		}
@@ -572,10 +578,32 @@ function queryCategory() {
 			}
 		}
 	})
+}
 
-	$('#xxx').click(function(e) {
-		e.preventDefault();
-		$('#cmodal').modal();
+function queryUsers() {
+	$.ajax({
+		url: '/users/q?count=20',
+		type: 'GET',
+		dataType: 'json',
+		data: {
+			nick: $('#query').val()
+		},
+		success: function(data) {
+			// console.log(data.total);
+			if (data.total === 0) {
+				alert('没有符合条件的结果！');
+			} else {
+				$('<li>').text('共找到' + data.total + '条记录！').appendTo('#users > ul');
+				$.each(data.list, function(i, u) {
+					$('<li>').append($('<a>').attr('href', '/users/' + u.id)
+						.text(u.nick)).addClass('u').appendTo('#users > ul');
+				});
+				$('#users').show();
+				if (data.list.length === data.total) {
+					$('#users button').hide();
+				}
+			}
+		}
 	})
 }
 
