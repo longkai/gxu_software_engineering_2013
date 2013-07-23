@@ -38,6 +38,7 @@ import gxu.software_engineering.shen10.market.entity.Category;
 import gxu.software_engineering.shen10.market.repository.CategoryDao;
 import gxu.software_engineering.shen10.market.service.CategoryService;
 import gxu.software_engineering.shen10.market.util.Assert;
+import gxu.software_engineering.shen10.market.util.TextUtils;
 
 /**
  * 类别相关服务的实现。
@@ -102,6 +103,22 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public long size() {
 		return categoryDao.size(true, false, null, null);
+	}
+
+	@Override
+	public Map<String, Object> search(String name, int count) {
+		StringBuilder sb = new StringBuilder("FROM Category c WHERE 1=1 ");
+		if (!TextUtils.isEmpty(name)) {
+			sb.append("AND c.name like '%").append(name).append("%' ");
+		}
+		String query = sb.toString();
+		List<Category> list = categoryDao.search(query, null, count);
+		String totalQuery = "SELECT COUNT(c.id) " + query;
+		long total = categoryDao.size(false, false, totalQuery, null);
+		Map<String, Object> map = new HashMap<String, Object>(2);
+		map.put("list", list);
+		map.put("total", total);
+		return map;
 	}
 
 }

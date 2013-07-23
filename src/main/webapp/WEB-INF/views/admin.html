@@ -21,6 +21,16 @@ i {
 
 			<a class="brand" href="#">管理员页面</a>
 
+			<form class="navbar-form pull-left">
+					<input class="span2" id="query" type="text" />
+					<select class="span2" id="query_type">
+						<option value="1" selected="selected">类别</option>
+						<option value="2">用户</option>
+						<option value="3">物品</option>
+					</select>
+					<input type="button" class="btn" value="搜索" id="q" />
+			</form>
+
 			<div class="nav-collapse collapse pull-right">
 				<ul class="nav">
 					<li><a href="#">退出</a></li>
@@ -524,7 +534,50 @@ $(function() {
 			}
 		})
 	})
+
+	// ############# search
+	$('#q').click(function(e) {
+		e.preventDefault();
+		$('.span10 div ul').empty();
+		$('.span10 div').hide();
+		var type = $('#query_type :selected').val();
+		console.log(type);
+		switch (type) {
+			case '1':
+				queryCategory();
+				break;
+			default:
+				break;
+		}
+	})
+
 })
+
+function queryCategory() {
+	$.ajax({
+		url: '/categories/q?count=20&name=' + $('#query').val(),
+		dataType: 'json',
+		type: 'GET',
+		success: function(data) {
+			// console.log(data.total);
+			if (data.total === 0) {
+				alert('没有符合条件的结果！');
+			} else {
+				$('<li>').text('共找到' + data.total + '条记录！').appendTo('#categories > ul');
+				$.each(data.list, function(i, c) {
+					$('<li>').append($('<a>').attr('href', '/categories/' + c.id)
+						.text(c.name)).addClass('c').appendTo('#categories > ul');
+				});
+				$('#categories').show();
+			}
+		}
+	})
+
+	$('#xxx').click(function(e) {
+		e.preventDefault();
+		$('#cmodal').modal();
+	})
+}
 
 $('body').on('click', 'li.c', function(e) {
 	e.preventDefault();

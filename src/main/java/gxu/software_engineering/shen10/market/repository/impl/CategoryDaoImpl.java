@@ -22,6 +22,10 @@
  */
 package gxu.software_engineering.shen10.market.repository.impl;
 
+import gxu.software_engineering.shen10.market.core.AbstractCommonDaoImpl;
+import gxu.software_engineering.shen10.market.entity.Category;
+import gxu.software_engineering.shen10.market.repository.CategoryDao;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -29,10 +33,6 @@ import java.util.Map;
 import javax.persistence.NoResultException;
 
 import org.springframework.stereotype.Repository;
-
-import gxu.software_engineering.shen10.market.core.AbstractCommonDaoImpl;
-import gxu.software_engineering.shen10.market.entity.Category;
-import gxu.software_engineering.shen10.market.repository.CategoryDao;
 
 /**
  * Category(类别)的数据访问接口实现。
@@ -75,7 +75,7 @@ public class CategoryDaoImpl extends AbstractCommonDaoImpl<Category> implements 
 	@Override
 	public List<Category> search(String hql, Map<String, Object> params,
 			int number) {
-		throw new UnsupportedOperationException("对不起，不受支持的操作！");
+		return super.executeQuery(false, hql, Category.class, 0, number, params);
 	}
 
 }

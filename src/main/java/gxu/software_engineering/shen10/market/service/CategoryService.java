@@ -25,6 +25,7 @@ package gxu.software_engineering.shen10.market.service;
 import gxu.software_engineering.shen10.market.entity.Category;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -68,5 +69,12 @@ public interface CategoryService {
 	 * 抓取所有的类别数量。
 	 */
 	long size();
+	
+	/**
+	 * 按照类别名字搜索.
+	 * @param name
+	 * @param count
+	 */
+	Map<String, Object> search(String name, int count);
 
 }

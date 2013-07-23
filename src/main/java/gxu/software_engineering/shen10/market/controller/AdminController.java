@@ -53,7 +53,6 @@ import static gxu.software_engineering.shen10.market.util.Consts.*;
  * @since  2013-7-21
  */
 @Controller
-@RequestMapping("/admin/")
 @Scope("session")
 public class AdminController {
 
@@ -72,17 +71,17 @@ public class AdminController {
 	@Inject
 	private AdminService adminService;
 	
-	@RequestMapping(value = "login", method = GET)
+	@RequestMapping(value = "/admin/login", method = GET)
 	public String login() {
 		return "login";
 	}
 	
-	@RequestMapping(value = "admin", method = GET)
+	@RequestMapping(value = "/admin/admin", method = GET)
 	public String admin() {
 		return ADMIN;
 	}
 	
-	@RequestMapping(value = "_login", method = GET)
+	@RequestMapping(value = "/admin/_login", method = GET)
 	public String login(
 			Model model,
 			HttpServletRequest request,
@@ -99,11 +98,6 @@ public class AdminController {
 		Admin admin = adminService.login(account, password);
 		request.getSession().setAttribute(ADMIN, admin);
 		model.addAttribute(STATUS, STATUS_OK);
-		return BAD_REQUEST;
-	}
-	
-	@RequestMapping(value = "categoies", method = GET)
-	public String add(int i) {
 		return BAD_REQUEST;
 	}
 	

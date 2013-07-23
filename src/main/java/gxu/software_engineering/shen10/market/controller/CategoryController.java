@@ -34,6 +34,7 @@ import gxu.software_engineering.shen10.market.entity.Category;
 import gxu.software_engineering.shen10.market.service.CategoryService;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -47,6 +48,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 类别控制器。
@@ -99,6 +101,15 @@ public class CategoryController {
 	public String list(Model model) {
 		List<Category> list = categoryService.list();
 		model.addAttribute(CATEGORIES, list);
+		return BAD_REQUEST;
+	}
+	
+	@RequestMapping(value = "/categories/q", method = GET)
+	public String query(Model model,
+			@RequestParam("count") int count,
+			@RequestParam("name") String name) {
+		Map<String, Object> result = categoryService.search(name, count);
+		model.addAllAttributes(result);
 		return BAD_REQUEST;
 	}
 
